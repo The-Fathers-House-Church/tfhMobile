@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AppTabs from './src/routes/AppTabs';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -51,21 +52,7 @@ function App(): JSX.Element {
           flex: 1,
         }}>
         <StatusBar />
-        <Tab.Navigator>
-          <Tab.Screen name="Home" component={HomeStack} />
-          <Tab.Screen name="Media" component={MediaStack} />
-          <Tab.Screen name="MoreStack" component={MoreStack} />
-          <Tab.Screen
-            name="More"
-            component={MoreStack}
-            listeners={({ navigation }) => ({
-              tabPress: event => {
-                event.preventDefault(); //preventing default.
-                navigation.navigate('OtherRoute');
-              },
-            })}
-          />
-        </Tab.Navigator>
+        <AppTabs />
       </SafeAreaView>
     </NavigationContainer>
   );
