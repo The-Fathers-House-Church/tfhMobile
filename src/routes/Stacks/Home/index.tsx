@@ -10,7 +10,6 @@ const HomeStack = () => {
   React.useEffect(() => {
     dispatch(getDayDevotional()).unwrap();
   }, []);
-  console.log(todayDevotional);
 
   return (
     <View>

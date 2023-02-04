@@ -5,6 +5,7 @@ import AppTabs from './src/routes/AppTabs';
 import SplashScreen from 'react-native-splash-screen';
 import { Provider } from 'react-redux';
 import { store } from './src/store/store';
+import FeedbackToast from './src/common/FeedbackToast';
 
 function App(): JSX.Element {
   React.useEffect(() => {
@@ -27,6 +28,7 @@ function App(): JSX.Element {
           <AppTabs />
         </SafeAreaView>
       </NavigationContainer>
+      <FeedbackToast />
     </Provider>
   );
 }

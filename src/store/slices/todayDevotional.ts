@@ -1,3 +1,4 @@
+import { sendCatchFeedback } from './../../functions/feedback';
 import { appAxios } from './../../api/axios';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { DevotionalType } from '../../types/types';
@@ -49,8 +50,8 @@ export const getDayDevotional = createAsyncThunk(
     try {
       const response = await appAxios.get('/devotional/today');
       return response.data.devotional;
-    } catch (error: any) {
-      console.log(error?.response?.data);
+    } catch (error) {
+      sendCatchFeedback(error);
     }
   },
 );
