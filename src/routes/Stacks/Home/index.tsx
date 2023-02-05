@@ -2,6 +2,8 @@ import { View, Text } from 'react-native';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { getDayDevotional } from '../../../store/slices/todayDevotional';
+import { DMRegular } from '../../../theme/fonts';
+import appColors from '../../../theme/colors';
 
 const HomeStack = () => {
   const { todayDevotional } = useAppSelector(state => state.todayDevotional);
@@ -13,7 +15,14 @@ const HomeStack = () => {
 
   return (
     <View>
-      <Text>HomeStack</Text>
+      <Text
+        style={{
+          fontSize: 24,
+          fontFamily: DMRegular,
+          color: appColors.secondaryColor,
+        }}>
+        HomeStack
+      </Text>
     </View>
   );
 };
