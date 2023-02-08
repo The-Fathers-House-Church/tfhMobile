@@ -1,11 +1,15 @@
 import { View, Text } from 'react-native';
 import React from 'react';
+import GiveScreen from '../../../screens/Give';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 const GiveTab = () => {
   return (
-    <View>
-      <Text>GiveTab</Text>
-    </View>
+    <Stack.Navigator>
+      <Stack.Screen name="MediaStack" component={GiveScreen} />
+    </Stack.Navigator>
   );
 };
 

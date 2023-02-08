@@ -3,6 +3,7 @@ const appColors = {
   secondaryColor: '#FF6634',
   successColor: '#08A05C',
   errorColor: '#F13637',
+  black: '#000000',
 };
 
 export default appColors;
