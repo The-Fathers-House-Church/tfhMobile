@@ -5,6 +5,7 @@ import {
   ViewStyle,
   TextStyle,
   TouchableOpacity,
+  ButtonProps,
 } from 'react-native';
 import React from 'react';
 import { StyleSheet } from 'react-native';
@@ -18,11 +19,18 @@ interface Props {
   onPress?: () => void;
 }
 
-const Button = ({ title, buttonStyle, textStyle, onPress }: Props) => {
+const Button = ({
+  title,
+  buttonStyle,
+  textStyle,
+  onPress,
+  ...rest
+}: Props & ButtonProps) => {
   return (
     <TouchableOpacity
       style={[styles.buttonContainer, buttonStyle]}
-      onPress={onPress}>
+      onPress={onPress}
+      {...rest}>
       <Text style={[styles.buttonText, textStyle]}>{title}</Text>
     </TouchableOpacity>
   );
