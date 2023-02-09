@@ -1,9 +1,10 @@
-import { View, Text } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { DMRegular } from '../../theme/fonts';
 import appColors from '../../theme/colors';
+import Button from '../../common/Button';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +26,7 @@ const HomeScreen = () => {
         }}>
         HomeScreen
       </Text>
+      <Button title="Announcement" onPress={() => console.log('Pressed')} />
     </View>
   );
 };

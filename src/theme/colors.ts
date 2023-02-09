@@ -4,6 +4,7 @@ const appColors = {
   successColor: '#08A05C',
   errorColor: '#F13637',
   black: '#000000',
+  white: '#ffffff',
 };
 
 export default appColors;
