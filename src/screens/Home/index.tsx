@@ -1,41 +1,22 @@
-import { View, Text, Alert } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { DMRegular } from '../../theme/fonts';
-import appColors from '../../theme/colors';
-import Button from '../../common/Button';
-import CustomInput from '../../common/CustomInput';
-
-const Stack = createNativeStackNavigator();
+import LogoHeader from '../../components/HomeScreen/LogoHeader';
+import SignupForm from '../../components/HomeScreen/SignupForm';
+import DayDevotional from '../../components/HomeScreen/DayDevotional';
+import ChurchLocation from '../../components/HomeScreen/ChurchLocation';
+import GiveCard from '../../components/HomeScreen/GiveCard';
+import Announcements from '../../components/HomeScreen/Announcements';
 
 const HomeScreen = () => {
-  const { todayDevotional } = useAppSelector(state => state.todayDevotional);
-  const dispatch = useAppDispatch();
-
-  // React.useEffect(() => {
-  //   dispatch(getDayDevotional()).unwrap();
-  // }, []);
-
-  const [input, setInput] = React.useState('');
-
   return (
-    <View>
-      <Text
-        style={{
-          fontSize: 24,
-          fontFamily: DMRegular,
-          color: appColors.secondaryColor,
-        }}>
-        HomeScreen
-      </Text>
-      <Button title="Announcement" onPress={() => console.log('Pressed')} />
-      <CustomInput
-        onChangeText={setInput}
-        value={input}
-        placeholder="Enter input"
-      />
-    </View>
+    <ScrollView contentContainerStyle={{ flexGrow: 1, flex: 1 }}>
+      <LogoHeader />
+      <SignupForm />
+      <DayDevotional />
+      <ChurchLocation />
+      <GiveCard />
+      <Announcements />
+    </ScrollView>
   );
 };
 
