@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, StatusBar, Text } from 'react-native';
+import { StatusBar, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import AppTabs from './src/routes/AppTabs';
 import SplashScreen from 'react-native-splash-screen';
@@ -20,13 +20,13 @@ function App(): JSX.Element {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <SafeAreaView
+        <View
           style={{
             flex: 1,
           }}>
           <StatusBar />
           <AppTabs />
-        </SafeAreaView>
+        </View>
       </NavigationContainer>
       <FeedbackToast />
     </Provider>
