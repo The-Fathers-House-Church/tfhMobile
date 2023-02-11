@@ -9,7 +9,7 @@ import Announcements from '../../components/HomeScreen/Announcements';
 
 const HomeScreen = () => {
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1, flex: 1 }}>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <LogoHeader />
       <SignupForm />
       <DayDevotional />
