@@ -1,20 +1,15 @@
-import { View, Text, Image } from 'react-native';
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeStack from '../Stacks/Home';
 import MediaStack from '../Stacks/Media';
 import MoreStack from '../Stacks/More';
 import GiveTab from '../Stacks/Give';
-import HomeIcon from '../../assets/icons/layout/home.png';
-import HomeIconFocused from '../../assets/icons/layout/home-focused.png';
-import MediaIcon from '../../assets/icons/layout/media.png';
-import MediaIconFocused from '../../assets/icons/layout/media-focused.png';
-import GiveIcon from '../../assets/icons/layout/give.png';
-import GiveIconFocused from '../../assets/icons/layout/give-focused.png';
-import MoreIcon from '../../assets/icons/layout/more.png';
-import MoreIconFocused from '../../assets/icons/layout/more-focused.png';
 import { InterMedium } from '../../theme/fonts';
 import appColors from '../../theme/colors';
+import HomeIcon from '../../assets/icons/svgs/layout/home.svg';
+import MediaIcon from '../../assets/icons/svgs/layout/media.svg';
+import GiveIcon from '../../assets/icons/svgs/layout/give.svg';
+import MoreIcon from '../../assets/icons/svgs/layout/more.svg';
 
 const Tab = createBottomTabNavigator();
 
@@ -26,19 +21,47 @@ const AppTabs = () => {
           let selectedIcon;
 
           if (route.name === 'HomeTab') {
-            selectedIcon = focused ? HomeIconFocused : HomeIcon;
+            selectedIcon = (
+              <HomeIcon
+                style={{
+                  // @ts-ignore
+                  color: focused ? appColors.secondaryColor : appColors.black,
+                }}
+              />
+            );
           }
           if (route.name === 'MediaTab') {
-            selectedIcon = focused ? MediaIconFocused : MediaIcon;
+            selectedIcon = (
+              <MediaIcon
+                style={{
+                  // @ts-ignore
+                  color: focused ? appColors.secondaryColor : appColors.black,
+                }}
+              />
+            );
           }
           if (route.name === 'GiveTab') {
-            selectedIcon = focused ? GiveIconFocused : GiveIcon;
+            selectedIcon = (
+              <GiveIcon
+                style={{
+                  // @ts-ignore
+                  color: focused ? appColors.secondaryColor : appColors.black,
+                }}
+              />
+            );
           }
           if (route.name === 'MoreTab') {
-            selectedIcon = focused ? MoreIconFocused : MoreIcon;
+            selectedIcon = (
+              <MoreIcon
+                style={{
+                  // @ts-ignore
+                  color: focused ? appColors.secondaryColor : appColors.black,
+                }}
+              />
+            );
           }
 
-          return <Image source={selectedIcon} />;
+          return selectedIcon;
         },
         tabBarLabelStyle: {
           fontFamily: InterMedium,
@@ -49,8 +72,8 @@ const AppTabs = () => {
         tabBarInactiveTintColor: appColors.black,
         tabBarStyle: {
           height: 64.42,
-          borderTopRightRadius: 16,
-          borderTopLeftRadius: 16,
+          // borderTopRightRadius: 16,
+          // borderTopLeftRadius: 16,
           paddingBottom: 8,
           paddingTop: 8,
         },
