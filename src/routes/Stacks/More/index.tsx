@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 const MoreStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="MediaStack" component={MoreScreen} />
+      <Stack.Screen name="MoreStack" component={MoreScreen} />
     </Stack.Navigator>
   );
 };

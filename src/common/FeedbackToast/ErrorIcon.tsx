@@ -1,5 +1,7 @@
-import { View, Text, Image } from 'react-native';
+import { View, Image } from 'react-native';
 import React from 'react';
+import appColors from '../../theme/colors';
+import ErrorImage from '../../assets/icons/error.svg';
 
 const ErrorIcon = () => {
   return (
@@ -7,20 +9,13 @@ const ErrorIcon = () => {
       style={{
         height: '100%',
         width: 50,
-        backgroundColor: '#FFE9E2',
+        backgroundColor: appColors.errorColor,
         borderTopLeftRadius: 6.23,
         borderBottomLeftRadius: 6.23,
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Image
-        source={require('../../assets/icons/error.png')}
-        style={{
-          width: 20,
-          height: 20,
-          resizeMode: 'contain',
-        }}
-      />
+      <ErrorImage width={20} height={20} />
     </View>
   );
 };

@@ -75,6 +75,8 @@ const AppTabs = () => {
           // borderTopRightRadius: 16,
           // borderTopLeftRadius: 16,
           paddingBottom: 8,
+          borderWidth: 0,
+          elevation: 0,
           paddingTop: 8,
         },
         headerShown: false,

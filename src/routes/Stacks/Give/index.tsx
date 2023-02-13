@@ -8,7 +8,13 @@ const Stack = createNativeStackNavigator();
 const GiveTab = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="MediaStack" component={GiveScreen} />
+      <Stack.Screen
+        name="GiveStack"
+        component={GiveScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack.Navigator>
   );
 };

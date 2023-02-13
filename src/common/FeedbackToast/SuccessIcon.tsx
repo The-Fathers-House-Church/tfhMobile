@@ -1,5 +1,6 @@
 import { View, Text, Image } from 'react-native';
 import React from 'react';
+import SuccessImage from '../../assets/icons/success.svg';
 
 const SuccessIcon = () => {
   return (
@@ -13,14 +14,7 @@ const SuccessIcon = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Image
-        source={require('../../assets/icons/success.png')}
-        style={{
-          width: 20,
-          height: 20,
-          resizeMode: 'contain',
-        }}
-      />
+      <SuccessImage width={20} height={20} />
     </View>
   );
 };
