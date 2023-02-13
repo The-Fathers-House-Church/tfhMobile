@@ -1,15 +1,27 @@
-import { Text, ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import React from 'react';
 import appColors from '../../theme/colors';
 import IntroHeader from '../../components/MediaScreen/IntroHeader';
-import LivestreamIcon from '../../assets/icons/svgs/media/livestream.svg';
+import MediaCard from '../../components/MediaScreen/MediaCard';
+import mediaContents from '../../components/MediaScreen/mediaContents';
 
 const MediaScreen = () => {
   return (
     <ScrollView
       contentContainerStyle={{ flexGrow: 1, backgroundColor: appColors.white }}>
       <IntroHeader />
-      <LivestreamIcon width={100} height={100} />
+      <View style={{ paddingHorizontal: 20, gap: 17 }}>
+        {mediaContents.map(item => (
+          <MediaCard
+            key={item.mainText}
+            icon={item.icon}
+            mainText={item.mainText}
+            subText={item.subText}
+            showInfoText={item.showInfoText}
+            isLive={item.isLive}
+          />
+        ))}
+      </View>
     </ScrollView>
   );
 };
