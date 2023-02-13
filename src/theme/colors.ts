@@ -6,6 +6,7 @@ const appColors = {
   black: '#000000',
   white: '#ffffff',
   red: '#E10000',
+  brown: '#12071A',
 };
 
 export default appColors;
