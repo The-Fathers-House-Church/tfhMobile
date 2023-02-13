@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, Image } from 'react-native';
 import React from 'react';
 import appColors from '../../../theme/colors';
+import ProfileImage from '../../../assets/icons/profile.svg';
 
 const LogoHeader = () => {
   return (
@@ -10,7 +11,7 @@ const LogoHeader = () => {
         style={styles.logoImage}
       />
       <View style={styles.iconContainer}>
-        <Image source={require('../../../assets/icons/profile.png')} />
+        <ProfileImage />
       </View>
     </View>
   );

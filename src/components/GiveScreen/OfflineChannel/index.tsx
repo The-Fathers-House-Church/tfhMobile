@@ -26,7 +26,7 @@ const OfflineChannel = ({
     let copyText = accountNumber.replace(/\s+/g, '');
 
     Clipboard.setString(copyText);
-    sendFeedback('Account number copied', 'success');
+    sendFeedback('Account number copied', 'info');
   };
 
   return (

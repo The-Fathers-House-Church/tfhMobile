@@ -7,6 +7,8 @@ const appColors = {
   white: '#ffffff',
   red: '#E10000',
   brown: '#12071A',
+  info: '#0275d8',
+  warning: '#f0ad4e',
 };
 
 export default appColors;
