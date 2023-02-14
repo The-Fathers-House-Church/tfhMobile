@@ -13,13 +13,13 @@ const toastConfig = {
       style={{ borderRadius: 6.23, borderLeftWidth: 0 }}
       contentContainerStyle={{ paddingLeft: 20, paddingRight: 10 }}
       text1Style={{
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: '500',
         color: '#616564',
         fontFamily: DMBold,
       }}
       text2Style={{
-        fontSize: 14,
+        fontSize: 11,
         fontWeight: 400,
         fontFamily: DMRegular,
       }}
@@ -32,7 +32,7 @@ const toastConfig = {
       style={{ borderRadius: 6.23, borderLeftWidth: 0 }}
       contentContainerStyle={{ paddingLeft: 20, paddingRight: 10 }}
       text1Style={{
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: '500',
         color: '#616564',
         fontFamily: DMBold,
@@ -50,13 +50,13 @@ const toastConfig = {
       style={{ borderRadius: 6.23, borderLeftColor: appColors.info }}
       contentContainerStyle={{ paddingLeft: 20, paddingRight: 10 }}
       text1Style={{
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: '500',
         color: '#616564',
         fontFamily: DMBold,
       }}
       text2Style={{
-        fontSize: 14,
+        fontSize: 11,
         fontWeight: 400,
         fontFamily: DMRegular,
       }}
@@ -68,13 +68,13 @@ const toastConfig = {
       style={{ borderRadius: 6.23, borderLeftColor: appColors.warning }}
       contentContainerStyle={{ paddingLeft: 20, paddingRight: 10 }}
       text1Style={{
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: '500',
         color: '#616564',
         fontFamily: DMBold,
       }}
       text2Style={{
-        fontSize: 14,
+        fontSize: 11,
         fontWeight: 400,
         fontFamily: DMRegular,
       }}
