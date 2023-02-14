@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import React from 'react';
 import appColors from '../../../theme/colors';
 import { DMBold, DMRegular } from '../../../theme/fonts';
@@ -18,7 +18,7 @@ const MediaCard = ({
   isLive?: boolean;
 }) => {
   return (
-    <TouchableHighlight style={styles.card} underlayColor="#ece8ff">
+    <TouchableOpacity style={styles.card}>
       <View style={styles.container}>
         {icon}
         <View>
@@ -40,7 +40,7 @@ const MediaCard = ({
           )}
         </View>
       </View>
-    </TouchableHighlight>
+    </TouchableOpacity>
   );
 };
 
