@@ -13,11 +13,6 @@ const DayDevotional = () => {
   const { todayDevotional, loading } = useAppSelector(
     state => state.todayDevotional,
   );
-  const dispatch = useAppDispatch();
-
-  React.useEffect(() => {
-    dispatch(getDayDevotional()).unwrap();
-  }, []);
 
   return (
     <View style={styles.container}>

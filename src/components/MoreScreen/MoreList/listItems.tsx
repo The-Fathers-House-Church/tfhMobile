@@ -8,6 +8,7 @@ import PodcastIcon from '../../../assets/icons/svgs/more/podcast.svg';
 import EventsIcon from '../../../assets/icons/svgs/more/events.svg';
 import AnnouncementIcon from '../../../assets/icons/svgs/more/announcement.svg';
 import FeedbackIcon from '../../../assets/icons/svgs/more/feedback.svg';
+import { screenNames } from '../../../screens/screenNames';
 
 export interface ListType {
   icon: React.ReactNode;
@@ -20,53 +21,53 @@ const listItems: ListType[] = [
   {
     title: 'Home',
     icon: <HomeIcon />,
-    screenName: 'HomeScreen',
+    screenName: screenNames.HOME,
   },
   {
     title: 'About The Church',
     icon: <InfoIcon />,
-    screenName: 'AboutScreen',
+    screenName: screenNames.ABOUT,
   },
   {
     title: 'Livestream',
     icon: <VideoIcon />,
-    screenName: 'LivestreamScreen',
+    screenName: screenNames.LIVESTREAM,
   },
   {
     title: 'Devotional',
     icon: <OpenBookIcon />,
-    screenName: 'DevotionalsScreen',
+    screenName: screenNames.DEVOTIONALS,
   },
   {
     title: 'Testimonies',
     icon: <NoteIcon />,
-    screenName: 'TestimoniesScreen',
+    screenName: screenNames.TESTIMONIES,
   },
   {
     title: 'Podcast',
     icon: <PodcastIcon />,
-    screenName: 'PodcastScreen',
+    screenName: screenNames.PODCASTS,
   },
   {
     title: 'Events',
     icon: <EventsIcon />,
-    screenName: 'EventsScreen',
+    screenName: screenNames.EVENTS,
   },
   {
     title: 'Announcements',
     icon: <AnnouncementIcon />,
-    screenName: 'AnnouncementsScreen',
+    screenName: screenNames.ANNOUNCEMENTS,
   },
   {
     title: 'Feedbacks',
     icon: <FeedbackIcon />,
-    screenName: 'FeedbacksScreen',
+    screenName: screenNames.FEEDBACKS,
   },
   {
     title: 'Authentication',
     icon: <></>,
     type: 'authentication',
-    screenName: 'LoginScreen',
+    screenName: screenNames.LOGIN,
   },
 ];
 
