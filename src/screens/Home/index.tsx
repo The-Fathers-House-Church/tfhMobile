@@ -39,7 +39,7 @@ const HomeScreen = ({
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }>
       <LogoHeader navigateToScreen={navigateToScreen} />
-      <SignupForm />
+      <SignupForm navigateToScreen={navigateToScreen} />
       <DayDevotional />
       <ChurchLocation />
       <GiveCard />

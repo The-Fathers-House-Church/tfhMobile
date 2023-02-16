@@ -13,9 +13,9 @@ import { appAxios } from '../../../api/axios';
 import { sendCatchFeedback, sendFeedback } from '../../../functions/feedback';
 import { screenNames } from '../../screenNames';
 
-const LoginScreen = ({
+const ForgotPasswordScreen = ({
   navigation,
-}: NativeStackScreenProps<any, screenNamesTypes['LOGIN']>) => {
+}: NativeStackScreenProps<any, screenNamesTypes['FORGOT_PASSWORD']>) => {
   interface FormValues {
     email: string;
     password: string;
@@ -95,12 +95,10 @@ const LoginScreen = ({
         onPress={formik.handleSubmit}
         loading={formik.values.loading}
       />
-      <TouchableOpacity
-        onPress={() => navigation.navigate(screenNames.FORGOT_PASSWORD)}>
+      <TouchableOpacity>
         <Text style={styles.forgotText}>Forgot Password?</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate(screenNames.REGISTER)}>
+      <TouchableOpacity>
         <Text style={styles.signupText}>
           Don't have an account?{' '}
           <Text
@@ -154,4 +152,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default ForgotPasswordScreen;

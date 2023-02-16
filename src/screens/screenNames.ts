@@ -4,6 +4,7 @@ export const screenNames: screenNamesTypes = {
   // Auth
   LOGIN: 'LoginScreen',
   REGISTER: 'RegisterScreen',
+  FORGOT_PASSWORD: 'ForgotPasswordScreen',
 
   // Home
   HOME: 'HomeScreen',

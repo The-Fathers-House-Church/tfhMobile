@@ -13,12 +13,19 @@ import { appAxios } from '../../../api/axios';
 import { sendCatchFeedback, sendFeedback } from '../../../functions/feedback';
 import { screenNames } from '../../screenNames';
 
-const LoginScreen = ({
+const RegisterScreen = ({
   navigation,
-}: NativeStackScreenProps<any, screenNamesTypes['LOGIN']>) => {
+}: NativeStackScreenProps<any, screenNamesTypes['REGISTER']>) => {
   interface FormValues {
     email: string;
     password: string;
+    firstName: string;
+    lastName: string;
+    phoneNumber: string;
+    churchCenter: string;
+    dateOfBirth: string;
+    member: boolean;
+    registrationSource: string;
     loading: boolean;
   }
 
@@ -26,6 +33,13 @@ const LoginScreen = ({
     initialValues: {
       email: '',
       password: '',
+      churchCenter: '',
+      dateOfBirth: '',
+      firstName: '',
+      lastName: '',
+      member: true,
+      phoneNumber: '',
+      registrationSource: 'mobile',
       loading: false,
     },
     onSubmit: () => {
@@ -95,12 +109,10 @@ const LoginScreen = ({
         onPress={formik.handleSubmit}
         loading={formik.values.loading}
       />
-      <TouchableOpacity
-        onPress={() => navigation.navigate(screenNames.FORGOT_PASSWORD)}>
+      <TouchableOpacity>
         <Text style={styles.forgotText}>Forgot Password?</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate(screenNames.REGISTER)}>
+      <TouchableOpacity>
         <Text style={styles.signupText}>
           Don't have an account?{' '}
           <Text
@@ -154,4 +166,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default RegisterScreen;

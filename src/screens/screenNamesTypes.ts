@@ -2,6 +2,7 @@ export type screenNamesTypes = {
   // Auth
   LOGIN: 'LoginScreen';
   REGISTER: 'RegisterScreen';
+  FORGOT_PASSWORD: 'ForgotPasswordScreen';
 
   // Home
   HOME: 'HomeScreen';
