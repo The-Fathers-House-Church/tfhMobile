@@ -7,8 +7,9 @@ import OnlineChannel from '../../components/GiveScreen/OnlineChannel';
 import OfflineHeader from '../../components/GiveScreen/OfflineChannel/OfflineHeader';
 import offlineChannels from '../../components/GiveScreen/OfflineChannel/offlineChannels';
 import OfflineChannel from '../../components/GiveScreen/OfflineChannel';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-const GiveScreen = () => {
+const GiveScreen = ({}: NativeStackScreenProps<any, 'GiveScreen'>) => {
   return (
     <ScrollView
       contentContainerStyle={{

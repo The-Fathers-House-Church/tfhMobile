@@ -4,8 +4,9 @@ import appColors from '../../theme/colors';
 import IntroHeader from '../../components/MediaScreen/IntroHeader';
 import MediaCard from '../../components/MediaScreen/MediaCard';
 import mediaContents from '../../components/MediaScreen/mediaContents';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-const MediaScreen = () => {
+const MediaScreen = ({}: NativeStackScreenProps<any, 'MediaScreen'>) => {
   return (
     <ScrollView
       contentContainerStyle={{ flexGrow: 1, backgroundColor: appColors.white }}>

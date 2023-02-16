@@ -6,8 +6,9 @@ import DayDevotional from '../../components/HomeScreen/DayDevotional';
 import ChurchLocation from '../../components/HomeScreen/ChurchLocation';
 import GiveCard from '../../components/HomeScreen/GiveCard';
 import Announcements from '../../components/HomeScreen/Announcements';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-const HomeScreen = () => {
+const HomeScreen = ({}: NativeStackScreenProps<any, 'HomeScreen'>) => {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <LogoHeader />

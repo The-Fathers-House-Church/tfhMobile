@@ -13,49 +13,60 @@ export interface ListType {
   icon: React.ReactNode;
   title: string;
   type?: 'normal' | 'authentication';
+  screenName: string;
 }
 
 const listItems: ListType[] = [
   {
     title: 'Home',
     icon: <HomeIcon />,
+    screenName: 'HomeScreen',
   },
   {
     title: 'About The Church',
     icon: <InfoIcon />,
+    screenName: 'AboutScreen',
   },
   {
     title: 'Livestream',
     icon: <VideoIcon />,
+    screenName: 'LivestreamScreen',
   },
   {
     title: 'Devotional',
     icon: <OpenBookIcon />,
+    screenName: 'DevotionalsScreen',
   },
   {
     title: 'Testimonies',
     icon: <NoteIcon />,
+    screenName: 'TestimoniesScreen',
   },
   {
     title: 'Podcast',
     icon: <PodcastIcon />,
+    screenName: 'PodcastScreen',
   },
   {
     title: 'Events',
     icon: <EventsIcon />,
+    screenName: 'EventsScreen',
   },
   {
     title: 'Announcements',
     icon: <AnnouncementIcon />,
+    screenName: 'AnnouncementsScreen',
   },
   {
     title: 'Feedbacks',
     icon: <FeedbackIcon />,
+    screenName: 'FeedbacksScreen',
   },
   {
     title: 'Authentication',
     icon: <></>,
     type: 'authentication',
+    screenName: 'LoginScreen',
   },
 ];
 

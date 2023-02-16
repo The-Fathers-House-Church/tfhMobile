@@ -5,7 +5,13 @@ import appColors from '../../../theme/colors';
 import LoginIcon from '../../../assets/icons/svgs/more/log-in.svg';
 import LogoutIcon from '../../../assets/icons/svgs/more/log-out.svg';
 
-const AuthenticationItem = () => {
+const AuthenticationItem = ({
+  navigateToScreen,
+  screenName,
+}: {
+  navigateToScreen: (screenName: string) => void;
+  screenName: string;
+}) => {
   const loggedIn = true;
   return (
     <>

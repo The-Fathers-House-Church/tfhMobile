@@ -9,24 +9,36 @@ interface Props {
   title: string;
   icon: React.ReactNode;
   type?: 'normal' | 'authentication';
+  navigateToScreen: (screenName: string) => void;
+  screenName: string;
 }
 
 const MoreItem = ({
   title,
   icon,
   type = 'normal',
+  navigateToScreen,
+  screenName,
   ...rest
 }: Props & TouchableOpacityProps) => {
   return (
     <>
       {type === 'normal' && (
-        <TouchableOpacity style={styles.container} {...rest}>
+        <TouchableOpacity
+          style={styles.container}
+          {...rest}
+          onPress={() => navigateToScreen(screenName)}>
           {icon}
           <Text style={styles.titleText}>{title}</Text>
         </TouchableOpacity>
       )}
 
-      {type === 'authentication' && <AuthenticationItem />}
+      {type === 'authentication' && (
+        <AuthenticationItem
+          navigateToScreen={navigateToScreen}
+          screenName={screenName}
+        />
+      )}
     </>
   );
 };
