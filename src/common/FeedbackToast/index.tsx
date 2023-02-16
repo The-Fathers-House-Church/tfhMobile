@@ -83,7 +83,7 @@ const toastConfig = {
 };
 
 const FeedbackToast = () => {
-  return <Toast config={toastConfig} />;
+  return <Toast config={toastConfig} onPress={() => Toast.hide()} />;
 };
 
 export default FeedbackToast;
