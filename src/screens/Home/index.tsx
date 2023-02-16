@@ -11,10 +11,9 @@ import { screenNamesTypes } from '../screenNamesTypes';
 import { useAppDispatch } from '../../store/hooks';
 import { getDayDevotional } from '../../store/slices/todayDevotional';
 
-const HomeScreen = ({}: NativeStackScreenProps<
-  any,
-  screenNamesTypes['HOME']
->) => {
+const HomeScreen = ({
+  navigation,
+}: NativeStackScreenProps<any, screenNamesTypes['HOME']>) => {
   const [refreshing, setRefreshing] = React.useState(false);
 
   const dispatch = useAppDispatch();
@@ -29,13 +28,17 @@ const HomeScreen = ({}: NativeStackScreenProps<
     setRefreshing(false);
   }, []);
 
+  const navigateToScreen = (screenName: string) => {
+    navigation.navigate(screenName);
+  };
+
   return (
     <ScrollView
       contentContainerStyle={{ flexGrow: 1 }}
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }>
-      <LogoHeader />
+      <LogoHeader navigateToScreen={navigateToScreen} />
       <SignupForm />
       <DayDevotional />
       <ChurchLocation />
