@@ -3,6 +3,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MediaScreen from '../../../screens/Media';
 import { stackHeaderStyles } from '../../../functions/globalStyle';
+import { screenNames } from '../../../screens/screenNames';
 
 const Stack = createNativeStackNavigator();
 
@@ -10,7 +11,7 @@ const MediaStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="MediaStack"
+        name={screenNames.MEDIA}
         component={MediaScreen}
         options={{
           ...stackHeaderStyles,
