@@ -1,24 +1,22 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import MoreScreen from '../../../screens/More';
 import { screenNames } from '../../../screens/screenNames';
-import AboutStack from '../About';
+import AboutScreen from '../../../screens/About';
 
 const Stack = createNativeStackNavigator();
 
-const MoreStack = () => {
+const AboutStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Group>
       <Stack.Screen
-        name={screenNames.MORE}
-        component={MoreScreen}
+        name={screenNames.ABOUT}
+        component={AboutScreen}
         options={{
           headerShown: false,
         }}
       />
-      {AboutStack()}
-    </Stack.Navigator>
+    </Stack.Group>
   );
 };
 
-export default MoreStack;
+export default AboutStack;
