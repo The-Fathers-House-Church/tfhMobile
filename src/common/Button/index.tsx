@@ -11,12 +11,15 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import appColors from '../../theme/colors';
 import { DMBold } from '../../theme/fonts';
+import Loader from '../Loader';
 
 interface Props {
   title: string;
   buttonStyle?: ViewStyle;
   textStyle?: TextStyle;
   onPress?: () => void;
+  loading?: boolean;
+  loadingColor?: string;
 }
 
 const Button = ({
@@ -24,6 +27,8 @@ const Button = ({
   buttonStyle,
   textStyle,
   onPress,
+  loading,
+  loadingColor = appColors.white,
   ...rest
 }: Props & ButtonProps) => {
   return (
@@ -31,7 +36,11 @@ const Button = ({
       style={[styles.buttonContainer, buttonStyle]}
       onPress={onPress}
       {...rest}>
-      <Text style={[styles.buttonText, textStyle]}>{title}</Text>
+      {loading ? (
+        <Loader color={loadingColor} />
+      ) : (
+        <Text style={[styles.buttonText, textStyle]}>{title}</Text>
+      )}
     </TouchableOpacity>
   );
 };

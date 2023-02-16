@@ -9,15 +9,24 @@ import CustomInput from '../../../common/CustomInput';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import Button from '../../../common/Button';
+import { appAxios } from '../../../api/axios';
+import { sendCatchFeedback, sendFeedback } from '../../../functions/feedback';
+import { screenNames } from '../../screenNames';
 
-const LoginScreen = ({}: NativeStackScreenProps<
-  any,
-  screenNamesTypes['LOGIN']
->) => {
-  const formik = useFormik({
+const LoginScreen = ({
+  navigation,
+}: NativeStackScreenProps<any, screenNamesTypes['LOGIN']>) => {
+  interface FormValues {
+    email: string;
+    password: string;
+    loading: boolean;
+  }
+
+  const formik = useFormik<FormValues>({
     initialValues: {
       email: '',
       password: '',
+      loading: false,
     },
     onSubmit: () => {
       submitValues();
@@ -32,23 +41,26 @@ const LoginScreen = ({}: NativeStackScreenProps<
   });
 
   const submitValues = async () => {
-    // dispatch(openLoadingIndicator({ text: 'Signing in' }));
-    // try {
-    //   const response = await appAxios.post('/admin/login', {
-    //     email: formik.values.email,
-    //     password: formik.values.password,
-    //   });
-    //   sendFeedback(response.data?.message, 'success');
-    //   const userObject = {
-    //     ...response.data?.user,
-    //     token: response.data?.token,
-    //   };
-    //   dispatch(updateUser({ user: userObject }));
-    //   navigate('/dashboard');
-    // } catch (error) {
-    //   sendCatchFeedback(error);
-    // }
-    // dispatch(closeLoadingIndicator());
+    formik.setFieldValue('loading', true);
+
+    try {
+      const response = await appAxios.post('/user/login', {
+        email: formik.values.email,
+        password: formik.values.password,
+      });
+
+      sendFeedback(response.data?.message, 'success');
+      // const userObject = {
+      //   ...response.data?.user,
+      //   token: response.data?.token,
+      // };
+      // dispatch(updateUser({ user: userObject }));
+      navigation.navigate(screenNames.HOME);
+    } catch (error) {
+      sendCatchFeedback(error);
+    }
+
+    formik.setFieldValue('loading', false);
   };
 
   return (
@@ -80,6 +92,8 @@ const LoginScreen = ({}: NativeStackScreenProps<
           marginTop: 58,
           marginBottom: 23,
         }}
+        onPress={formik.handleSubmit}
+        loading={formik.values.loading}
       />
       <TouchableOpacity>
         <Text style={styles.forgotText}>Forgot Password?</Text>

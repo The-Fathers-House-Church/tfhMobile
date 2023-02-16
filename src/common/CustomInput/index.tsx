@@ -56,8 +56,10 @@ const CustomInput = ({
             style={styles.input}
             onChangeText={onChangeText}
             value={value}
+            id={name}
             {...rest}
           />
+          {showError && <Text style={styles.errorText}>{error}</Text>}
         </>
       )}
     </View>
