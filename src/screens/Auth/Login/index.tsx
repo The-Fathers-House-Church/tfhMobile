@@ -91,7 +91,11 @@ const LoginScreen = ({
         buttonStyle={{
           marginTop: 58,
           marginBottom: 23,
+          backgroundColor: !formik.isValid
+            ? appColors.grey
+            : appColors.secondaryColor,
         }}
+        disabled={!formik.isValid}
         onPress={formik.handleSubmit}
         loading={formik.values.loading}
       />

@@ -9,6 +9,7 @@ import {
 import React, { Dispatch, SetStateAction } from 'react';
 import appColors from '../../theme/colors';
 import { FormikProps } from 'formik/dist/types';
+import { DMRegular } from '../../theme/fonts';
 
 interface Props {
   value?: string | number;
@@ -75,12 +76,14 @@ const styles = StyleSheet.create({
     padding: 11.24,
     width: '100%',
     color: appColors.primaryColor,
+    fontFamily: DMRegular,
   },
   errorText: {
     fontSize: 10,
     color: appColors.errorColor,
     alignSelf: 'flex-start',
     marginTop: 3,
+    fontFamily: DMRegular,
   },
 });
 

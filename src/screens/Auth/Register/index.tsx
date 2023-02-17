@@ -12,6 +12,7 @@ import Button from '../../../common/Button';
 import { appAxios } from '../../../api/axios';
 import { sendCatchFeedback, sendFeedback } from '../../../functions/feedback';
 import { screenNames } from '../../screenNames';
+import CustomDatePicker from '../../../common/DatePicker';
 
 const RegisterScreen = ({
   navigation,
@@ -19,11 +20,12 @@ const RegisterScreen = ({
   interface FormValues {
     email: string;
     password: string;
+    confirmPassword: string;
     firstName: string;
     lastName: string;
     phoneNumber: string;
     churchCenter: string;
-    dateOfBirth: string;
+    dateOfBirth: Date | undefined;
     member: boolean;
     registrationSource: string;
     loading: boolean;
@@ -33,8 +35,9 @@ const RegisterScreen = ({
     initialValues: {
       email: '',
       password: '',
+      confirmPassword: '',
       churchCenter: '',
-      dateOfBirth: '',
+      dateOfBirth: undefined,
       firstName: '',
       lastName: '',
       member: true,
@@ -51,6 +54,16 @@ const RegisterScreen = ({
         .email('Enter a valid email')
         .required('Email is required'),
       password: yup.string().required('Password is required'),
+      confirmPassword: yup
+        .string()
+        .required('Confirm your password')
+        .oneOf([yup.ref('password')], "Passwords don't match"),
+      churchCenter: yup.string().required('Required'),
+      dateOfBirth: yup.string().required('Required'),
+      firstName: yup.string().required('Required'),
+      lastName: yup.string().required('Required'),
+      member: yup.boolean().required('Required'),
+      phoneNumber: yup.string().required('Required'),
     }),
   });
 
@@ -61,15 +74,18 @@ const RegisterScreen = ({
       const response = await appAxios.post('/user/login', {
         email: formik.values.email,
         password: formik.values.password,
+        phoneNumber: formik.values.phoneNumber,
+        member: formik.values.member,
+        lastName: formik.values.lastName,
+        firstName: formik.values.firstName,
+        dateOfBirth: formik.values.dateOfBirth,
+        churchCenter: formik.values.churchCenter,
+        registrationSource: formik.values.registrationSource,
       });
 
       sendFeedback(response.data?.message, 'success');
-      // const userObject = {
-      //   ...response.data?.user,
-      //   token: response.data?.token,
-      // };
-      // dispatch(updateUser({ user: userObject }));
-      navigation.navigate(screenNames.HOME);
+
+      navigation.navigate(screenNames.LOGIN);
     } catch (error) {
       sendCatchFeedback(error);
     }
@@ -77,19 +93,52 @@ const RegisterScreen = ({
     formik.setFieldValue('loading', false);
   };
 
+  console.log(formik.errors);
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Image
         source={require('../../../assets/brand/logo.png')}
         style={styles.image}
       />
-      <Text style={styles.mainText}>Login</Text>
-      <Text style={styles.subText}>Welcome back. We missed you!</Text>
+      <Text style={styles.mainText}>Signup</Text>
+      <Text style={styles.subText}>
+        Join the mission's assignment of the New Testament Church to be an
+        impact to your immediate community.
+      </Text>
+      <CustomInput formik={formik} name="firstName" placeholder="First Name" />
+      <CustomInput
+        formik={formik}
+        name="lastName"
+        placeholder="Last Name"
+        containerStyle={{
+          marginTop: 10,
+        }}
+      />
       <CustomInput
         formik={formik}
         name="email"
         placeholder="Email Address"
         keyboardType="email-address"
+        containerStyle={{
+          marginTop: 10,
+        }}
+      />
+      <CustomInput
+        formik={formik}
+        name="phoneNumber"
+        placeholder="Phone Number"
+        keyboardType="phone-pad"
+        containerStyle={{
+          marginTop: 10,
+        }}
+      />
+      <CustomDatePicker
+        formik={formik}
+        name="dateOfBirth"
+        placeholder="Date of Birth"
+        containerStyle={{
+          marginTop: 10,
+        }}
       />
       <CustomInput
         formik={formik}
@@ -97,30 +146,41 @@ const RegisterScreen = ({
         placeholder="Password"
         secureTextEntry
         containerStyle={{
-          marginTop: 16,
+          marginTop: 10,
+        }}
+      />
+      <CustomInput
+        formik={formik}
+        name="confirmPassword"
+        placeholder="Confirm Password"
+        secureTextEntry
+        containerStyle={{
+          marginTop: 10,
         }}
       />
       <Button
-        title="Log in"
+        title="Submit Form"
         buttonStyle={{
-          marginTop: 58,
-          marginBottom: 23,
+          marginTop: 25,
+          marginBottom: 19,
+          backgroundColor: !formik.isValid
+            ? appColors.grey
+            : appColors.secondaryColor,
         }}
+        disabled={!formik.isValid}
         onPress={formik.handleSubmit}
         loading={formik.values.loading}
       />
-      <TouchableOpacity>
-        <Text style={styles.forgotText}>Forgot Password?</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={styles.signupText}>
-          Don't have an account?{' '}
+
+      <TouchableOpacity onPress={() => navigation.navigate(screenNames.LOGIN)}>
+        <Text style={styles.signInText}>
+          Have an account?{' '}
           <Text
             style={{
               fontFamily: DMBold,
               color: appColors.secondaryColor,
             }}>
-            Sign Up
+            Login
           </Text>
         </Text>
       </TouchableOpacity>
@@ -132,26 +192,27 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 30,
     flexGrow: 1,
-    paddingVertical: 25,
+    paddingTop: 3,
+    paddingBottom: 33,
     backgroundColor: appColors.white,
-    alignItems: 'center',
   },
   image: {
-    height: 122,
+    height: 75,
     resizeMode: 'contain',
+    alignSelf: 'center',
   },
   mainText: {
     fontFamily: DMBold,
     fontSize: 24,
     color: appColors.primaryColor,
-    marginTop: 27,
-    marginBottom: 19,
+    marginTop: 4,
+    marginBottom: 11,
   },
   subText: {
     fontFamily: DMRegular,
     fontSize: 11,
     color: appColors.primaryColor,
-    marginBottom: 19,
+    marginBottom: 33,
   },
   forgotText: {
     fontFamily: DMBold,
@@ -159,10 +220,11 @@ const styles = StyleSheet.create({
     color: appColors.secondaryColor,
     marginBottom: 50,
   },
-  signupText: {
+  signInText: {
     fontFamily: DMRegular,
     fontSize: 10,
     color: appColors.primaryColor,
+    alignSelf: 'center',
   },
 });
 
