@@ -1,4 +1,12 @@
-import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  SafeAreaView,
+  LogBox,
+} from 'react-native';
 import React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { screenNamesTypes } from '../../screenNamesTypes';
@@ -13,6 +21,9 @@ import { appAxios } from '../../../api/axios';
 import { sendCatchFeedback, sendFeedback } from '../../../functions/feedback';
 import { screenNames } from '../../screenNames';
 import CustomDatePicker from '../../../common/DatePicker';
+import Modal from 'react-native-modal';
+import DropdownButton from '../../../common/DropdownButton';
+import ChurchBranchComponent from '../../../components/Auth/ChurchBranchComponent';
 
 const RegisterScreen = ({
   navigation,
@@ -30,6 +41,8 @@ const RegisterScreen = ({
     registrationSource: string;
     loading: boolean;
   }
+
+  const [centreModalState, setCentreModalState] = React.useState(false);
 
   const formik = useFormik<FormValues>({
     initialValues: {
@@ -93,98 +106,141 @@ const RegisterScreen = ({
     formik.setFieldValue('loading', false);
   };
 
-  console.log(formik.errors);
-  return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Image
-        source={require('../../../assets/brand/logo.png')}
-        style={styles.image}
-      />
-      <Text style={styles.mainText}>Signup</Text>
-      <Text style={styles.subText}>
-        Join the mission's assignment of the New Testament Church to be an
-        impact to your immediate community.
-      </Text>
-      <CustomInput formik={formik} name="firstName" placeholder="First Name" />
-      <CustomInput
-        formik={formik}
-        name="lastName"
-        placeholder="Last Name"
-        containerStyle={{
-          marginTop: 10,
-        }}
-      />
-      <CustomInput
-        formik={formik}
-        name="email"
-        placeholder="Email Address"
-        keyboardType="email-address"
-        containerStyle={{
-          marginTop: 10,
-        }}
-      />
-      <CustomInput
-        formik={formik}
-        name="phoneNumber"
-        placeholder="Phone Number"
-        keyboardType="phone-pad"
-        containerStyle={{
-          marginTop: 10,
-        }}
-      />
-      <CustomDatePicker
-        formik={formik}
-        name="dateOfBirth"
-        placeholder="Date of Birth"
-        containerStyle={{
-          marginTop: 10,
-        }}
-      />
-      <CustomInput
-        formik={formik}
-        name="password"
-        placeholder="Password"
-        secureTextEntry
-        containerStyle={{
-          marginTop: 10,
-        }}
-      />
-      <CustomInput
-        formik={formik}
-        name="confirmPassword"
-        placeholder="Confirm Password"
-        secureTextEntry
-        containerStyle={{
-          marginTop: 10,
-        }}
-      />
-      <Button
-        title="Submit Form"
-        buttonStyle={{
-          marginTop: 25,
-          marginBottom: 19,
-          backgroundColor: !formik.isValid
-            ? appColors.grey
-            : appColors.secondaryColor,
-        }}
-        disabled={!formik.isValid}
-        onPress={formik.handleSubmit}
-        loading={formik.values.loading}
-      />
+  const selectChurchBranch = (branch: string) => {
+    formik.setFieldValue('churchCenter', branch);
+    setTimeout(() => {
+      setCentreModalState(false);
+    }, 700);
+  };
 
-      <TouchableOpacity onPress={() => navigation.navigate(screenNames.LOGIN)}>
-        <Text style={styles.signInText}>
-          Have an account?{' '}
-          <Text
-            style={{
-              fontFamily: DMBold,
-              color: appColors.secondaryColor,
-            }}>
-            Login
-          </Text>
+  return (
+    <>
+      <ScrollView contentContainerStyle={styles.container}>
+        <Image
+          source={require('../../../assets/brand/logo.png')}
+          style={styles.image}
+        />
+        <Text style={styles.mainText}>Signup</Text>
+        <Text style={styles.subText}>
+          Join the mission's assignment of the New Testament Church to be an
+          impact to your immediate community.
         </Text>
-      </TouchableOpacity>
-    </ScrollView>
+        <SafeAreaView>
+          <CustomInput
+            formik={formik}
+            name="firstName"
+            placeholder="First Name"
+          />
+          <CustomInput
+            formik={formik}
+            name="lastName"
+            placeholder="Last Name"
+            containerStyle={{
+              marginTop: 10,
+            }}
+          />
+          <CustomInput
+            formik={formik}
+            name="email"
+            placeholder="Email Address"
+            keyboardType="email-address"
+            containerStyle={{
+              marginTop: 10,
+            }}
+          />
+          <CustomInput
+            formik={formik}
+            name="phoneNumber"
+            placeholder="Phone Number"
+            keyboardType="phone-pad"
+            containerStyle={{
+              marginTop: 10,
+            }}
+          />
+          <CustomDatePicker
+            formik={formik}
+            name="dateOfBirth"
+            placeholder="Date of Birth"
+            containerStyle={{
+              marginTop: 10,
+            }}
+          />
+
+          <DropdownButton
+            value={formik.values.churchCenter}
+            placeholder="Which centre are you?"
+            error={formik.errors.churchCenter}
+            showError={
+              formik.touched.churchCenter && formik.errors.churchCenter
+                ? true
+                : false
+            }
+            containerStyle={{
+              marginTop: 10,
+            }}
+            onPress={() => setCentreModalState(true)}
+          />
+          <CustomInput
+            formik={formik}
+            name="password"
+            placeholder="Password"
+            secureTextEntry
+            containerStyle={{
+              marginTop: 10,
+            }}
+          />
+          <CustomInput
+            formik={formik}
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            secureTextEntry
+            containerStyle={{
+              marginTop: 10,
+            }}
+          />
+          <Button
+            title="Submit Form"
+            buttonStyle={{
+              marginTop: 25,
+              marginBottom: 19,
+              backgroundColor: !formik.isValid
+                ? appColors.grey
+                : appColors.secondaryColor,
+            }}
+            disabled={!formik.isValid}
+            onPress={formik.handleSubmit}
+            loading={formik.values.loading}
+          />
+        </SafeAreaView>
+
+        <TouchableOpacity
+          onPress={() => navigation.navigate(screenNames.LOGIN)}>
+          <Text style={styles.signInText}>
+            Have an account?{' '}
+            <Text
+              style={{
+                fontFamily: DMBold,
+                color: appColors.secondaryColor,
+              }}>
+              Login
+            </Text>
+          </Text>
+        </TouchableOpacity>
+        <Modal
+          isVisible={centreModalState}
+          style={{
+            justifyContent: 'flex-end',
+            margin: 0,
+          }}
+          onBackdropPress={() => setCentreModalState(false)}
+          onBackButtonPress={() => setCentreModalState(false)}>
+          <ChurchBranchComponent
+            selectItem={selectChurchBranch}
+            selectedItem={formik.values.churchCenter}
+          />
+        </Modal>
+      </ScrollView>
+    </>
   );
 };
 
