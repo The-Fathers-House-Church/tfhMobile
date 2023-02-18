@@ -89,7 +89,7 @@ const RegisterScreen = ({
     formik.setFieldValue('loading', true);
 
     try {
-      const response = await appAxios.post('/user/login', {
+      const response = await appAxios.post('/user/register', {
         email: formik.values.email,
         password: formik.values.password,
         phoneNumber: formik.values.phoneNumber,
