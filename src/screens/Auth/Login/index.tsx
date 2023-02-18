@@ -12,10 +12,15 @@ import Button from '../../../common/Button';
 import { appAxios } from '../../../api/axios';
 import { sendCatchFeedback, sendFeedback } from '../../../functions/feedback';
 import { screenNames } from '../../screenNames';
+import { useAppDispatch } from '../../../store/hooks';
+import { updateUser } from '../../../store/slices/user';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = ({
   navigation,
 }: NativeStackScreenProps<any, screenNamesTypes['LOGIN']>) => {
+  const dispatch = useAppDispatch();
+
   interface FormValues {
     email: string;
     password: string;
@@ -50,11 +55,21 @@ const LoginScreen = ({
       });
 
       sendFeedback(response.data?.message, 'success');
-      // const userObject = {
-      //   ...response.data?.user,
-      //   token: response.data?.token,
-      // };
-      // dispatch(updateUser({ user: userObject }));
+
+      // Set app state
+      dispatch(
+        updateUser({ user: response.data?.user, token: response.data?.token }),
+      );
+
+      // Set state in async storage
+      await AsyncStorage.setItem(
+        'user',
+        JSON.stringify({
+          user: response.data?.user,
+          token: response.data?.token,
+        }),
+      );
+
       navigation.navigate(screenNames.HOME);
     } catch (error) {
       sendCatchFeedback(error);

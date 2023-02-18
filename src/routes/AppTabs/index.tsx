@@ -10,10 +10,31 @@ import HomeIcon from '../../assets/icons/svgs/layout/home.svg';
 import MediaIcon from '../../assets/icons/svgs/layout/media.svg';
 import GiveIcon from '../../assets/icons/svgs/layout/give.svg';
 import MoreIcon from '../../assets/icons/svgs/layout/more.svg';
+import { useAppDispatch } from '../../store/hooks';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { updateUser } from '../../store/slices/user';
 
 const Tab = createBottomTabNavigator();
 
 const AppTabs = () => {
+  const dispatch = useAppDispatch();
+
+  // Set user state in async storage
+  React.useEffect(() => {
+    const getUser = async () => {
+      let userDetails: any = await AsyncStorage.getItem('user');
+
+      userDetails = userDetails != null ? JSON.parse(userDetails) : null;
+
+      dispatch(
+        updateUser({
+          token: userDetails.token,
+          user: userDetails.user,
+        }),
+      );
+    };
+    getUser();
+  }, []);
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({

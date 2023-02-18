@@ -15,7 +15,7 @@ const MoreScreen = ({
 
   return (
     <View style={{ flexGrow: 1, backgroundColor: appColors.white }}>
-      <MoreHeader />
+      <MoreHeader navigateToScreen={navigateToScreen} />
 
       <MoreList navigateToScreen={navigateToScreen} />
     </View>

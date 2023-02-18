@@ -8,6 +8,7 @@ import { store } from './src/store/store';
 import FeedbackToast from './src/common/FeedbackToast';
 
 function App(): JSX.Element {
+  // Manage splash screen
   React.useEffect(() => {
     const splashTimeout = setTimeout(() => {
       SplashScreen.hide(); //hides the splash screen on app load (after 1 second).
