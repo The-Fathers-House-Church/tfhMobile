@@ -17,7 +17,6 @@ const HomeScreen = ({
   const [refreshing, setRefreshing] = React.useState(false);
 
   const dispatch = useAppDispatch();
-  const { user } = useAppSelector(state => state.user);
 
   React.useEffect(() => {
     dispatch(getDayDevotional()).unwrap();
@@ -40,7 +39,7 @@ const HomeScreen = ({
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }>
       <LogoHeader navigateToScreen={navigateToScreen} />
-      {!user && <SignupForm navigateToScreen={navigateToScreen} />}
+      <SignupForm navigateToScreen={navigateToScreen} />
       <DayDevotional />
       <ChurchLocation />
       <GiveCard />
