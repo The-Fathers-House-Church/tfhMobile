@@ -5,20 +5,48 @@ import { StyleSheet } from 'react-native';
 import appColors from '../../../theme/colors';
 import { DMBold, DMRegular } from '../../../theme/fonts';
 import ChevronDown from '../../../assets/icons/svgs/more/chevron-down.svg';
+import { useAppSelector } from '../../../store/hooks';
+import { screenNames } from '../../../screens/screenNames';
 
-const MoreHeader = () => {
+const MoreHeader = ({
+  navigateToScreen,
+}: {
+  navigateToScreen: (screenName: string) => void;
+}) => {
+  const { user } = useAppSelector(state => state.user);
+
   return (
     <View style={styles.container}>
       <MoreBG width="100%" preserveAspectRatio="xMinYMin slice" />
       <View style={styles.contentContainer}>
         <Image source={require('../../../assets/brand/logo-white.png')} />
-        <TouchableOpacity style={styles.actionContainer}>
-          <View style={styles.textContainer}>
-            <Text style={styles.mainText}>Hey! You don't have an account.</Text>
-            <Text style={styles.subText}>Create an account now!</Text>
-          </View>
-          <ChevronDown />
-        </TouchableOpacity>
+        {user ? (
+          <TouchableOpacity
+            style={styles.actionContainer}
+            onPress={() => navigateToScreen(screenNames.DEVOTIONALS)}>
+            <View style={styles.textContainer}>
+              <Text style={[styles.mainText, { textTransform: 'capitalize' }]}>
+                {`${user.firstName} ${user.lastName}`}
+              </Text>
+              <Text style={styles.subText}>
+                Have you read your bible today?
+              </Text>
+            </View>
+            <ChevronDown />
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            style={styles.actionContainer}
+            onPress={() => navigateToScreen(screenNames.LOGIN)}>
+            <View style={styles.textContainer}>
+              <Text style={styles.mainText}>Hey! You aren't logged in.</Text>
+              <Text style={styles.subText}>
+                Login or Create an account here
+              </Text>
+            </View>
+            <ChevronDown />
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );

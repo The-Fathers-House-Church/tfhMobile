@@ -1,18 +1,35 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import appColors from '../../../theme/colors';
 import ProfileImage from '../../../assets/icons/profile.svg';
+import { screenNames } from '../../../screens/screenNames';
+import { useAppSelector } from '../../../store/hooks';
+import InfoIcon from '../../../assets/icons/svgs/more/info.svg';
 
-const LogoHeader = () => {
+const LogoHeader = ({
+  navigateToScreen,
+}: {
+  navigateToScreen: (screenName: string) => void;
+}) => {
+  const { user } = useAppSelector(state => state.user);
+
   return (
     <View style={styles.container}>
       <Image
         source={require('../../../assets/brand/logo.png')}
         style={styles.logoImage}
       />
-      <View style={styles.iconContainer}>
-        <ProfileImage />
-      </View>
+      {user ? (
+        <TouchableOpacity onPress={() => navigateToScreen(screenNames.ABOUT)}>
+          <InfoIcon />
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity
+          style={styles.iconContainer}
+          onPress={() => navigateToScreen(screenNames.LOGIN)}>
+          <ProfileImage />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

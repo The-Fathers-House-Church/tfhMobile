@@ -8,16 +8,16 @@ import GiveCard from '../../components/HomeScreen/GiveCard';
 import Announcements from '../../components/HomeScreen/Announcements';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { screenNamesTypes } from '../screenNamesTypes';
-import { useAppDispatch } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { getDayDevotional } from '../../store/slices/todayDevotional';
 
-const HomeScreen = ({}: NativeStackScreenProps<
-  any,
-  screenNamesTypes['HOME']
->) => {
+const HomeScreen = ({
+  navigation,
+}: NativeStackScreenProps<any, screenNamesTypes['HOME']>) => {
   const [refreshing, setRefreshing] = React.useState(false);
 
   const dispatch = useAppDispatch();
+  const { user } = useAppSelector(state => state.user);
 
   React.useEffect(() => {
     dispatch(getDayDevotional()).unwrap();
@@ -29,14 +29,18 @@ const HomeScreen = ({}: NativeStackScreenProps<
     setRefreshing(false);
   }, []);
 
+  const navigateToScreen = (screenName: string) => {
+    navigation.navigate(screenName);
+  };
+
   return (
     <ScrollView
       contentContainerStyle={{ flexGrow: 1 }}
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }>
-      <LogoHeader />
-      <SignupForm />
+      <LogoHeader navigateToScreen={navigateToScreen} />
+      {!user && <SignupForm navigateToScreen={navigateToScreen} />}
       <DayDevotional />
       <ChurchLocation />
       <GiveCard />

@@ -4,6 +4,9 @@ import { DMRegular } from '../../../theme/fonts';
 import appColors from '../../../theme/colors';
 import LoginIcon from '../../../assets/icons/svgs/more/log-in.svg';
 import LogoutIcon from '../../../assets/icons/svgs/more/log-out.svg';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { signOut } from '../../../store/slices/user';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AuthenticationItem = ({
   navigateToScreen,
@@ -12,16 +15,24 @@ const AuthenticationItem = ({
   navigateToScreen: (screenName: string) => void;
   screenName: string;
 }) => {
-  const loggedIn = true;
+  const { user } = useAppSelector(state => state.user);
+  const dispatch = useAppDispatch();
+
+  const logoutUser = async () => {
+    dispatch(signOut());
+    await AsyncStorage.removeItem('user');
+  };
   return (
     <>
-      {loggedIn ? (
-        <TouchableOpacity style={styles.container}>
+      {user ? (
+        <TouchableOpacity style={styles.container} onPress={logoutUser}>
           <LogoutIcon />
           <Text style={styles.titleText}>Sign out</Text>
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity
+          style={styles.container}
+          onPress={() => navigateToScreen(screenName)}>
           <LoginIcon />
           <Text style={styles.titleText}>Sign in</Text>
         </TouchableOpacity>

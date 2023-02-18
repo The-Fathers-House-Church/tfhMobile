@@ -3,8 +3,13 @@ import React from 'react';
 import { DMBold } from '../../../theme/fonts';
 import appColors from '../../../theme/colors';
 import Button from '../../../common/Button';
+import { screenNames } from '../../../screens/screenNames';
 
-const SignupForm = () => {
+const SignupForm = ({
+  navigateToScreen,
+}: {
+  navigateToScreen: (screenName: string) => void;
+}) => {
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -20,6 +25,7 @@ const SignupForm = () => {
           textStyle={{
             fontSize: 10,
           }}
+          onPress={() => navigateToScreen(screenNames.REGISTER)}
         />
       </ImageBackground>
     </View>
