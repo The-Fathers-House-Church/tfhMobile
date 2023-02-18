@@ -24,6 +24,7 @@ import CustomDatePicker from '../../../common/DatePicker';
 import Modal from 'react-native-modal';
 import DropdownButton from '../../../common/DropdownButton';
 import ChurchBranchComponent from '../../../components/Auth/ChurchBranchComponent';
+import ChurchMemberLayout from '../../../components/Auth/ChurchMemberLayout';
 
 const RegisterScreen = ({
   navigation,
@@ -37,7 +38,7 @@ const RegisterScreen = ({
     phoneNumber: string;
     churchCenter: string;
     dateOfBirth: Date | undefined;
-    member: boolean;
+    member: boolean | undefined;
     registrationSource: string;
     loading: boolean;
   }
@@ -53,7 +54,7 @@ const RegisterScreen = ({
       dateOfBirth: undefined,
       firstName: '',
       lastName: '',
-      member: true,
+      member: undefined,
       phoneNumber: '',
       registrationSource: 'mobile',
       loading: false,
@@ -71,13 +72,17 @@ const RegisterScreen = ({
         .string()
         .required('Confirm your password')
         .oneOf([yup.ref('password')], "Passwords don't match"),
-      churchCenter: yup.string().required('Required'),
       dateOfBirth: yup.string().required('Required'),
       firstName: yup.string().required('Required'),
       lastName: yup.string().required('Required'),
       member: yup.boolean().required('Required'),
+      churchCenter: yup.string().when('member', {
+        is: true,
+        then: schema => schema.required('Required'),
+      }),
       phoneNumber: yup.string().required('Required'),
     }),
+    enableReinitialize: true,
   });
 
   const submitValues = async () => {
@@ -111,6 +116,9 @@ const RegisterScreen = ({
     setTimeout(() => {
       setCentreModalState(false);
     }, 700);
+  };
+  const selectMemberStatus = (status: boolean) => {
+    formik.setFieldValue('member', status);
   };
 
   return (
@@ -165,21 +173,34 @@ const RegisterScreen = ({
               marginTop: 10,
             }}
           />
-
-          <DropdownButton
-            value={formik.values.churchCenter}
-            placeholder="Which centre are you?"
-            error={formik.errors.churchCenter}
+          <ChurchMemberLayout
+            value={formik.values.member}
+            error={formik.errors.member}
             showError={
-              formik.touched.churchCenter && formik.errors.churchCenter
-                ? true
-                : false
+              formik.touched.member && formik.errors.member ? true : false
             }
-            containerStyle={{
-              marginTop: 10,
-            }}
-            onPress={() => setCentreModalState(true)}
+            selectMemberStatus={selectMemberStatus}
           />
+
+          {formik.values.member && (
+            <DropdownButton
+              value={formik.values.churchCenter}
+              placeholder="Which branch are you in?"
+              error={formik.errors.churchCenter}
+              showError={
+                formik.touched.churchCenter && formik.errors.churchCenter
+                  ? true
+                  : false
+              }
+              containerStyle={{
+                marginTop: 10,
+              }}
+              onPress={() => {
+                setCentreModalState(true);
+                formik.setFieldTouched('churchCenter', true);
+              }}
+            />
+          )}
           <CustomInput
             formik={formik}
             name="password"
