@@ -5,6 +5,7 @@ export const screenNames: screenNamesTypes = {
   LOGIN: 'LoginScreen',
   REGISTER: 'RegisterScreen',
   FORGOT_PASSWORD: 'ForgotPasswordScreen',
+  FORGOT_PASSWORD_UPDATE: 'ForgotPasswordUpdateScreen',
 
   // Home
   HOME: 'HomeScreen',

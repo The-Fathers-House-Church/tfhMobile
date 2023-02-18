@@ -18,14 +18,12 @@ const ForgotPasswordScreen = ({
 }: NativeStackScreenProps<any, screenNamesTypes['FORGOT_PASSWORD']>) => {
   interface FormValues {
     email: string;
-    password: string;
     loading: boolean;
   }
 
   const formik = useFormik<FormValues>({
     initialValues: {
       email: '',
-      password: '',
       loading: false,
     },
     onSubmit: () => {
@@ -36,7 +34,6 @@ const ForgotPasswordScreen = ({
         .string()
         .email('Enter a valid email')
         .required('Email is required'),
-      password: yup.string().required('Password is required'),
     }),
   });
 
@@ -44,18 +41,15 @@ const ForgotPasswordScreen = ({
     formik.setFieldValue('loading', true);
 
     try {
-      const response = await appAxios.post('/user/login', {
+      const response = await appAxios.post('/user/reset-password', {
         email: formik.values.email,
-        password: formik.values.password,
       });
 
       sendFeedback(response.data?.message, 'success');
-      // const userObject = {
-      //   ...response.data?.user,
-      //   token: response.data?.token,
-      // };
-      // dispatch(updateUser({ user: userObject }));
-      navigation.navigate(screenNames.HOME);
+
+      navigation.navigate(screenNames.FORGOT_PASSWORD_UPDATE, {
+        email: formik.values.email,
+      });
     } catch (error) {
       sendCatchFeedback(error);
     }
@@ -65,51 +59,26 @@ const ForgotPasswordScreen = ({
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Image
-        source={require('../../../assets/brand/logo.png')}
-        style={styles.image}
-      />
-      <Text style={styles.mainText}>Login</Text>
-      <Text style={styles.subText}>Welcome back. We missed you!</Text>
+      <Text style={styles.mainText}>Reset Password</Text>
+      <Text style={styles.subText}>
+        We understand you are not a machine. Things like this happens. Enter
+        your email address to reset your password.
+      </Text>
       <CustomInput
         formik={formik}
         name="email"
         placeholder="Email Address"
         keyboardType="email-address"
       />
-      <CustomInput
-        formik={formik}
-        name="password"
-        placeholder="Password"
-        secureTextEntry
-        containerStyle={{
-          marginTop: 16,
-        }}
-      />
+
       <Button
-        title="Log in"
+        title="Reset"
         buttonStyle={{
-          marginTop: 58,
-          marginBottom: 23,
+          marginTop: 31,
         }}
         onPress={formik.handleSubmit}
         loading={formik.values.loading}
       />
-      <TouchableOpacity>
-        <Text style={styles.forgotText}>Forgot Password?</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={styles.signupText}>
-          Don't have an account?{' '}
-          <Text
-            style={{
-              fontFamily: DMBold,
-              color: appColors.secondaryColor,
-            }}>
-            Sign Up
-          </Text>
-        </Text>
-      </TouchableOpacity>
     </ScrollView>
   );
 };
@@ -118,37 +87,21 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 30,
     flexGrow: 1,
-    paddingVertical: 25,
+    paddingVertical: 75,
     backgroundColor: appColors.white,
-    alignItems: 'center',
   },
-  image: {
-    height: 122,
-    resizeMode: 'contain',
-  },
+
   mainText: {
     fontFamily: DMBold,
     fontSize: 24,
     color: appColors.primaryColor,
-    marginTop: 27,
-    marginBottom: 19,
+    marginBottom: 10,
   },
   subText: {
     fontFamily: DMRegular,
     fontSize: 11,
     color: appColors.primaryColor,
-    marginBottom: 19,
-  },
-  forgotText: {
-    fontFamily: DMBold,
-    fontSize: 11,
-    color: appColors.secondaryColor,
-    marginBottom: 50,
-  },
-  signupText: {
-    fontFamily: DMRegular,
-    fontSize: 10,
-    color: appColors.primaryColor,
+    marginBottom: 15,
   },
 });
 

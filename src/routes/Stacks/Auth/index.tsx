@@ -6,6 +6,7 @@ import { stackHeaderStyles } from '../../../functions/globalStyle';
 import LoginScreen from '../../../screens/Auth/Login';
 import RegisterScreen from '../../../screens/Auth/Register';
 import ForgotPasswordScreen from '../../../screens/Auth/ForgotPassword';
+import ForgotPasswordUpdateScreen from '../../../screens/Auth/ForgotPassword/ForgotPasswordUpdateScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +35,14 @@ const AuthStack = () => {
       <Stack.Screen
         name={screenNames.FORGOT_PASSWORD}
         component={ForgotPasswordScreen}
+        options={{
+          ...stackHeaderStyles,
+          title: '',
+        }}
+      />
+      <Stack.Screen
+        name={screenNames.FORGOT_PASSWORD_UPDATE}
+        component={ForgotPasswordUpdateScreen}
         options={{
           ...stackHeaderStyles,
           title: '',
