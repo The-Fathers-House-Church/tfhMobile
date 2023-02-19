@@ -10,8 +10,14 @@ const Card = (props: ViewProps) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: appColors.white,
-    elevation: 3,
-    shadowColor: '#ECE8FF',
+    shadowColor: '#d8d0ff',
+    shadowOffset: {
+      width: 0,
+      height: 18,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 20.0,
+    elevation: 24,
     borderRadius: 10,
   },
 });
