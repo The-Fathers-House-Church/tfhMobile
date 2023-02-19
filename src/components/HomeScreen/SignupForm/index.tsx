@@ -58,6 +58,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     height: 204,
+    shadowColor: '#d8d0ff',
+    shadowOffset: {
+      width: 0,
+      height: 18,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 20.0,
+    elevation: 24,
+    borderRadius: 10,
   },
   mainText: {
     fontSize: 20,

@@ -42,6 +42,7 @@ const CustomInput = ({
             onChangeText={formik.handleChange(name)}
             onBlur={formik.handleBlur(name)}
             value={formik.values[name]}
+            placeholderTextColor={appColors.grey}
             id={name}
             {...rest}
           />

@@ -65,6 +65,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flexDirection: 'column',
     flex: 1,
+    shadowColor: '#aeaeae',
+    shadowOffset: {
+      width: 0,
+      height: 7,
+    },
+    shadowOpacity: 0.21,
+    shadowRadius: 7.68,
+    elevation: 10,
   },
   cardImage: {
     width: '100%',

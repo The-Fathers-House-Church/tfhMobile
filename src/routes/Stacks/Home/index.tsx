@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../../../screens/Home';
 import { screenNames } from '../../../screens/screenNames';
 import AuthStack from '../Auth';
+import AboutStack from '../About';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ const HomeStack = () => {
         }}
       />
       {AuthStack()}
+      {AboutStack()}
     </Stack.Navigator>
   );
 };

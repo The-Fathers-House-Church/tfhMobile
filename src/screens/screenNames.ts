@@ -22,6 +22,10 @@ export const screenNames: screenNamesTypes = {
 
   // About
   ABOUT: 'AboutScreen',
+  HISTORY: 'HistoryScreen',
+  PASTORS: 'PastorsScreen',
+  SINGLE_PASTOR: 'SinglePastorScreen',
+  STATEMENT_OF_FAITH: 'StatementOfFaithScreen',
 
   // Devotional
   DEVOTIONALS: 'DevotionalsScreen',

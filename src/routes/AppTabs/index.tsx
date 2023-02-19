@@ -28,8 +28,8 @@ const AppTabs = () => {
 
       dispatch(
         updateUser({
-          token: userDetails.token,
-          user: userDetails.user,
+          token: userDetails?.token,
+          user: userDetails?.user,
         }),
       );
     };

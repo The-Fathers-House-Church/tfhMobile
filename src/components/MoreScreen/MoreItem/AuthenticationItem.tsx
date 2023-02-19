@@ -7,6 +7,7 @@ import LogoutIcon from '../../../assets/icons/svgs/more/log-out.svg';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { signOut } from '../../../store/slices/user';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { screenNames } from '../../../screens/screenNames';
 
 const AuthenticationItem = ({
   navigateToScreen,
@@ -20,6 +21,7 @@ const AuthenticationItem = ({
 
   const logoutUser = async () => {
     dispatch(signOut());
+    navigateToScreen(screenNames.HOME);
     await AsyncStorage.removeItem('user');
   };
   return (
