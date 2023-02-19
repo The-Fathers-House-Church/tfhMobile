@@ -1,10 +1,13 @@
-import { View, Text, ViewProps } from 'react-native';
+import { View, Text, ViewProps, ViewStyle } from 'react-native';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import appColors from '../../theme/colors';
 
-const Card = (props: ViewProps) => {
-  return <View style={styles.container}>{props.children}</View>;
+const Card = ({
+  children,
+  containerStyle,
+}: ViewProps & { containerStyle?: ViewStyle }) => {
+  return <View style={[styles.container, containerStyle]}>{children}</View>;
 };
 
 const styles = StyleSheet.create({
