@@ -49,7 +49,9 @@ const SinglePastorScreen = ({
             {pastor.linkedinLink && (
               <TouchableOpacity
                 style={styles.socialIcon}
-                onPress={() => Linking.openURL(pastor.linkedinLink as string)}>
+                onPress={async () =>
+                  await Linking.openURL(pastor.linkedinLink as string)
+                }>
                 <LinkedinIcon width={11} />
                 <Text style={styles.socialText}>LinkedIn</Text>
               </TouchableOpacity>
@@ -57,7 +59,9 @@ const SinglePastorScreen = ({
             {pastor.facebookLink && (
               <TouchableOpacity
                 style={styles.socialIcon}
-                onPress={() => Linking.openURL(pastor.facebookLink as string)}>
+                onPress={async () =>
+                  await Linking.openURL(pastor.facebookLink as string)
+                }>
                 <FacebookIcon width={11} />
                 <Text style={styles.socialText}>Facebook</Text>
               </TouchableOpacity>
@@ -66,7 +70,9 @@ const SinglePastorScreen = ({
             {pastor.instagramLink && (
               <TouchableOpacity
                 style={styles.socialIcon}
-                onPress={() => Linking.openURL(pastor.instagramLink as string)}>
+                onPress={async () =>
+                  await Linking.openURL(pastor.instagramLink as string)
+                }>
                 <InstagramIcon width={11} />
                 <Text style={styles.socialText}>Instagram</Text>
               </TouchableOpacity>
@@ -75,7 +81,9 @@ const SinglePastorScreen = ({
             {pastor.twitterLink && (
               <TouchableOpacity
                 style={styles.socialIcon}
-                onPress={() => Linking.openURL(pastor.twitterLink as string)}>
+                onPress={async () =>
+                  await Linking.openURL(pastor.twitterLink as string)
+                }>
                 <TwitterIcon width={11} />
                 <Text style={styles.socialText}>Twitter</Text>
               </TouchableOpacity>
