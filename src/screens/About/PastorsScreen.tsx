@@ -3,14 +3,16 @@ import React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { screenNamesTypes } from '../screenNamesTypes';
 import { FlatList } from 'react-native';
-import pastorsData from '../../components/AboutScreen/pastorsData';
+import pastorsData, {
+  PastorType,
+} from '../../components/AboutScreen/pastorsData';
 import PastorCard from '../../components/AboutScreen/PastorCard';
 
 const PastorsScreen = ({
   navigation,
 }: NativeStackScreenProps<any, screenNamesTypes['PASTORS']>) => {
-  const navigateToScreen = (screenName: string) => {
-    navigation.navigate(screenName);
+  const navigateToScreen = (screenName: string, pastor: PastorType) => {
+    navigation.navigate(screenName, { pastor });
   };
   return (
     <View style={styles.contentContainer}>
@@ -34,7 +36,6 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flexGrow: 1,
-    // flex: 1,
     backgroundColor: '#fff',
   },
   separator: {

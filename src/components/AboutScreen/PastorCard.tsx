@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { PastorType } from './pastorsData';
-import { DMBold, DMMediumItalic } from '../../theme/fonts';
+import { DMBold, DMMediumItalic, DMRegular } from '../../theme/fonts';
 import appColors from '../../theme/colors';
 import ChevronRightIcon from '../../assets/icons/svgs/pastors/chevron-right.svg';
 import { screenNames } from '../../screens/screenNames';
@@ -11,7 +11,7 @@ const PastorCard = ({
   pastor,
 }: {
   pastor: PastorType;
-  navigateToScreen: (screenName: string) => void;
+  navigateToScreen: (screenName: string, pastor: PastorType) => void;
 }) => {
   return (
     <View style={styles.container}>
@@ -24,7 +24,7 @@ const PastorCard = ({
         </Text>
         <TouchableOpacity
           style={styles.readMoreContainer}
-          onPress={() => navigateToScreen(screenNames.SINGLE_PASTOR)}>
+          onPress={() => navigateToScreen(screenNames.SINGLE_PASTOR, pastor)}>
           <Text style={styles.readMoreText}>Read More </Text>
           <ChevronRightIcon height={10} />
         </TouchableOpacity>
@@ -56,11 +56,14 @@ const styles = StyleSheet.create({
     fontSize: 7,
     marginBottom: 5,
     fontFamily: DMMediumItalic,
+    fontStyle: 'italic',
   },
   description: {
     marginBottom: 10,
     color: appColors.black,
     fontSize: 8,
+    fontFamily: DMRegular,
+    lineHeight: 11.6,
   },
   readMoreContainer: {
     flexDirection: 'row',
