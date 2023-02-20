@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { DMBold } from '../../theme/fonts';
 import appColors from '../../theme/colors';
+import { fontScale } from '../../functions/font';
 
 interface ItemType {
   title: string;
@@ -45,18 +46,16 @@ const styles = StyleSheet.create({
     fontFamily: DMBold,
     color: appColors.primaryColor,
     marginBottom: 5,
-    fontSize: 12,
+    fontSize: fontScale(12),
   },
   content1: {
     color: appColors.black,
-    fontSize: 10,
-    lineHeight: 13.78,
+    fontSize: fontScale(10),
   },
   content2: {
     color: appColors.black,
-    fontSize: 10,
+    fontSize: fontScale(10),
     marginTop: 10,
-    lineHeight: 13.78,
   },
   listContainer: {
     gap: 10,
@@ -65,7 +64,7 @@ const styles = StyleSheet.create({
   listTitle: {
     fontFamily: DMBold,
     color: appColors.black,
-    fontSize: 10,
+    fontSize: fontScale(10),
     marginTop: 10,
   },
 });

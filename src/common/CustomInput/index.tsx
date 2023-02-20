@@ -10,6 +10,7 @@ import React, { Dispatch, SetStateAction } from 'react';
 import appColors from '../../theme/colors';
 import { FormikProps } from 'formik/dist/types';
 import { DMRegular } from '../../theme/fonts';
+import { fontScale } from '../../functions/font';
 
 interface Props {
   value?: string | number;
@@ -78,9 +79,10 @@ const styles = StyleSheet.create({
     width: '100%',
     color: appColors.primaryColor,
     fontFamily: DMRegular,
+    fontSize: fontScale(10),
   },
   errorText: {
-    fontSize: 10,
+    fontSize: fontScale(10),
     color: appColors.errorColor,
     alignSelf: 'flex-start',
     marginTop: 3,

@@ -2,6 +2,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 import { DMBold } from '../../../theme/fonts';
 import appColors from '../../../theme/colors';
+import { fontScale } from '../../../functions/font';
 
 const OfflineHeader = () => {
   return (
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: DMBold,
-    fontSize: 16,
+    fontSize: fontScale(16),
     color: appColors.primaryColor,
   },
   line: {

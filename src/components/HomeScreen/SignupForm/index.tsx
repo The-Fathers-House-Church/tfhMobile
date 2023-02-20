@@ -5,6 +5,7 @@ import appColors from '../../../theme/colors';
 import Button from '../../../common/Button';
 import { screenNames } from '../../../screens/screenNames';
 import { useAppSelector } from '../../../store/hooks';
+import { fontScale } from '../../../functions/font';
 
 const SignupForm = ({
   navigateToScreen,
@@ -37,7 +38,7 @@ const SignupForm = ({
             title="Sign up Here"
             buttonStyle={styles.mainButton}
             textStyle={{
-              fontSize: 10,
+              fontSize: fontScale(10),
             }}
             onPress={() => navigateToScreen(screenNames.REGISTER)}
           />
@@ -69,29 +70,29 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   mainText: {
-    fontSize: 20,
+    fontSize: fontScale(20),
     fontFamily: DMBold,
     color: appColors.white,
-    maxWidth: 190,
+    maxWidth: 250,
     textAlign: 'center',
     marginBottom: 16,
   },
   mainButton: {
-    maxWidth: 121,
+    maxWidth: 141,
     borderRadius: 15,
     backgroundColor: 'transparent',
     borderWidth: 1,
     borderColor: appColors.white,
-    height: 27,
+    height: 37,
   },
   introText: {
     fontFamily: DMBold,
-    fontSize: 11,
+    fontSize: fontScale(11),
     color: appColors.primaryColor,
   },
   introTextSub: {
     fontFamily: DMRegular,
-    fontSize: 11,
+    fontSize: fontScale(11),
     color: appColors.primaryColor,
   },
 });

@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 import { DMRegular } from '../../../theme/fonts';
 import appColors from '../../../theme/colors';
 import AuthenticationItem from './AuthenticationItem';
+import { fontScale } from '../../../functions/font';
 
 interface Props {
   title: string;
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontFamily: DMRegular,
-    fontSize: 13,
+    fontSize: fontScale(13),
     color: appColors.primaryColor,
   },
 });

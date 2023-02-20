@@ -3,6 +3,7 @@ import React from 'react';
 import appColors from '../../../theme/colors';
 import { DMBold } from '../../../theme/fonts';
 import GiftIcon from '../../../assets/icons/svgs/give/gift.svg';
+import { fontScale } from '../../../functions/font';
 
 const GiveHeader = () => {
   return (
@@ -23,7 +24,8 @@ const styles = StyleSheet.create({
   mainText: {
     color: appColors.primaryColor,
     fontFamily: DMBold,
-    fontSize: 24,
+    fontSize: fontScale(24),
+    textAlign: 'center',
   },
 });
 

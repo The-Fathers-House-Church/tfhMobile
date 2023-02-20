@@ -18,6 +18,7 @@ import FacebookIcon from '../../assets/icons/svgs/pastors/facebook.svg';
 import TwitterIcon from '../../assets/icons/svgs/pastors/twitter.svg';
 import LinkedinIcon from '../../assets/icons/svgs/pastors/linkedin.svg';
 import InstagramIcon from '../../assets/icons/svgs/pastors/instagram.svg';
+import { fontScale } from '../../functions/font';
 
 const SinglePastorScreen = ({
   route,
@@ -52,7 +53,7 @@ const SinglePastorScreen = ({
                 onPress={async () =>
                   await Linking.openURL(pastor.linkedinLink as string)
                 }>
-                <LinkedinIcon width={11} />
+                <LinkedinIcon width={20} />
                 <Text style={styles.socialText}>LinkedIn</Text>
               </TouchableOpacity>
             )}
@@ -62,7 +63,7 @@ const SinglePastorScreen = ({
                 onPress={async () =>
                   await Linking.openURL(pastor.facebookLink as string)
                 }>
-                <FacebookIcon width={11} />
+                <FacebookIcon width={20} />
                 <Text style={styles.socialText}>Facebook</Text>
               </TouchableOpacity>
             )}
@@ -73,7 +74,7 @@ const SinglePastorScreen = ({
                 onPress={async () =>
                   await Linking.openURL(pastor.instagramLink as string)
                 }>
-                <InstagramIcon width={11} />
+                <InstagramIcon width={20} />
                 <Text style={styles.socialText}>Instagram</Text>
               </TouchableOpacity>
             )}
@@ -84,7 +85,7 @@ const SinglePastorScreen = ({
                 onPress={async () =>
                   await Linking.openURL(pastor.twitterLink as string)
                 }>
-                <TwitterIcon width={11} />
+                <TwitterIcon width={20} />
                 <Text style={styles.socialText}>Twitter</Text>
               </TouchableOpacity>
             )}
@@ -132,12 +133,12 @@ const styles = StyleSheet.create({
   name: {
     fontFamily: DMBold,
     color: appColors.primaryColor,
-    fontSize: 20,
+    fontSize: fontScale(20),
     marginBottom: 5,
   },
   position: {
     color: appColors.secondaryColor,
-    fontSize: 10,
+    fontSize: fontScale(10),
     marginBottom: 10,
     fontFamily: DMMediumItalic,
   },
@@ -152,7 +153,7 @@ const styles = StyleSheet.create({
   },
   socialText: {
     fontFamily: DMRegular,
-    fontSize: 7,
+    fontSize: fontScale(7),
     color: appColors.black,
   },
   descriptionContainer: {
@@ -160,9 +161,8 @@ const styles = StyleSheet.create({
   },
   description: {
     color: appColors.black,
-    fontSize: 12,
+    fontSize: fontScale(12),
     fontFamily: DMRegular,
-    lineHeight: 17.4,
   },
 });
 

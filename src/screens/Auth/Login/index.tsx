@@ -15,6 +15,7 @@ import { screenNames } from '../../screenNames';
 import { useAppDispatch } from '../../../store/hooks';
 import { updateUser } from '../../../store/slices/user';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { fontScale } from '../../../functions/font';
 
 const LoginScreen = ({
   navigation,
@@ -149,26 +150,26 @@ const styles = StyleSheet.create({
   },
   mainText: {
     fontFamily: DMBold,
-    fontSize: 24,
+    fontSize: fontScale(24),
     color: appColors.primaryColor,
     marginTop: 27,
     marginBottom: 19,
   },
   subText: {
     fontFamily: DMRegular,
-    fontSize: 11,
+    fontSize: fontScale(11),
     color: appColors.primaryColor,
     marginBottom: 19,
   },
   forgotText: {
     fontFamily: DMBold,
-    fontSize: 11,
+    fontSize: fontScale(11),
     color: appColors.secondaryColor,
     marginBottom: 50,
   },
   signupText: {
     fontFamily: DMRegular,
-    fontSize: 10,
+    fontSize: fontScale(10),
     color: appColors.primaryColor,
   },
 });

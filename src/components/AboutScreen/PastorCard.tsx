@@ -5,6 +5,7 @@ import { DMBold, DMMediumItalic, DMRegular } from '../../theme/fonts';
 import appColors from '../../theme/colors';
 import ChevronRightIcon from '../../assets/icons/svgs/pastors/chevron-right.svg';
 import { screenNames } from '../../screens/screenNames';
+import { fontScale } from '../../functions/font';
 
 const PastorCard = ({
   navigateToScreen,
@@ -26,7 +27,7 @@ const PastorCard = ({
           style={styles.readMoreContainer}
           onPress={() => navigateToScreen(screenNames.SINGLE_PASTOR, pastor)}>
           <Text style={styles.readMoreText}>Read More </Text>
-          <ChevronRightIcon height={10} />
+          <ChevronRightIcon height={'80%'} />
         </TouchableOpacity>
       </View>
     </View>
@@ -43,17 +44,17 @@ const styles = StyleSheet.create({
     width: 87,
     height: '100%',
     borderRadius: 6,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
   },
   name: {
     fontFamily: DMBold,
     color: appColors.primaryColor,
-    fontSize: 13,
+    fontSize: fontScale(13),
     marginBottom: 5,
   },
   position: {
     color: appColors.secondaryColor,
-    fontSize: 7,
+    fontSize: fontScale(7),
     marginBottom: 5,
     fontFamily: DMMediumItalic,
     fontStyle: 'italic',
@@ -61,18 +62,16 @@ const styles = StyleSheet.create({
   description: {
     marginBottom: 10,
     color: appColors.black,
-    fontSize: 8,
+    fontSize: fontScale(8),
     fontFamily: DMRegular,
-    lineHeight: 11.6,
   },
   readMoreContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    // gap: ,
   },
   readMoreText: {
     fontFamily: DMBold,
-    fontSize: 10,
+    fontSize: fontScale(10),
     color: appColors.secondaryColor,
   },
 });

@@ -25,6 +25,7 @@ import Modal from 'react-native-modal';
 import DropdownButton from '../../../common/DropdownButton';
 import ChurchBranchComponent from '../../../components/Auth/ChurchBranchComponent';
 import ChurchMemberLayout from '../../../components/Auth/ChurchMemberLayout';
+import { fontScale } from '../../../functions/font';
 
 const RegisterScreen = ({
   navigation,
@@ -280,26 +281,26 @@ const styles = StyleSheet.create({
   },
   mainText: {
     fontFamily: DMBold,
-    fontSize: 24,
+    fontSize: fontScale(24),
     color: appColors.primaryColor,
     marginTop: 4,
     marginBottom: 11,
   },
   subText: {
     fontFamily: DMRegular,
-    fontSize: 11,
+    fontSize: fontScale(11),
     color: appColors.primaryColor,
     marginBottom: 33,
   },
   forgotText: {
     fontFamily: DMBold,
-    fontSize: 11,
+    fontSize: fontScale(11),
     color: appColors.secondaryColor,
     marginBottom: 50,
   },
   signInText: {
     fontFamily: DMRegular,
-    fontSize: 10,
+    fontSize: fontScale(10),
     color: appColors.primaryColor,
     alignSelf: 'center',
   },

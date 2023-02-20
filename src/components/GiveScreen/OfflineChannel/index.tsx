@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 import { DMBold } from '../../../theme/fonts';
 import Clipboard from '@react-native-clipboard/clipboard';
 import { sendFeedback } from '../../../functions/feedback';
+import { fontScale } from '../../../functions/font';
 
 interface Props {
   borderColor: string;
@@ -64,11 +65,11 @@ const styles = StyleSheet.create({
   },
   accountNumber: {
     fontFamily: DMBold,
-    fontSize: 18.5,
+    fontSize: fontScale(18.5),
   },
   accountName: {
     fontFamily: DMBold,
-    fontSize: 13,
+    fontSize: 16,
   },
 });
 

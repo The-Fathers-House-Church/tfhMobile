@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { signOut } from '../../../store/slices/user';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { screenNames } from '../../../screens/screenNames';
+import { fontScale } from '../../../functions/font';
 
 const AuthenticationItem = ({
   navigateToScreen,
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontFamily: DMRegular,
-    fontSize: 13,
+    fontSize: fontScale(13),
     color: appColors.white,
   },
 });

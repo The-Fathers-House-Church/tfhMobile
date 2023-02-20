@@ -5,7 +5,7 @@ export const stackHeaderStyles = {
   headerTintColor: appColors.primaryColor,
   headerTitleStyle: {
     fontFamily: DMRegular,
-    fontSize: 18,
+    fontSize: 21,
   },
   headerStyle: {
     backgroundColor: appColors.white,

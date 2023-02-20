@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import appColors from '../../../theme/colors';
 import { DMBold } from '../../../theme/fonts';
+import { fontScale } from '../../../functions/font';
 
 interface Props {
   borderColor: string;
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
   text: {
     color: appColors.primaryColor,
     fontFamily: DMBold,
-    fontSize: 13,
+    fontSize: fontScale(13),
   },
 });
 

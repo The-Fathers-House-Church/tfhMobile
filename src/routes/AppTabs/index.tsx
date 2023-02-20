@@ -86,7 +86,7 @@ const AppTabs = () => {
         },
         tabBarLabelStyle: {
           fontFamily: InterMedium,
-          fontSize: 9,
+          fontSize: 12,
         },
 
         tabBarActiveTintColor: appColors.secondaryColor,

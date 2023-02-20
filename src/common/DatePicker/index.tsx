@@ -13,6 +13,7 @@ import { FormikProps } from 'formik/dist/types';
 import CalendarIcon from '../../assets/icons/svgs/auth/calendar.svg';
 import DatePicker from 'react-native-date-picker';
 import { DMRegular } from '../../theme/fonts';
+import { fontScale } from '../../functions/font';
 
 interface Props {
   value?: Date;
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
     color: appColors.primaryColor,
   },
   errorText: {
-    fontSize: 10,
+    fontSize: fontScale(10),
     color: appColors.errorColor,
     alignSelf: 'flex-start',
     marginTop: 3,
@@ -140,6 +141,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: DMRegular,
+    fontSize: fontScale(10),
   },
 });
 

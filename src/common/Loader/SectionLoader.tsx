@@ -2,7 +2,7 @@ import React from 'react';
 import { ActivityIndicator, ActivityIndicatorProps } from 'react-native';
 import appColors from '../../theme/colors';
 
-function SectionLoader({ size = 'small' }: ActivityIndicatorProps) {
+function SectionLoader({ size = 'large' }: ActivityIndicatorProps) {
   return (
     <ActivityIndicator
       style={{ alignSelf: 'flex-start' }}

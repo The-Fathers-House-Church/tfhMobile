@@ -12,6 +12,7 @@ import Button from '../../../common/Button';
 import { appAxios } from '../../../api/axios';
 import { sendCatchFeedback, sendFeedback } from '../../../functions/feedback';
 import { screenNames } from '../../screenNames';
+import { fontScale } from '../../../functions/font';
 
 const ForgotPasswordScreen = ({
   navigation,
@@ -93,13 +94,13 @@ const styles = StyleSheet.create({
 
   mainText: {
     fontFamily: DMBold,
-    fontSize: 24,
+    fontSize: fontScale(24),
     color: appColors.primaryColor,
     marginBottom: 10,
   },
   subText: {
     fontFamily: DMRegular,
-    fontSize: 11,
+    fontSize: fontScale(11),
     color: appColors.primaryColor,
     marginBottom: 15,
   },

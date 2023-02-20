@@ -10,6 +10,7 @@ import { DMBold } from '../../theme/fonts';
 import appColors from '../../theme/colors';
 import SelectedIcon from '../../assets/icons/svgs/auth/selected.svg';
 import NotSelectedIcon from '../../assets/icons/svgs/auth/not-selected.svg';
+import { fontScale } from '../../functions/font';
 
 const ChurchMemberItem = ({
   title,
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: DMBold,
-    fontSize: 8,
+    fontSize: fontScale(8),
     color: appColors.primaryColor,
     marginBottom: 2,
   },

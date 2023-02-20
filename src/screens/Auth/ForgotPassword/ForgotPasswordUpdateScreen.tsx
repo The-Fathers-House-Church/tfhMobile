@@ -13,6 +13,7 @@ import { appAxios } from '../../../api/axios';
 import { sendCatchFeedback, sendFeedback } from '../../../functions/feedback';
 import { screenNames } from '../../screenNames';
 import EmailIcon from '../../../assets/icons/svgs/auth/email.svg';
+import { fontScale } from '../../../functions/font';
 
 const ForgotPasswordUpdateScreen = ({
   navigation,
@@ -173,23 +174,22 @@ const styles = StyleSheet.create({
 
   mainText: {
     fontFamily: DMBold,
-    fontSize: 24,
+    fontSize: fontScale(24),
     color: appColors.primaryColor,
     marginTop: 12,
     marginBottom: 10,
   },
   subText: {
     fontFamily: DMRegular,
-    fontSize: 12,
+    fontSize: fontScale(12),
     color: appColors.primaryColor,
     marginBottom: 40,
     textAlign: 'center',
-    maxWidth: 211,
   },
 
   resendText: {
     fontFamily: DMRegular,
-    fontSize: 10,
+    fontSize: fontScale(10),
     color: appColors.primaryColor,
   },
 });

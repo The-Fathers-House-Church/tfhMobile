@@ -8,6 +8,7 @@ import { StyleSheet } from 'react-native';
 import { DMRegular } from '../../theme/fonts';
 import AboutCard from '../../components/AboutScreen/AboutCard';
 import aboutItems from '../../components/AboutScreen/aboutItems';
+import { fontScale } from '../../functions/font';
 
 const AboutScreen = ({
   navigation,
@@ -48,9 +49,8 @@ const styles = StyleSheet.create({
   visionText: {
     color: '#888888',
     fontFamily: DMRegular,
-    fontSize: 10,
+    fontSize: fontScale(10),
     textAlign: 'center',
-    lineHeight: 13.78,
     marginBottom: 14,
   },
   itemContainer: {
