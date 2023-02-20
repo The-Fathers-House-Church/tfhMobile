@@ -7,8 +7,13 @@ import Button from '../../../common/Button';
 import { fontScale } from '../../../functions/font';
 import GiftIcon from '../../../assets/icons/svgs/home/gift.svg';
 import SectionTitle from '../../../common/SectionTitle';
+import tabNames from '../../../routes/AppTabs/tabNames';
 
-const GiveCard = () => {
+const GiveCard = ({
+  navigateToScreen,
+}: {
+  navigateToScreen: (screenName: string) => void;
+}) => {
   return (
     <View style={styles.container}>
       <SectionTitle mainText="Giving" />
@@ -23,6 +28,7 @@ const GiveCard = () => {
             textStyle={{
               fontSize: fontScale(9),
             }}
+            onPress={() => navigateToScreen(tabNames.GIVE)}
           />
         </View>
       </View>

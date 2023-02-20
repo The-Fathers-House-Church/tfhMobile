@@ -10,6 +10,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { screenNamesTypes } from '../screenNamesTypes';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { getDayDevotional } from '../../store/slices/todayDevotional';
+import { getAnnouncements } from '../../store/slices/announcement';
 
 const HomeScreen = ({
   navigation,
@@ -20,16 +21,18 @@ const HomeScreen = ({
 
   React.useEffect(() => {
     dispatch(getDayDevotional()).unwrap();
+    dispatch(getAnnouncements()).unwrap();
   }, []);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
     dispatch(getDayDevotional()).unwrap();
+    dispatch(getAnnouncements()).unwrap();
     setRefreshing(false);
   }, []);
 
-  const navigateToScreen = (screenName: string) => {
-    navigation.navigate(screenName);
+  const navigateToScreen = (screenName: string, objectToTransfer?: any) => {
+    navigation.navigate(screenName, objectToTransfer);
   };
 
   return (
@@ -40,10 +43,10 @@ const HomeScreen = ({
       }>
       <LogoHeader navigateToScreen={navigateToScreen} />
       <SignupForm navigateToScreen={navigateToScreen} />
-      <DayDevotional />
-      <ChurchLocation />
-      <GiveCard />
-      <Announcements />
+      <DayDevotional navigateToScreen={navigateToScreen} />
+      <ChurchLocation navigateToScreen={navigateToScreen} />
+      <GiveCard navigateToScreen={navigateToScreen} />
+      <Announcements navigateToScreen={navigateToScreen} />
     </ScrollView>
   );
 };

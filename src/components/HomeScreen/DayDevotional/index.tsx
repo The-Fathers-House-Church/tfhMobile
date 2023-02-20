@@ -10,7 +10,11 @@ import { getDayDevotional } from '../../../store/slices/todayDevotional';
 import SectionLoader from '../../../common/Loader/SectionLoader';
 import { fontScale } from '../../../functions/font';
 
-const DayDevotional = () => {
+const DayDevotional = ({
+  navigateToScreen,
+}: {
+  navigateToScreen: (screenName: string) => void;
+}) => {
   const { todayDevotional, loading } = useAppSelector(
     state => state.todayDevotional,
   );
@@ -19,7 +23,7 @@ const DayDevotional = () => {
     <View style={styles.container}>
       <SectionTitle mainText="Today's Menu" />
       {loading ? (
-        <SectionLoader style={{ padding: 20 }} />
+        <SectionLoader />
       ) : todayDevotional ? (
         <Card>
           <View style={styles.contentContainer}>

@@ -2,52 +2,61 @@ import { View, Text, Image } from 'react-native';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import SectionTitle from '../../../common/SectionTitle';
-import { DMBold } from '../../../theme/fonts';
+import { DMBold, DMRegular } from '../../../theme/fonts';
 import appColors from '../../../theme/colors';
 import Button from '../../../common/Button';
 import { fontScale } from '../../../functions/font';
+import { useAppSelector } from '../../../store/hooks';
+import SectionLoader from '../../../common/Loader/SectionLoader';
+import { AnnouncementType } from '../../../types/types';
+import { screenNames } from '../../../screens/screenNames';
 
-const Announcements = () => {
+const Announcements = ({
+  navigateToScreen,
+}: {
+  navigateToScreen: (screenName: string, objectToTransfer?: any) => void;
+}) => {
+  const { announcements, loading } = useAppSelector(
+    state => state.announcements,
+  );
+
   return (
     <View style={styles.container}>
       <SectionTitle mainText="Announcements" />
-      <View style={styles.cardContainer}>
-        {/* Announcement 1 */}
-        <View style={styles.card}>
-          <Image
-            source={require('../../../assets/images/home/devotional.png')}
-            style={styles.cardImage}
-          />
-          <View style={styles.cardContentContainer}>
-            <Text style={styles.cardTitle}>Showers of Blessing</Text>
-            <Button
-              title="View Details"
-              buttonStyle={styles.buttonStyle}
-              textStyle={{
-                fontSize: fontScale(7),
-              }}
-            />
-          </View>
-        </View>
 
-        {/* Announcement 2 */}
-        <View style={styles.card}>
-          <Image
-            source={require('../../../assets/images/home/devotional.png')}
-            style={styles.cardImage}
-          />
-          <View style={styles.cardContentContainer}>
-            <Text style={styles.cardTitle}>Showers of Blessing</Text>
-            <Button
-              title="View Details"
-              buttonStyle={styles.buttonStyle}
-              textStyle={{
-                fontSize: fontScale(7),
-              }}
-            />
-          </View>
+      {loading ? (
+        <SectionLoader />
+      ) : announcements ? (
+        <View style={styles.cardContainer}>
+          {announcements.slice(0, 2).map((announcement: AnnouncementType) => (
+            <View style={styles.card} key={announcement._id}>
+              <Image
+                source={{
+                  uri: announcement.image,
+                }}
+                style={styles.cardImage}
+              />
+              <View style={styles.cardContentContainer}>
+                <Text style={styles.cardTitle}>{announcement.title}</Text>
+                <Button
+                  title="View Details"
+                  buttonStyle={styles.buttonStyle}
+                  textStyle={{
+                    fontSize: fontScale(7),
+                  }}
+                  onPress={() =>
+                    navigateToScreen(screenNames.SINGLE_ANNOUNCEMENT, {
+                      announcement,
+                    })
+                  }
+                />
+              </View>
+            </View>
+          ))}
         </View>
-      </View>
+      ) : (
+        <Text style={styles.notFoundText}>No announcement found</Text>
+      )}
     </View>
   );
 };
@@ -100,6 +109,12 @@ const styles = StyleSheet.create({
     maxWidth: 111.64,
     height: 25,
     borderRadius: 3,
+  },
+  notFoundText: {
+    fontFamily: DMRegular,
+    fontSize: fontScale(11),
+    color: appColors.black,
+    marginBottom: 20,
   },
 });
 
