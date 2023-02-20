@@ -7,7 +7,11 @@ import { DMBold, DMRegular } from '../../../theme/fonts';
 import appColors from '../../../theme/colors';
 import { fontScale } from '../../../functions/font';
 
-const ChurchLocation = () => {
+const ChurchLocation = ({
+  navigateToScreen,
+}: {
+  navigateToScreen: (screenName: string) => void;
+}) => {
   return (
     <View style={styles.container}>
       <SectionTitle mainText="Church Locations" />

@@ -42,4 +42,5 @@ export type screenNamesTypes = {
 
   // Announcements
   ANNOUNCEMENTS: 'AnnouncementsScreen';
+  SINGLE_ANNOUNCEMENT: 'SingleAnnouncementScreen';
 };

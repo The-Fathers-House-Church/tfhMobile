@@ -2,12 +2,14 @@ import { devotionalSlice } from './slices/devotional';
 import { configureStore } from '@reduxjs/toolkit';
 import { todayDevotionalSlice } from './slices/todayDevotional';
 import { userSlice } from './slices/user';
+import { announcementSlice } from './slices/announcement';
 
 export const store = configureStore({
   reducer: {
     [devotionalSlice.name]: devotionalSlice.reducer,
     [todayDevotionalSlice.name]: todayDevotionalSlice.reducer,
     [userSlice.name]: userSlice.reducer,
+    [announcementSlice.name]: announcementSlice.reducer,
   },
 });
 

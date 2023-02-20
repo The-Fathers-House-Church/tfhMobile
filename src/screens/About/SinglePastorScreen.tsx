@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     width: 124,
     height: '100%',
     borderRadius: 6,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
   },
   name: {
     fontFamily: DMBold,

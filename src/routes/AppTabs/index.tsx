@@ -13,6 +13,7 @@ import MoreIcon from '../../assets/icons/svgs/layout/more.svg';
 import { useAppDispatch } from '../../store/hooks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { updateUser } from '../../store/slices/user';
+import tabNames from './tabNames';
 
 const Tab = createBottomTabNavigator();
 
@@ -103,28 +104,28 @@ const AppTabs = () => {
         headerShown: false,
       })}>
       <Tab.Screen
-        name="HomeTab"
+        name={tabNames.HOME}
         component={HomeStack}
         options={{
           title: 'Home',
         }}
       />
       <Tab.Screen
-        name="MediaTab"
+        name={tabNames.MEDIA}
         component={MediaStack}
         options={{
           title: 'Media',
         }}
       />
       <Tab.Screen
-        name="GiveTab"
+        name={tabNames.GIVE}
         component={GiveTab}
         options={{
           title: 'Give',
         }}
       />
       <Tab.Screen
-        name="MoreTab"
+        name={tabNames.MORE}
         component={MoreStack}
         options={{
           title: 'More',
