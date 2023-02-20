@@ -7,6 +7,7 @@ import { DMBold, DMRegular } from '../../../theme/fonts';
 import ChevronDown from '../../../assets/icons/svgs/more/chevron-down.svg';
 import { useAppSelector } from '../../../store/hooks';
 import { screenNames } from '../../../screens/screenNames';
+import { fontScale } from '../../../functions/font';
 
 const MoreHeader = ({
   navigateToScreen,
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
   },
   actionContainer: {
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'space-between',
     marginTop: 33,
   },
@@ -74,12 +75,12 @@ const styles = StyleSheet.create({
   mainText: {
     color: appColors.white,
     fontFamily: DMBold,
-    fontSize: 13,
+    fontSize: fontScale(13),
   },
   subText: {
     color: appColors.white,
     fontFamily: DMRegular,
-    fontSize: 10,
+    fontSize: fontScale(10),
   },
 });
 export default MoreHeader;

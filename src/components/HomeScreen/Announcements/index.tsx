@@ -5,6 +5,7 @@ import SectionTitle from '../../../common/SectionTitle';
 import { DMBold } from '../../../theme/fonts';
 import appColors from '../../../theme/colors';
 import Button from '../../../common/Button';
+import { fontScale } from '../../../functions/font';
 
 const Announcements = () => {
   return (
@@ -23,7 +24,7 @@ const Announcements = () => {
               title="View Details"
               buttonStyle={styles.buttonStyle}
               textStyle={{
-                fontSize: 7,
+                fontSize: fontScale(7),
               }}
             />
           </View>
@@ -41,7 +42,7 @@ const Announcements = () => {
               title="View Details"
               buttonStyle={styles.buttonStyle}
               textStyle={{
-                fontSize: 7,
+                fontSize: fontScale(7),
               }}
             />
           </View>
@@ -87,16 +88,17 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 6,
     borderBottomRightRadius: 6,
     backgroundColor: '#F6FAFF',
+    flex: 1,
   },
   cardTitle: {
     fontFamily: DMBold,
-    fontSize: 10,
+    fontSize: fontScale(10),
     color: appColors.primaryColor,
     marginBottom: 5,
   },
   buttonStyle: {
-    maxWidth: 61.64,
-    height: 15,
+    maxWidth: 111.64,
+    height: 25,
     borderRadius: 3,
   },
 });

@@ -5,17 +5,24 @@ import Card from '../../../common/Card';
 import Button from '../../../common/Button';
 import { DMBold, DMRegular } from '../../../theme/fonts';
 import appColors from '../../../theme/colors';
+import { fontScale } from '../../../functions/font';
 
 const ChurchLocation = () => {
   return (
     <View style={styles.container}>
+      <SectionTitle mainText="Church Locations" />
+
       <Card>
         <View style={styles.contentContainer}>
-          <Image source={require('../../../assets/images/home/church.png')} />
+          <Image
+            source={require('../../../assets/images/home/church.png')}
+            style={{
+              height: '100%',
+              borderRadius: 6,
+            }}
+          />
           <View style={styles.detailsContainer}>
-            <Text style={styles.textHeader}>
-              Find a Father's House close to you
-            </Text>
+            <Text style={styles.textHeader}>Find a branch close to you</Text>
             <Text style={styles.title}>
               We have centres across Africa and Europe. Find one that is closest
               to you.
@@ -25,7 +32,7 @@ const ChurchLocation = () => {
               title="Find a Church"
               buttonStyle={styles.buttonStyle}
               textStyle={{
-                fontSize: 9,
+                fontSize: fontScale(9),
               }}
             />
           </View>
@@ -49,25 +56,26 @@ const styles = StyleSheet.create({
   },
   detailsContainer: {
     flexDirection: 'column',
+    flex: 1,
   },
   textHeader: {
     fontFamily: DMBold,
-    fontSize: 18,
+    fontSize: fontScale(15),
     color: appColors.primaryColor,
-    maxWidth: 185,
+    maxWidth: 235,
     marginBottom: 5,
   },
   title: {
     fontFamily: DMRegular,
-    fontSize: 8,
+    fontSize: fontScale(8),
     color: appColors.black,
     marginBottom: 20,
-    maxWidth: 159,
+    maxWidth: 225,
   },
 
   buttonStyle: {
-    maxWidth: 109,
-    height: 22,
+    maxWidth: 159,
+    height: 32,
     borderRadius: 3.88,
   },
 });

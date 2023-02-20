@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { DMBold, DMRegular } from '../../../theme/fonts';
 import appColors from '../../../theme/colors';
+import { fontScale } from '../../../functions/font';
 
 const IntroHeader = () => {
   return (
@@ -23,16 +24,14 @@ const styles = StyleSheet.create({
     marginBottom: 31,
   },
   mainText: {
-    fontSize: 24,
+    fontSize: fontScale(24),
     fontFamily: DMBold,
     color: appColors.primaryColor,
-    lineHeight: 29,
   },
   subText: {
     fontFamily: DMRegular,
     color: appColors.primaryColor,
-    fontSize: 11,
-    lineHeight: 17,
+    fontSize: fontScale(11),
   },
 });
 

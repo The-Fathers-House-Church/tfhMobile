@@ -1,23 +1,27 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text } from 'react-native';
 import React from 'react';
-import Card from '../../../common/Card';
 import { StyleSheet } from 'react-native';
 import { DMBold } from '../../../theme/fonts';
 import appColors from '../../../theme/colors';
 import Button from '../../../common/Button';
+import { fontScale } from '../../../functions/font';
+import GiftIcon from '../../../assets/icons/svgs/home/gift.svg';
+import SectionTitle from '../../../common/SectionTitle';
 
 const GiveCard = () => {
   return (
     <View style={styles.container}>
+      <SectionTitle mainText="Giving" />
+
       <View style={styles.card}>
-        <Image source={require('../../../assets/images/home/gift.png')} />
-        <View style={{ flexDirection: 'column', gap: 6 }}>
+        <GiftIcon height={'100%'} />
+        <View style={{ flexDirection: 'column', gap: 10 }}>
           <Text style={styles.title}>Give to The Father's House Church</Text>
           <Button
             title="Giving Options"
             buttonStyle={styles.buttonStyle}
             textStyle={{
-              fontSize: 9,
+              fontSize: fontScale(9),
             }}
           />
         </View>
@@ -42,13 +46,12 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: DMBold,
-    fontSize: 18,
-    maxWidth: 193,
+    fontSize: fontScale(15),
     color: appColors.secondaryColor,
   },
   buttonStyle: {
-    maxWidth: 109,
-    height: 22,
+    maxWidth: 159,
+    height: 32,
     borderRadius: 3.88,
     backgroundColor: appColors.primaryColor,
   },

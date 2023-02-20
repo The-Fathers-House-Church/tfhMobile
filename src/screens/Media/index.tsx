@@ -13,7 +13,11 @@ const MediaScreen = ({}: NativeStackScreenProps<
 >) => {
   return (
     <ScrollView
-      contentContainerStyle={{ flexGrow: 1, backgroundColor: appColors.white }}>
+      contentContainerStyle={{
+        flexGrow: 1,
+        backgroundColor: appColors.white,
+        paddingBottom: 30,
+      }}>
       <IntroHeader />
       <View style={{ paddingHorizontal: 20, gap: 17 }}>
         {mediaContents.map(item => (

@@ -12,6 +12,7 @@ import { StyleSheet } from 'react-native';
 import appColors from '../../theme/colors';
 import { DMBold } from '../../theme/fonts';
 import Loader from '../Loader';
+import { fontScale } from '../../functions/font';
 
 interface Props {
   title: string;
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: appColors.white,
     fontFamily: DMBold,
-    fontSize: 13,
+    fontSize: fontScale(13),
   },
 });
 

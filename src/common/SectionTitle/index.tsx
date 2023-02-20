@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, ViewProps } from 'react-native';
 import React from 'react';
 import appColors from '../../theme/colors';
 import { DMRegular } from '../../theme/fonts';
+import { fontScale } from '../../functions/font';
 
 interface Props {
   mainText: string;
@@ -26,13 +27,13 @@ const styles = StyleSheet.create({
   },
   mainText: {
     textAlign: 'left',
-    fontSize: 10,
+    fontSize: fontScale(10),
     color: appColors.black,
     fontFamily: DMRegular,
   },
   subText: {
     textAlign: 'right',
-    fontSize: 10,
+    fontSize: fontScale(10),
     color: appColors.black,
     fontFamily: DMRegular,
   },

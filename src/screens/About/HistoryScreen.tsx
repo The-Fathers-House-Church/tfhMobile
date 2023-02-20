@@ -5,6 +5,7 @@ import { screenNamesTypes } from '../screenNamesTypes';
 import AboutBrandImage from '../../components/AboutScreen/AboutBrandImage';
 import { DMRegular } from '../../theme/fonts';
 import appColors from '../../theme/colors';
+import { fontScale } from '../../functions/font';
 
 const HistoryScreen = ({}: NativeStackScreenProps<
   any,
@@ -78,7 +79,7 @@ const HistoryScreen = ({}: NativeStackScreenProps<
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 10,
+    fontSize: fontScale(10),
     fontFamily: DMRegular,
     marginBottom: 10,
     color: appColors.black,

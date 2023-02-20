@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 import { DMBold } from '../../theme/fonts';
 import ChurchMemberItem from './ChurchMemberItem';
 import appColors from '../../theme/colors';
+import { fontScale } from '../../functions/font';
 
 type Props = {
   value: boolean | undefined;
@@ -46,11 +47,11 @@ const styles = StyleSheet.create({
   },
   label: {
     fontFamily: DMBold,
-    fontSize: 10,
+    fontSize: fontScale(10),
     marginBottom: 10,
   },
   errorText: {
-    fontSize: 10,
+    fontSize: fontScale(10),
     color: appColors.errorColor,
     alignSelf: 'flex-start',
     marginTop: 3,

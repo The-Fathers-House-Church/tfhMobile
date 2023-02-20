@@ -3,6 +3,7 @@ import React from 'react';
 import appColors from '../../../theme/colors';
 import { DMBold, DMRegular } from '../../../theme/fonts';
 import LiveIcon from '../../../assets/icons/svgs/media/live.svg';
+import { fontScale } from '../../../functions/font';
 
 const MediaCard = ({
   icon,
@@ -21,7 +22,7 @@ const MediaCard = ({
     <TouchableOpacity style={styles.card}>
       <View style={styles.container}>
         {icon}
-        <View>
+        <View style={{ flex: 1 }}>
           <Text style={styles.mainText}>{mainText}</Text>
           <Text style={styles.subText}>{subText}</Text>
           {showInfoText && (
@@ -67,15 +68,14 @@ const styles = StyleSheet.create({
   },
   mainText: {
     fontFamily: DMBold,
-    fontSize: 16,
+    fontSize: fontScale(16),
     color: appColors.primaryColor,
     marginBottom: 6,
   },
   subText: {
     color: appColors.black,
-    fontSize: 10,
+    fontSize: fontScale(10),
     fontFamily: DMRegular,
-    maxWidth: 191,
   },
   infoTextContainer: {
     flexDirection: 'row',
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   },
   infoText: {
     color: appColors.red,
-    fontSize: 10,
+    fontSize: fontScale(10),
     fontFamily: DMBold,
   },
 });
