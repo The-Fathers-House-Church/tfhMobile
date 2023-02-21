@@ -14,6 +14,7 @@ export type screenNamesTypes = {
   // Media
   MEDIA: 'MediaScreen';
   LIVESTREAM: 'LivestreamScreen';
+  STREAMING_PLATFORMS: 'StreamingPlatformsScreen';
 
   // More
   MORE: 'MoreScreen';
