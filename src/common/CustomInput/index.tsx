@@ -21,6 +21,7 @@ interface Props {
   showError?: boolean;
   error?: string;
   containerStyle?: ViewStyle;
+  inputStyle?: ViewStyle;
 }
 
 const CustomInput = ({
@@ -32,6 +33,7 @@ const CustomInput = ({
   error,
   name,
   containerStyle,
+  inputStyle,
   ...rest
 }: Props & TextInputProps) => {
   return (
@@ -39,7 +41,7 @@ const CustomInput = ({
       {useFormik && formik ? (
         <>
           <TextInput
-            style={styles.input}
+            style={[styles.input, inputStyle]}
             onChangeText={formik.handleChange(name)}
             onBlur={formik.handleBlur(name)}
             value={formik.values[name]}

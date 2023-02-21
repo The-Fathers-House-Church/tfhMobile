@@ -4,6 +4,7 @@ import MoreScreen from '../../../screens/More';
 import { screenNames } from '../../../screens/screenNames';
 import AboutStack from '../About';
 import AnnouncementStack from '../Announcements';
+import TestimonyStack from '../Testimonies';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ const MoreStack = () => {
       />
       {AboutStack()}
       {AnnouncementStack()}
+      {TestimonyStack()}
     </Stack.Navigator>
   );
 };
