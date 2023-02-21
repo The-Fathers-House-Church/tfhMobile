@@ -59,9 +59,9 @@ const listItems: ListType[] = [
     screenName: screenNames.ANNOUNCEMENTS,
   },
   {
-    title: 'Feedbacks',
+    title: 'Feedback',
     icon: <FeedbackIcon />,
-    screenName: screenNames.FEEDBACKS,
+    screenName: screenNames.FEEDBACK,
   },
   {
     title: 'Authentication',

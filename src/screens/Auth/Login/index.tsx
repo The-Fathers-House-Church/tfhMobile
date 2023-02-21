@@ -70,6 +70,7 @@ const LoginScreen = ({
           token: response.data?.token,
         }),
       );
+      formik.resetForm();
 
       navigation.navigate(screenNames.HOME);
     } catch (error) {

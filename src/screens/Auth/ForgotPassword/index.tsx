@@ -47,6 +47,7 @@ const ForgotPasswordScreen = ({
       });
 
       sendFeedback(response.data?.message, 'success');
+      formik.resetForm();
 
       navigation.navigate(screenNames.FORGOT_PASSWORD_UPDATE, {
         email: formik.values.email,

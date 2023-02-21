@@ -31,7 +31,7 @@ export const screenNames: screenNamesTypes = {
   DEVOTIONALS: 'DevotionalsScreen',
 
   // Feedback
-  FEEDBACKS: 'FeedbacksScreen',
+  FEEDBACK: 'FeedbackScreen',
 
   // Events
   EVENTS: 'EventsScreen',
