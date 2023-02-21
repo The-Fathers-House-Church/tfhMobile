@@ -46,4 +46,7 @@ export const screenNames: screenNamesTypes = {
   // Announcements
   ANNOUNCEMENTS: 'AnnouncementsScreen',
   SINGLE_ANNOUNCEMENT: 'SingleAnnouncementScreen',
+
+  // Church Location:
+  CHURCH_LOCATION: 'ChurchLocationScreen',
 };

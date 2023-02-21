@@ -5,6 +5,7 @@ import { screenNames } from '../../../screens/screenNames';
 import AuthStack from '../Auth';
 import AboutStack from '../About';
 import AnnouncementStack from '../Announcements';
+import ChurchLocationStack from '../ChurchLocation';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,7 @@ const HomeStack = () => {
       {AuthStack()}
       {AboutStack()}
       {AnnouncementStack()}
+      {ChurchLocationStack()}
     </Stack.Navigator>
   );
 };

@@ -44,4 +44,7 @@ export type screenNamesTypes = {
   // Announcements
   ANNOUNCEMENTS: 'AnnouncementsScreen';
   SINGLE_ANNOUNCEMENT: 'SingleAnnouncementScreen';
+
+  // Church Location:
+  CHURCH_LOCATION: 'ChurchLocationScreen';
 };

@@ -1,20 +1,21 @@
+import { View, Text } from 'react-native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { screenNames } from '../../../screens/screenNames';
-import FeedbackScreen from '../../../screens/Feedback';
+import ChurchLocationScreen from '../../../screens/ChurchLocation';
 import { stackHeaderStyles } from '../../../functions/globalStyle';
 
 const Stack = createNativeStackNavigator();
 
-const FeedbackStack = () => {
+const ChurchLocationStack = () => {
   return (
     <Stack.Group
       screenOptions={{
         headerShown: true,
       }}>
       <Stack.Screen
-        name={screenNames.FEEDBACK}
-        component={FeedbackScreen}
+        name={screenNames.CHURCH_LOCATION}
+        component={ChurchLocationScreen}
         options={{
           ...stackHeaderStyles,
           title: '',
@@ -24,4 +25,4 @@ const FeedbackStack = () => {
   );
 };
 
-export default FeedbackStack;
+export default ChurchLocationStack;

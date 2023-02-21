@@ -6,6 +6,7 @@ import Button from '../../../common/Button';
 import { DMBold, DMRegular } from '../../../theme/fonts';
 import appColors from '../../../theme/colors';
 import { fontScale } from '../../../functions/font';
+import { screenNames } from '../../../screens/screenNames';
 
 const ChurchLocation = ({
   navigateToScreen,
@@ -33,6 +34,7 @@ const ChurchLocation = ({
             </Text>
 
             <Button
+              onPress={() => navigateToScreen(screenNames.CHURCH_LOCATION)}
               title="Find a Church"
               buttonStyle={styles.buttonStyle}
               textStyle={{
