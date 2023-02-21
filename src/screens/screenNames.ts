@@ -38,6 +38,7 @@ export const screenNames: screenNamesTypes = {
 
   // Testimonies
   TESTIMONIES: 'TestimoniesScreen',
+  SEND_TESTIMONY: 'SendTestimoniesScreen',
 
   // Podcasts
   PODCASTS: 'PodcastsScreen',

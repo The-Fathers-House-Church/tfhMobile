@@ -36,6 +36,7 @@ export type screenNamesTypes = {
 
   // Testimonies
   TESTIMONIES: 'TestimoniesScreen';
+  SEND_TESTIMONY: 'SendTestimoniesScreen';
 
   // Podcasts
   PODCASTS: 'PodcastsScreen';
