@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { screenNamesTypes } from '../screenNamesTypes';
@@ -8,6 +8,8 @@ import { ScrollView } from 'react-native';
 import { DMBold, DMRegular } from '../../theme/fonts';
 import appColors from '../../theme/colors';
 import { fontScale } from '../../functions/font';
+import ReactNativeModal from 'react-native-modal';
+import Button from '../../common/Button';
 
 const SingleAnnouncementScreen = ({
   navigation,
@@ -19,6 +21,8 @@ const SingleAnnouncementScreen = ({
 
   const announcement = routeParams?.announcement;
 
+  const [modalOpen, setModalOpen] = React.useState(false);
+
   React.useEffect(() => {
     // In case the announcement's details is lost along the way
     if (!routeParams?.announcement) {
@@ -29,19 +33,40 @@ const SingleAnnouncementScreen = ({
   if (!announcement) return null;
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Image
-        source={{
-          uri: announcement.image,
-        }}
-        style={styles.image}
-      />
-      <View style={styles.contentContainer}>
-        <Text style={styles.title}>{announcement.title}</Text>
-        <View style={styles.separator} />
-        <Text style={styles.description}>{announcement.details}</Text>
-      </View>
-    </ScrollView>
+    <>
+      <ScrollView contentContainerStyle={styles.container}>
+        <TouchableOpacity onPress={() => setModalOpen(true)}>
+          <Image
+            source={{
+              uri: announcement.image,
+            }}
+            style={styles.image}
+          />
+        </TouchableOpacity>
+        <View style={styles.contentContainer}>
+          <Text style={styles.title}>{announcement.title}</Text>
+          <View style={styles.separator} />
+          <Text style={styles.description}>{announcement.details}</Text>
+        </View>
+      </ScrollView>
+      <ReactNativeModal
+        isVisible={modalOpen}
+        onBackdropPress={() => setModalOpen(false)}
+        onBackButtonPress={() => setModalOpen(false)}>
+        <Image
+          source={{
+            uri: announcement.image,
+          }}
+          style={{
+            width: '100%',
+            height: '50%',
+            resizeMode: 'contain',
+            marginBottom: 20,
+          }}
+        />
+        <Button title="Close" onPress={() => setModalOpen(false)} />
+      </ReactNativeModal>
+    </>
   );
 };
 
