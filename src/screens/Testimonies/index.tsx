@@ -16,22 +16,26 @@ import { fontScale } from '../../functions/font';
 import appColors from '../../theme/colors';
 import TestimonyCard from '../../components/TestimonyScreen/TestimonyCard';
 import SendTestimonyButton from '../../components/TestimonyScreen/SendTestimonyButton';
+import Pagination from '../../common/Pagination';
 
 const TestimoniesScreen = ({
   navigation,
 }: NativeStackScreenProps<any, screenNamesTypes['TESTIMONIES']>) => {
-  const { loading, testimonies } = useAppSelector(state => state.testimonies);
+  const { loading, testimonies, totalResults } = useAppSelector(
+    state => state.testimonies,
+  );
   const dispatch = useAppDispatch();
   const [refreshing, setRefreshing] = React.useState(false);
+  const [page, setPage] = React.useState(1);
 
   React.useEffect(() => {
-    dispatch(getTestimonies()).unwrap();
-  }, []);
+    dispatch(getTestimonies(page)).unwrap();
+  }, [page]);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
 
-    dispatch(getTestimonies()).unwrap();
+    dispatch(getTestimonies(page)).unwrap();
     setRefreshing(false);
   }, []);
 
@@ -51,9 +55,16 @@ const TestimoniesScreen = ({
           }}
         />
       ) : testimonies && testimonies.length ? (
-        testimonies.map(testimony => (
-          <TestimonyCard testimony={testimony} key={testimony._id} />
-        ))
+        <>
+          {testimonies.map(testimony => (
+            <TestimonyCard testimony={testimony} key={testimony._id} />
+          ))}
+          <Pagination
+            page={page}
+            totalResults={totalResults}
+            setPage={setPage}
+          />
+        </>
       ) : (
         <Text style={styles.notFoundText}>No testimony found</Text>
       )}

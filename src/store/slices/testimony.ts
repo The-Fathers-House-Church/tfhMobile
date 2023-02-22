@@ -1,14 +1,16 @@
 import { sendCatchFeedback } from '../../functions/feedback';
 import { appAxios } from '../../api/axios';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TestimonyType } from '../../types/types';
+import { ResponseType, TestimonyType } from '../../types/types';
 
 // Define the initial state using that type
 const initialState: {
   testimonies: TestimonyType[] | undefined;
+  totalResults: number;
   loading: boolean;
 } = {
   testimonies: undefined,
+  totalResults: 0,
   loading: false,
 };
 
@@ -17,12 +19,6 @@ export const testimonySlice = createSlice({
   name: 'testimonies',
   initialState,
   reducers: {
-    setTestimonies(
-      state,
-      action: PayloadAction<{ testimonies: TestimonyType[] }>,
-    ) {
-      state.testimonies = action.payload.testimonies;
-    },
     setTestimonyLoading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload;
     },
@@ -33,12 +29,13 @@ export const testimonySlice = createSlice({
     });
     builder.addCase(
       getTestimonies.fulfilled,
-      (state, action: PayloadAction<TestimonyType[]>) => {
-        state.testimonies = action.payload;
+      (state, action: PayloadAction<ResponseType>) => {
+        state.testimonies = action.payload.results;
+        state.totalResults = action.payload.pagination.totalResults;
         state.loading = false;
       },
     );
-    builder.addCase(getTestimonies.rejected, (state, action) => {
+    builder.addCase(getTestimonies.rejected, state => {
       state.loading = false;
     });
   },
@@ -46,10 +43,12 @@ export const testimonySlice = createSlice({
 
 export const getTestimonies = createAsyncThunk(
   'testimonies/getTestimonies',
-  async () => {
+  async (page?: number) => {
     try {
-      const response = await appAxios.post('/testimony/approved');
-      return response.data.data.results;
+      const response = await appAxios.post(
+        `/testimony/approved?page=${page || 1}`,
+      );
+      return response.data.data;
     } catch (error) {
       sendCatchFeedback(error);
     }

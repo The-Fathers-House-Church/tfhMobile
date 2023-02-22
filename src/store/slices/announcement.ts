@@ -1,15 +1,17 @@
 import { sendCatchFeedback } from '../../functions/feedback';
 import { appAxios } from '../../api/axios';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AnnouncementType } from '../../types/types';
+import { AnnouncementType, ResponseType } from '../../types/types';
 
 // Define the initial state using that type
 const initialState: {
   announcements: AnnouncementType[] | undefined;
   loading: boolean;
+  totalResults: number;
 } = {
   announcements: undefined,
   loading: false,
+  totalResults: 0,
 };
 
 // Actual Slice
@@ -17,12 +19,6 @@ export const announcementSlice = createSlice({
   name: 'announcements',
   initialState,
   reducers: {
-    setAnnouncements(
-      state,
-      action: PayloadAction<{ announcements: AnnouncementType[] }>,
-    ) {
-      state.announcements = action.payload.announcements;
-    },
     setAnnouncementLoading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload;
     },
@@ -33,12 +29,13 @@ export const announcementSlice = createSlice({
     });
     builder.addCase(
       getAnnouncements.fulfilled,
-      (state, action: PayloadAction<AnnouncementType[]>) => {
-        state.announcements = action.payload;
+      (state, action: PayloadAction<ResponseType>) => {
+        state.announcements = action.payload.results;
+        state.totalResults = action.payload.pagination.totalResults;
         state.loading = false;
       },
     );
-    builder.addCase(getAnnouncements.rejected, (state, action) => {
+    builder.addCase(getAnnouncements.rejected, state => {
       state.loading = false;
     });
   },
@@ -46,10 +43,10 @@ export const announcementSlice = createSlice({
 
 export const getAnnouncements = createAsyncThunk(
   'announcements/getAnnouncements',
-  async () => {
+  async (page?: number) => {
     try {
-      const response = await appAxios.get('/announcement');
-      return response.data.data.results;
+      const response = await appAxios.get(`/announcement?page=${page || 1}`);
+      return response.data.data;
     } catch (error) {
       sendCatchFeedback(error);
     }

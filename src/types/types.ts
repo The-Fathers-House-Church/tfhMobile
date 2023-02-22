@@ -144,3 +144,8 @@ export interface AnnouncementType {
   updatedBy: string;
   _id: string;
 }
+
+export interface ResponseType {
+  results: any[];
+  pagination: PageMetaType;
+}

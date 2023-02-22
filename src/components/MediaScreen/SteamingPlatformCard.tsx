@@ -1,10 +1,4 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Linking,
-} from 'react-native';
+import { StyleSheet, TouchableOpacity, Linking } from 'react-native';
 import React from 'react';
 import { PlatformType } from './streamingPlatforms';
 import Card from '../../common/Card';
