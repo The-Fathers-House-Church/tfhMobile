@@ -2,60 +2,53 @@ import {
   View,
   Text,
   ScrollView,
-  StyleSheet,
   RefreshControl,
+  StyleSheet,
 } from 'react-native';
 import React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { screenNamesTypes } from '../screenNamesTypes';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import {
-  setTestimonies,
-  setTestimonyLoading,
-} from '../../store/slices/testimony';
 import SectionLoader from '../../common/Loader/SectionLoader';
+import Pagination from '../../common/Pagination';
+import EventCard from '../../components/EventScreen/EventCard';
 import { DMRegular } from '../../theme/fonts';
 import { fontScale } from '../../functions/font';
 import appColors from '../../theme/colors';
-import TestimonyCard from '../../components/TestimonyScreen/TestimonyCard';
-import SendTestimonyButton from '../../components/TestimonyScreen/SendTestimonyButton';
-import Pagination from '../../common/Pagination';
-import { appAxios } from '../../api/axios';
 import { sendCatchFeedback } from '../../functions/feedback';
+import { appAxios } from '../../api/axios';
+import { setEventLoading, setEvents } from '../../store/slices/event';
 
-const TestimoniesScreen = ({
+const EventsScreen = ({
   navigation,
-}: NativeStackScreenProps<any, screenNamesTypes['TESTIMONIES']>) => {
-  const { loading, testimonies, totalResults } = useAppSelector(
-    state => state.testimonies,
+}: NativeStackScreenProps<any, screenNamesTypes['EVENTS']>) => {
+  const { loading, events, totalResults } = useAppSelector(
+    state => state.events,
   );
   const dispatch = useAppDispatch();
   const [refreshing, setRefreshing] = React.useState(false);
   const [page, setPage] = React.useState(1);
 
-  const getData = async () => {
-    dispatch(setTestimonyLoading(true));
+  const getEventsCall = async () => {
+    dispatch(setEventLoading(true));
     try {
-      const response = await appAxios.post(
-        `/testimony/approved?page=${page || 1}`,
-      );
-
-      dispatch(setTestimonies(response.data.data));
+      const response = await appAxios.get(`/event?page=${page || 1}`);
+      dispatch(setEvents(response.data.data));
     } catch (error: any) {
       sendCatchFeedback(error);
     } finally {
-      dispatch(setTestimonyLoading(false));
+      dispatch(setEventLoading(false));
     }
   };
 
   React.useEffect(() => {
-    getData();
+    getEventsCall();
   }, [page]);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
 
-    getData();
+    getEventsCall();
     setRefreshing(false);
   }, [page]);
 
@@ -74,10 +67,14 @@ const TestimoniesScreen = ({
             alignSelf: 'center',
           }}
         />
-      ) : testimonies && testimonies.length ? (
+      ) : events && events.length ? (
         <>
-          {testimonies.map(testimony => (
-            <TestimonyCard testimony={testimony} key={testimony._id} />
+          {events.map(event => (
+            <EventCard
+              event={event}
+              key={event._id}
+              navigateToScreen={navigateToScreen}
+            />
           ))}
           <Pagination
             page={page}
@@ -86,12 +83,12 @@ const TestimoniesScreen = ({
           />
         </>
       ) : (
-        <Text style={styles.notFoundText}>No testimony found</Text>
+        <Text style={styles.notFoundText}>No event found</Text>
       )}
-      <SendTestimonyButton navigateToScreen={navigateToScreen} />
     </ScrollView>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
@@ -107,4 +104,4 @@ const styles = StyleSheet.create({
     color: appColors.black,
   },
 });
-export default TestimoniesScreen;
+export default EventsScreen;

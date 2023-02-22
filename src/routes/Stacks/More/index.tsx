@@ -6,6 +6,7 @@ import AboutStack from '../About';
 import AnnouncementStack from '../Announcements';
 import TestimonyStack from '../Testimonies';
 import FeedbackStack from '../Feedback';
+import EventsStack from '../Events';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ const MoreStack = () => {
       {AnnouncementStack()}
       {TestimonyStack()}
       {FeedbackStack()}
+      {EventsStack()}
     </Stack.Navigator>
   );
 };
