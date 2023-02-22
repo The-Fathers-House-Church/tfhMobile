@@ -103,6 +103,7 @@ const RegisterScreen = ({
       });
 
       sendFeedback(response.data?.message, 'success');
+      formik.resetForm();
 
       navigation.navigate(screenNames.LOGIN);
     } catch (error) {

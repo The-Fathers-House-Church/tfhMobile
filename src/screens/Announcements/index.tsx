@@ -17,27 +17,29 @@ import { DMRegular } from '../../theme/fonts';
 import { fontScale } from '../../functions/font';
 import appColors from '../../theme/colors';
 import { AnnouncementType } from '../../types/types';
+import Pagination from '../../common/Pagination';
 
 const AnnouncementsScreen = ({
   navigation,
 }: NativeStackScreenProps<any, screenNamesTypes['ANNOUNCEMENTS']>) => {
-  const { announcements, loading } = useAppSelector(
+  const { announcements, loading, totalResults } = useAppSelector(
     state => state.announcements,
   );
   const [refreshing, setRefreshing] = React.useState(false);
+  const [page, setPage] = React.useState(1);
 
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {
-    dispatch(getAnnouncements()).unwrap();
-  }, []);
+    dispatch(getAnnouncements(page)).unwrap();
+  }, [page]);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
 
-    dispatch(getAnnouncements()).unwrap();
+    dispatch(getAnnouncements(page)).unwrap();
     setRefreshing(false);
-  }, []);
+  }, [page]);
 
   const navigateToScreen = (
     screenName: string,
@@ -64,6 +66,13 @@ const AnnouncementsScreen = ({
           keyExtractor={item => item._id}
           ItemSeparatorComponent={() => <View style={styles.separator} />}
           style={styles.container}
+          ListFooterComponent={
+            <Pagination
+              page={page}
+              totalResults={totalResults}
+              setPage={setPage}
+            />
+          }
         />
       ) : (
         <Text style={styles.notFoundText}>No announcement found</Text>
@@ -74,12 +83,12 @@ const AnnouncementsScreen = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 25,
-    marginVertical: 47,
+    paddingVertical: 47,
   },
   contentContainer: {
     flexGrow: 1,
     backgroundColor: '#fff',
+    paddingHorizontal: 25,
   },
   separator: {
     width: '100%',

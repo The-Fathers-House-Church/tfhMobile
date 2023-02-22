@@ -9,7 +9,7 @@ import CustomInput from '../../common/CustomInput';
 import Button from '../../common/Button';
 import appColors from '../../theme/colors';
 
-const NewTestimonyForm = ({
+const FeedbackForm = ({
   navigateToScreen,
 }: {
   navigateToScreen: (screenName: string) => void;
@@ -17,7 +17,6 @@ const NewTestimonyForm = ({
   interface FormValues {
     source: string;
     fullName: string;
-    summary: string;
     content: string;
     phoneNumber: string;
     email: string;
@@ -28,7 +27,6 @@ const NewTestimonyForm = ({
     initialValues: {
       email: '',
       fullName: '',
-      summary: '',
       content: '',
       phoneNumber: '',
       loading: false,
@@ -43,7 +41,6 @@ const NewTestimonyForm = ({
         .email('Enter a valid email')
         .required('Email is required'),
       fullName: yup.string().required('Required'),
-      summary: yup.string().required('Required'),
       content: yup.string().required('Required'),
       phoneNumber: yup.string().required('Required'),
     }),
@@ -52,23 +49,18 @@ const NewTestimonyForm = ({
   const submitValues = async () => {
     try {
       formik.setFieldValue('loading', true);
-      const response = await appAxios.post('/testimony/new', {
+      const response = await appAxios.post('/feedback/new', {
         email: formik.values.email,
         source: formik.values.source,
         fullName: formik.values.fullName,
-        summary: formik.values.summary,
         content: formik.values.content,
         phoneNumber: formik.values.phoneNumber,
       });
 
-      sendFeedback(
-        response.data?.message,
-        'success',
-        'Your testimony would be reviewed for approval',
-      );
+      sendFeedback(response.data?.message, 'success');
       formik.resetForm();
 
-      navigateToScreen(screenNames.TESTIMONIES);
+      navigateToScreen(screenNames.MORE);
     } catch (error) {
       sendCatchFeedback(error);
     } finally {
@@ -91,15 +83,11 @@ const NewTestimonyForm = ({
         placeholder="Phone Number"
         keyboardType="phone-pad"
       />
-      <CustomInput
-        formik={formik}
-        name="summary"
-        placeholder="Title of your Testimony"
-      />
+
       <CustomInput
         formik={formik}
         name="content"
-        placeholder="Share your testimony with us"
+        placeholder="Share your feedback with us"
         numberOfLines={10}
         multiline={true}
         inputStyle={{
@@ -108,7 +96,7 @@ const NewTestimonyForm = ({
         textAlignVertical="top"
       />
       <Button
-        title="Submit Testimony"
+        title="Submit Feedback"
         buttonStyle={{
           marginTop: 36,
           backgroundColor: !formik.isValid
@@ -123,4 +111,4 @@ const NewTestimonyForm = ({
   );
 };
 
-export default NewTestimonyForm;
+export default FeedbackForm;

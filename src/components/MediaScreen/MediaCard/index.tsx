@@ -11,15 +11,21 @@ const MediaCard = ({
   subText,
   showInfoText = false,
   isLive = false,
+  destination,
+  navigateToScreen,
 }: {
   icon: React.ReactNode;
   mainText: string;
   subText: string;
   showInfoText?: boolean;
+  destination: string;
+  navigateToScreen: (screenName: string) => void;
   isLive?: boolean;
 }) => {
   return (
-    <TouchableOpacity style={styles.card}>
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() => navigateToScreen(destination)}>
       <View style={styles.container}>
         {icon}
         <View style={{ flex: 1 }}>

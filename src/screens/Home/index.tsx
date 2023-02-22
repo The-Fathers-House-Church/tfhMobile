@@ -16,7 +16,6 @@ const HomeScreen = ({
   navigation,
 }: NativeStackScreenProps<any, screenNamesTypes['HOME']>) => {
   const [refreshing, setRefreshing] = React.useState(false);
-
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {

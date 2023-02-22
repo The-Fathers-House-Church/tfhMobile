@@ -7,10 +7,12 @@ import mediaContents from '../../components/MediaScreen/mediaContents';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { screenNamesTypes } from '../screenNamesTypes';
 
-const MediaScreen = ({}: NativeStackScreenProps<
-  any,
-  screenNamesTypes['MEDIA']
->) => {
+const MediaScreen = ({
+  navigation,
+}: NativeStackScreenProps<any, screenNamesTypes['MEDIA']>) => {
+  const navigateToScreen = (screenName: string) => {
+    navigation.navigate(screenName);
+  };
   return (
     <ScrollView
       contentContainerStyle={{
@@ -28,6 +30,8 @@ const MediaScreen = ({}: NativeStackScreenProps<
             subText={item.subText}
             showInfoText={item.showInfoText}
             isLive={item.isLive}
+            destination={item.destination}
+            navigateToScreen={navigateToScreen}
           />
         ))}
       </View>

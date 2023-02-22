@@ -16,6 +16,7 @@ export const screenNames: screenNamesTypes = {
   // Media
   MEDIA: 'MediaScreen',
   LIVESTREAM: 'LivestreamScreen',
+  STREAMING_PLATFORMS: 'StreamingPlatformsScreen',
 
   // More
   MORE: 'MoreScreen',
@@ -31,7 +32,7 @@ export const screenNames: screenNamesTypes = {
   DEVOTIONALS: 'DevotionalsScreen',
 
   // Feedback
-  FEEDBACKS: 'FeedbacksScreen',
+  FEEDBACK: 'FeedbackScreen',
 
   // Events
   EVENTS: 'EventsScreen',
@@ -46,4 +47,7 @@ export const screenNames: screenNamesTypes = {
   // Announcements
   ANNOUNCEMENTS: 'AnnouncementsScreen',
   SINGLE_ANNOUNCEMENT: 'SingleAnnouncementScreen',
+
+  // Church Location:
+  CHURCH_LOCATION: 'ChurchLocationScreen',
 };
