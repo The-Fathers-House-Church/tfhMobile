@@ -39,7 +39,7 @@ const AnnouncementsScreen = ({
 
     dispatch(getAnnouncements(page)).unwrap();
     setRefreshing(false);
-  }, []);
+  }, [page]);
 
   const navigateToScreen = (
     screenName: string,

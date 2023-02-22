@@ -37,7 +37,7 @@ const TestimoniesScreen = ({
 
     dispatch(getTestimonies(page)).unwrap();
     setRefreshing(false);
-  }, []);
+  }, [page]);
 
   const navigateToScreen = (screenName: string) => {
     navigation.navigate(screenName);
