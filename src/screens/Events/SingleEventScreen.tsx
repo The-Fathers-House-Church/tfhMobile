@@ -20,6 +20,7 @@ import appColors from '../../theme/colors';
 import { fontScale } from '../../functions/font';
 import ShareIcon from '../../assets/icons/svgs/event/share.svg';
 import EventRegistrationForm from '../../components/EventScreen/EventRegistrationForm';
+import EventGallery from '../../components/EventScreen/EventGallery';
 
 const SingleEventScreen = ({
   navigation,
@@ -75,6 +76,11 @@ const SingleEventScreen = ({
       .join(''); //did this to get the format: YYYYMMDD
     const link = `https://calendar.google.com/calendar/render?action=TEMPLATE&dates=${dateString}%2F${dateString}&location=&text=${nameString}`;
     return link;
+  };
+
+  const checkIfDateIsPassed = () => {
+    const currentDate = new Date();
+    return currentDate > new Date(event.date);
   };
 
   return (
@@ -144,20 +150,30 @@ const SingleEventScreen = ({
                 </Text>
               </>
             )}
-            {event.allowRegistration && shouldAllowRegistration() && (
-              <>
-                <View style={styles.separator} />
-                <Text style={[styles.text, { fontFamily: DMBold }]}>
-                  Registration
-                </Text>
+            {event.allowRegistration &&
+              shouldAllowRegistration() &&
+              !checkIfDateIsPassed() && (
+                <>
+                  <View style={styles.separator} />
+                  <Text style={[styles.text, { fontFamily: DMBold }]}>
+                    Registration
+                  </Text>
 
-                <EventRegistrationForm
-                  event={event}
-                  navigateToScreen={navigateToScreen}
-                />
-              </>
-            )}
+                  <EventRegistrationForm
+                    event={event}
+                    navigateToScreen={navigateToScreen}
+                  />
+                </>
+              )}
           </View>
+
+          {/* Event Gallery */}
+          {checkIfDateIsPassed() && (
+            <>
+              <View style={styles.separator} />
+              <EventGallery gallery={event.gallery} />
+            </>
+          )}
         </View>
       </ScrollView>
       <ReactNativeModal
