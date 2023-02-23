@@ -18,6 +18,7 @@ import appColors from '../../theme/colors';
 import { sendCatchFeedback } from '../../functions/feedback';
 import { appAxios } from '../../api/axios';
 import { setEventLoading, setEvents } from '../../store/slices/event';
+import { EventType } from '../../types/types';
 
 const EventsScreen = ({
   navigation,
@@ -52,8 +53,8 @@ const EventsScreen = ({
     setRefreshing(false);
   }, [page]);
 
-  const navigateToScreen = (screenName: string) => {
-    navigation.navigate(screenName);
+  const navigateToScreen = (screenName: string, event: EventType) => {
+    navigation.navigate(screenName, { event });
   };
   return (
     <ScrollView
