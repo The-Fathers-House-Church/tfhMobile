@@ -10,7 +10,10 @@ import React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { screenNamesTypes } from '../screenNamesTypes';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { getAnnouncements } from '../../store/slices/announcement';
+import {
+  setAnnouncementLoading,
+  setAnnouncements,
+} from '../../store/slices/announcement';
 import AnnouncementCard from '../../components/AnnouncementScreen/AnnouncementCard';
 import SectionLoader from '../../common/Loader/SectionLoader';
 import { DMRegular } from '../../theme/fonts';
@@ -18,6 +21,8 @@ import { fontScale } from '../../functions/font';
 import appColors from '../../theme/colors';
 import { AnnouncementType } from '../../types/types';
 import Pagination from '../../common/Pagination';
+import { appAxios } from '../../api/axios';
+import { sendCatchFeedback } from '../../functions/feedback';
 
 const AnnouncementsScreen = ({
   navigation,
@@ -30,14 +35,27 @@ const AnnouncementsScreen = ({
 
   const dispatch = useAppDispatch();
 
+  const getAnnouncementsCall = async () => {
+    dispatch(setAnnouncementLoading(true));
+    try {
+      const response = await appAxios.get(`/announcement?page=${page || 1}`);
+
+      dispatch(setAnnouncements(response.data.data));
+    } catch (error: any) {
+      sendCatchFeedback(error);
+    } finally {
+      dispatch(setAnnouncementLoading(false));
+    }
+  };
+
   React.useEffect(() => {
-    dispatch(getAnnouncements(page)).unwrap();
+    getAnnouncementsCall();
   }, [page]);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
 
-    dispatch(getAnnouncements(page)).unwrap();
+    getAnnouncementsCall();
     setRefreshing(false);
   }, [page]);
 

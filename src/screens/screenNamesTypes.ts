@@ -34,6 +34,7 @@ export type screenNamesTypes = {
 
   // Events
   EVENTS: 'EventsScreen';
+  SINGLE_EVENT: 'SingleEventScreen';
 
   // Testimonies
   TESTIMONIES: 'TestimoniesScreen';

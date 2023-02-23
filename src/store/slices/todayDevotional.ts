@@ -17,45 +17,16 @@ export const todayDevotionalSlice = createSlice({
   name: 'todayDevotional',
   initialState,
   reducers: {
-    setDevotionals(
-      state,
-      action: PayloadAction<{ todayDevotional: DevotionalType }>,
-    ) {
-      state.todayDevotional = action.payload.todayDevotional;
+    setTodayDevotional(state, action: PayloadAction<DevotionalType>) {
+      state.todayDevotional = action.payload;
     },
-    setDevotionalLoading(state, action: PayloadAction<boolean>) {
+    setTodayDevotionalLoading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload;
     },
   },
-  extraReducers: builder => {
-    builder.addCase(getDayDevotional.pending, state => {
-      state.loading = true;
-    });
-    builder.addCase(
-      getDayDevotional.fulfilled,
-      (state, action: PayloadAction<DevotionalType>) => {
-        state.todayDevotional = action.payload;
-        state.loading = false;
-      },
-    );
-    builder.addCase(getDayDevotional.rejected, (state, action) => {
-      state.loading = false;
-    });
-  },
 });
 
-export const getDayDevotional = createAsyncThunk(
-  'todayDevotional/getDayDevotional',
-  async () => {
-    try {
-      const response = await appAxios.get('/devotional/today');
-      return response.data.devotional;
-    } catch (error) {
-      sendCatchFeedback(error);
-    }
-  },
-);
-
-export const { setDevotionalLoading } = todayDevotionalSlice.actions;
+export const { setTodayDevotionalLoading, setTodayDevotional } =
+  todayDevotionalSlice.actions;
 
 export default todayDevotionalSlice.reducer;

@@ -5,10 +5,11 @@ import { StyleSheet } from 'react-native';
 import { DMBold, DMRegular } from '../../theme/fonts';
 import appColors from '../../theme/colors';
 import { fontScale } from '../../functions/font';
+import Card from '../../common/Card';
 
 const TestimonyCard = ({ testimony }: { testimony: TestimonyType }) => {
   return (
-    <View style={styles.container}>
+    <Card containerStyle={styles.container}>
       <Text style={styles.title}>{testimony.summary}</Text>
       <Text style={styles.description}>{testimony.content}</Text>
       <View style={styles.separator} />
@@ -16,20 +17,12 @@ const TestimonyCard = ({ testimony }: { testimony: TestimonyType }) => {
       <Text style={styles.date}>
         {new Date(testimony.createdAt).toDateString()}
       </Text>
-    </View>
+    </Card>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.19,
-    shadowRadius: 5.62,
-    elevation: 6,
     backgroundColor: '#F5FFFD',
     paddingHorizontal: 20,
     paddingTop: 14,

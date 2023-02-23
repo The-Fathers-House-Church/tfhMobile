@@ -71,7 +71,7 @@ export type EventType = {
   name: string;
   theme: string;
   mainText: string;
-  date: string;
+  date: Date;
   time: string;
   allowRegistration: boolean;
   registrationEntries: UncertainObjectType[];
@@ -87,6 +87,8 @@ export type EventType = {
     options?: string;
   }[];
   poster: string;
+  eventType: 'offline' | 'online';
+  location: string;
   createdBy: string;
   updatedBy: string;
   createdAt: string;
