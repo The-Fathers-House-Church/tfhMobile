@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   Linking,
+  Share,
 } from 'react-native';
 import React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -73,7 +74,6 @@ const SingleEventScreen = ({
       .split('-')
       .join(''); //did this to get the format: YYYYMMDD
     const link = `https://calendar.google.com/calendar/render?action=TEMPLATE&dates=${dateString}%2F${dateString}&location=&text=${nameString}`;
-    console.log(link);
     return link;
   };
 
@@ -107,7 +107,15 @@ const SingleEventScreen = ({
             }}
             onPress={() => Linking.openURL(generateCalendarLink())}
           />
-          <TouchableOpacity style={styles.shareContainer}>
+          <TouchableOpacity
+            style={styles.shareContainer}
+            onPress={() =>
+              Share.share({
+                title: 'TFHC Event',
+                message: `Check out this event at The Father's House Church: ${event.name}`,
+                // url: ""
+              })
+            }>
             <ShareIcon />
             <Text style={styles.shareText}>Share the Event</Text>
           </TouchableOpacity>
