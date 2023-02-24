@@ -14,6 +14,7 @@ import { useAppDispatch } from '../../store/hooks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { updateUser } from '../../store/slices/user';
 import tabNames from './tabNames';
+import { USER_STORAGE } from '../../functions/environmentVariables';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,16 +24,20 @@ const AppTabs = () => {
   // Set user state in async storage
   React.useEffect(() => {
     const getUser = async () => {
-      let userDetails: any = await AsyncStorage.getItem('user');
+      try {
+        let userDetails: any = await AsyncStorage.getItem(USER_STORAGE);
 
-      userDetails = userDetails != null ? JSON.parse(userDetails) : null;
+        userDetails = userDetails != null ? JSON.parse(userDetails) : null;
 
-      dispatch(
-        updateUser({
-          token: userDetails?.token,
-          user: userDetails?.user,
-        }),
-      );
+        dispatch(
+          updateUser({
+            token: userDetails?.token,
+            user: userDetails?.user,
+          }),
+        );
+      } catch (error) {
+        console.log(error);
+      }
     };
     getUser();
   }, []);

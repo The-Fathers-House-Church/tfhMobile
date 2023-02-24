@@ -28,6 +28,7 @@ export type screenNamesTypes = {
 
   // Devotional
   DEVOTIONALS: 'DevotionalsScreen';
+  SINGLE_DEVOTIONAL: 'SingleDevotionalScreen';
 
   // Feedback
   FEEDBACK: 'FeedbackScreen';

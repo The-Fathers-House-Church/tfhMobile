@@ -16,6 +16,7 @@ import { useAppDispatch } from '../../../store/hooks';
 import { updateUser } from '../../../store/slices/user';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { fontScale } from '../../../functions/font';
+import { USER_STORAGE } from '../../../functions/environmentVariables';
 
 const LoginScreen = ({
   navigation,
@@ -64,7 +65,7 @@ const LoginScreen = ({
 
       // Set state in async storage
       await AsyncStorage.setItem(
-        'user',
+        USER_STORAGE,
         JSON.stringify({
           user: response.data?.user,
           token: response.data?.token,
