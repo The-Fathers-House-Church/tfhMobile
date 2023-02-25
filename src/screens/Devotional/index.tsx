@@ -4,6 +4,8 @@ import {
   ScrollView,
   StyleSheet,
   RefreshControl,
+  FlatList,
+  Image,
 } from 'react-native';
 import React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -19,22 +21,25 @@ import { DevotionalType } from '../../types/types';
 import { DMRegular } from '../../theme/fonts';
 import { fontScale } from '../../functions/font';
 import appColors from '../../theme/colors';
+import SectionLoader from '../../common/Loader/SectionLoader';
+import DevotionalList from '../../components/Devotional/DevotionalList';
+import SelectedDevotional from '../../components/Devotional/SelectedDevotional';
 
 const DevotionalsScreen = ({
   navigation,
 }: NativeStackScreenProps<any, screenNamesTypes['DEVOTIONALS']>) => {
-  const { loading, devotionals, totalResults } = useAppSelector(
-    state => state.devotionals,
-  );
+  const { loading, devotionals } = useAppSelector(state => state.devotionals);
   const dispatch = useAppDispatch();
-  const [refreshing, setRefreshing] = React.useState(false);
-  const [page, setPage] = React.useState(1);
+  const [selectedDevotional, setSelectedDevotional] = React.useState<
+    DevotionalType | undefined
+  >(undefined);
 
   const getDevotionalsCall = async () => {
     dispatch(setDevotionalLoading(true));
     try {
-      const response = await appAxios.get(`/devotional?page=${page || 1}`);
+      const response = await appAxios.get(`/devotional/user`);
       dispatch(setDevotionals(response.data.data));
+      setSelectedDevotional(response.data.data[0]);
     } catch (error: any) {
       sendCatchFeedback(error);
     } finally {
@@ -44,26 +49,44 @@ const DevotionalsScreen = ({
 
   React.useEffect(() => {
     getDevotionalsCall();
-  }, [page]);
-
-  const onRefresh = React.useCallback(() => {
-    setRefreshing(true);
-
-    getDevotionalsCall();
-    setRefreshing(false);
-  }, [page]);
+  }, []);
 
   const navigateToScreen = (screenName: string, devotional: DevotionalType) => {
     navigation.navigate(screenName, { devotional });
   };
+
+  const changeSelectedDevotional = (devotional: DevotionalType) => {
+    setSelectedDevotional(devotional);
+  };
   return (
-    <ScrollView
-      contentContainerStyle={styles.container}
-      refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-      }>
-      <Text>DevotionalsScreen</Text>
-    </ScrollView>
+    <View style={styles.container}>
+      <Image
+        source={require('../../assets/images/devotional/devotional-page.png')}
+        style={{
+          resizeMode: 'cover',
+          height: 297,
+          width: '100%',
+        }}
+      />
+      {loading ? (
+        <SectionLoader style={{ alignSelf: 'center', margin: 20 }} />
+      ) : devotionals && devotionals.length ? (
+        <View>
+          <DevotionalList
+            changeSelectedDevotional={changeSelectedDevotional}
+            selectedDevotional={selectedDevotional}
+          />
+          {selectedDevotional && (
+            <SelectedDevotional
+              devotional={selectedDevotional}
+              navigateToScreen={navigateToScreen}
+            />
+          )}
+        </View>
+      ) : (
+        <Text style={styles.notFoundText}>No devotional found </Text>
+      )}
+    </View>
   );
 };
 
@@ -71,15 +94,13 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 16,
-    paddingVertical: 19,
-    gap: 22,
     position: 'relative',
   },
   notFoundText: {
     fontFamily: DMRegular,
     fontSize: fontScale(11),
     color: appColors.black,
+    margin: 20,
   },
 });
 

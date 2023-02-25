@@ -6,11 +6,9 @@ import { ResponseType, DevotionalType } from '../../types/types';
 // Define the initial state using that type
 const initialState: {
   devotionals: DevotionalType[] | undefined;
-  totalResults: number;
   loading: boolean;
 } = {
   devotionals: undefined,
-  totalResults: 0,
   loading: false,
 };
 
@@ -19,9 +17,8 @@ export const devotionalSlice = createSlice({
   name: 'devotionals',
   initialState,
   reducers: {
-    setDevotionals(state, action: PayloadAction<ResponseType>) {
-      state.devotionals = action.payload.results;
-      state.totalResults = action.payload.pagination.totalResults;
+    setDevotionals(state, action: PayloadAction<DevotionalType[]>) {
+      state.devotionals = action.payload;
     },
     setDevotionalLoading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload;
