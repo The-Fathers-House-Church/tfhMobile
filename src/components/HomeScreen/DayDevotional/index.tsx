@@ -5,15 +5,15 @@ import Card from '../../../common/Card';
 import Button from '../../../common/Button';
 import { DMBold, DMRegular } from '../../../theme/fonts';
 import appColors from '../../../theme/colors';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { getDayDevotional } from '../../../store/slices/todayDevotional';
+import { useAppSelector } from '../../../store/hooks';
 import SectionLoader from '../../../common/Loader/SectionLoader';
 import { fontScale } from '../../../functions/font';
+import { screenNames } from '../../../screens/screenNames';
 
 const DayDevotional = ({
   navigateToScreen,
 }: {
-  navigateToScreen: (screenName: string) => void;
+  navigateToScreen: (screenName: string, objectToTransfer?: any) => void;
 }) => {
   const { todayDevotional, loading } = useAppSelector(
     state => state.todayDevotional,
@@ -46,6 +46,11 @@ const DayDevotional = ({
                 textStyle={{
                   fontSize: fontScale(9),
                 }}
+                onPress={() =>
+                  navigateToScreen(screenNames.SINGLE_DEVOTIONAL, {
+                    devotional: todayDevotional,
+                  })
+                }
               />
             </View>
           </View>

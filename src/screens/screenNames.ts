@@ -30,6 +30,7 @@ export const screenNames: screenNamesTypes = {
 
   // Devotional
   DEVOTIONALS: 'DevotionalsScreen',
+  SINGLE_DEVOTIONAL: 'SingleDevotionalScreen',
 
   // Feedback
   FEEDBACK: 'FeedbackScreen',

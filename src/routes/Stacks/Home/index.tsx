@@ -6,6 +6,7 @@ import AuthStack from '../Auth';
 import AboutStack from '../About';
 import AnnouncementStack from '../Announcements';
 import ChurchLocationStack from '../ChurchLocation';
+import DevotionalsStack from '../Devotionals';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ const HomeStack = () => {
       {AboutStack()}
       {AnnouncementStack()}
       {ChurchLocationStack()}
+      {DevotionalsStack()}
     </Stack.Navigator>
   );
 };
