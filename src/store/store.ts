@@ -1,3 +1,4 @@
+import { youtubeVideoSlice } from './slices/youtubeVideos';
 import { testimonySlice } from './slices/testimony';
 import { devotionalSlice } from './slices/devotional';
 import { configureStore } from '@reduxjs/toolkit';
@@ -14,7 +15,13 @@ export const store = configureStore({
     [announcementSlice.name]: announcementSlice.reducer,
     [testimonySlice.name]: testimonySlice.reducer,
     [eventSlice.name]: eventSlice.reducer,
+    [youtubeVideoSlice.name]: youtubeVideoSlice.reducer,
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      immutableCheck: { warnAfter: 128 },
+      serializableCheck: { warnAfter: 128 },
+    }),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

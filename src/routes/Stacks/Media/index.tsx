@@ -5,6 +5,8 @@ import MediaScreen from '../../../screens/Media';
 import { stackHeaderStyles } from '../../../functions/globalStyle';
 import { screenNames } from '../../../screens/screenNames';
 import StreamingPlatformsScreen from '../../../screens/Media/StreamingPlatformsScreen';
+import RecentMessagesScreen from '../../../screens/Media/RecentMessagesScreen';
+import PodcastsScreen from '../../../screens/Media/PodcastsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +27,22 @@ const MediaStack = () => {
         options={{
           ...stackHeaderStyles,
           title: 'Streaming Platforms',
+        }}
+      />
+      <Stack.Screen
+        name={screenNames.RECENT_MESSAGES}
+        component={RecentMessagesScreen}
+        options={{
+          ...stackHeaderStyles,
+          title: 'Recent Messages',
+        }}
+      />
+      <Stack.Screen
+        name={screenNames.PODCASTS}
+        component={PodcastsScreen}
+        options={{
+          ...stackHeaderStyles,
+          title: 'Podcast',
         }}
       />
     </Stack.Navigator>
