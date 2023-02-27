@@ -28,11 +28,11 @@ const listItems: ListType[] = [
     icon: <InfoIcon />,
     screenName: screenNames.ABOUT,
   },
-  {
-    title: 'Livestream',
-    icon: <VideoIcon />,
-    screenName: screenNames.LIVESTREAM,
-  },
+  // {
+  //   title: 'Livestream',
+  //   icon: <VideoIcon />,
+  //   screenName: screenNames.LIVESTREAM,
+  // },
   {
     title: 'Devotional',
     icon: <OpenBookIcon />,

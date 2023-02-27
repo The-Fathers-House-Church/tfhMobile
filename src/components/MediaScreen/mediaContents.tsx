@@ -13,19 +13,19 @@ const mediaContents: {
   isLive?: boolean;
   destination: string;
 }[] = [
-  {
-    icon: <LivestreamIcon width={40} height={29.46} />,
-    mainText: 'Livestream',
-    subText: 'Join us live for our online services',
-    showInfoText: true,
-    isLive: true,
-    destination: '',
-  },
+  // {
+  //   icon: <LivestreamIcon width={40} height={29.46} />,
+  //   mainText: 'Livestream',
+  //   subText: 'Join us live for our online services',
+  //   showInfoText: true,
+  //   isLive: true,
+  //   destination: '',
+  // },
   {
     icon: <VideoIcon width={40} height={40} />,
-    mainText: 'Other Streaming Platforms',
+    mainText: 'Streaming Platforms',
     subText:
-      'Join us live for our online services using other channels like YouTube, IG Live, etc.',
+      'Join us live for our online services using other channels like YouTube, Facebook, etc.',
     destination: screenNames.STREAMING_PLATFORMS,
   },
   {
