@@ -33,7 +33,7 @@ const mediaContents: {
     mainText: 'Podcast',
     subText:
       'Strengthen your spiritual growth in the word by listening to our messages',
-    destination: '',
+    destination: screenNames.PODCASTS,
   },
   {
     icon: <MessageIcon width={40} height={40} />,

@@ -8,6 +8,8 @@ import TestimonyStack from '../Testimonies';
 import FeedbackStack from '../Feedback';
 import EventsStack from '../Events';
 import DevotionalsStack from '../Devotionals';
+import PodcastsScreen from '../../../screens/Media/PodcastsScreen';
+import { stackHeaderStyles } from '../../../functions/globalStyle';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +21,14 @@ const MoreStack = () => {
         component={MoreScreen}
         options={{
           headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name={screenNames.PODCASTS}
+        component={PodcastsScreen}
+        options={{
+          ...stackHeaderStyles,
+          title: 'Podcast',
         }}
       />
       {AboutStack()}
