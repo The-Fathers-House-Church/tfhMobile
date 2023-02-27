@@ -7,34 +7,44 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 const initialState: {
   videos: YoutubeVideoType[] | undefined;
   loading: boolean;
-  totalResults: number;
+  nextPageToken: string | undefined;
+  prevPageToken: string | undefined;
+  pageToken: string | undefined;
 } = {
   videos: undefined,
   loading: false,
-  totalResults: 0,
+  nextPageToken: undefined,
+  prevPageToken: undefined,
+  pageToken: undefined,
 };
 
 // Actual Slice
 export const youtubeVideoSlice = createSlice({
-  name: 'videos',
+  name: 'youtubeVideos',
   initialState,
   reducers: {
     setVideos(
       state,
       action: PayloadAction<{
         videos: YoutubeVideoType[];
-        nextPageToken: string;
-        prevPageToken: string;
+        nextPageToken: string | undefined;
+        prevPageToken: string | undefined;
       }>,
     ) {
       state.videos = action.payload.videos;
+      state.nextPageToken = action.payload.nextPageToken;
+      state.prevPageToken = action.payload.prevPageToken;
     },
     setVideoLoading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload;
     },
+    setPageToken(state, action: PayloadAction<string>) {
+      state.pageToken = action.payload;
+    },
   },
 });
 
-export const { setVideoLoading, setVideos } = youtubeVideoSlice.actions;
+export const { setVideoLoading, setVideos, setPageToken } =
+  youtubeVideoSlice.actions;
 
 export default youtubeVideoSlice.reducer;

@@ -18,7 +18,7 @@ import PlayIcon from '../../assets/icons/svgs/home/play.svg';
 import { getYoutubeLink } from '../../functions/stringManipulations';
 
 const LatestMessage = () => {
-  const { videos, loading } = useAppSelector(state => state.videos);
+  const { videos, loading } = useAppSelector(state => state.youtubeVideos);
 
   return (
     <>
