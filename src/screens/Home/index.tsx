@@ -19,6 +19,14 @@ import {
 } from '../../store/slices/announcement';
 import { appAxios } from '../../api/axios';
 import { sendCatchFeedback } from '../../functions/feedback';
+import { setVideoLoading, setVideos } from '../../store/slices/youtubeVideos';
+import axios from 'axios';
+import {
+  YOUTUBE_API_KEY,
+  YOUTUBE_UPLOAD_KEY,
+} from '../../functions/environmentVariables';
+import LatestMessage from '../../components/HomeScreen/LatestMessage';
+import RecentMessages from '../../components/HomeScreen/RecentMessages';
 
 const HomeScreen = ({
   navigation,
@@ -50,9 +58,31 @@ const HomeScreen = ({
       dispatch(setTodayDevotionalLoading(false));
     }
   };
+
+  const getYoutubeChannelVideos = async () => {
+    dispatch(setVideoLoading(true));
+    try {
+      const response = await axios.get(
+        `https://www.googleapis.com/youtube/v3/playlistItems?key=${YOUTUBE_API_KEY}&part=snippet&playlistId=${YOUTUBE_UPLOAD_KEY}&maxResults=10`,
+      );
+      dispatch(
+        setVideos({
+          videos: response.data.items,
+          nextPageToken: response.data.nextPageToken,
+          prevPageToken: response.data.prevPageToken,
+        }),
+      );
+    } catch (error) {
+      sendCatchFeedback(error);
+    } finally {
+      dispatch(setVideoLoading(false));
+    }
+  };
+
   const getData = async () => {
     getAnnouncements();
     getTodayDevotional();
+    getYoutubeChannelVideos();
   };
 
   React.useEffect(() => {
@@ -78,7 +108,9 @@ const HomeScreen = ({
       }>
       <LogoHeader navigateToScreen={navigateToScreen} />
       <SignupForm navigateToScreen={navigateToScreen} />
+      <LatestMessage />
       <DayDevotional navigateToScreen={navigateToScreen} />
+      <RecentMessages />
       <ChurchLocation navigateToScreen={navigateToScreen} />
       <GiveCard navigateToScreen={navigateToScreen} />
       <Announcements navigateToScreen={navigateToScreen} />

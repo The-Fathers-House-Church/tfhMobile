@@ -40,7 +40,7 @@ const mediaContents: {
     mainText: 'Recent Messages',
     subText:
       'Watch our past Sunday services message to hold you through the year.',
-    destination: '',
+    destination: screenNames.RECENT_MESSAGES,
   },
 ];
 

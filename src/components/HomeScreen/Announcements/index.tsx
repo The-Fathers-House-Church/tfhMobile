@@ -1,4 +1,4 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import SectionTitle from '../../../common/SectionTitle';
@@ -27,8 +27,8 @@ const Announcements = ({
       {loading ? (
         <SectionLoader />
       ) : announcements ? (
-        <View style={styles.cardContainer}>
-          {announcements.slice(0, 2).map((announcement: AnnouncementType) => (
+        <ScrollView style={styles.cardContainer} horizontal={true}>
+          {announcements.slice(0, 10).map((announcement: AnnouncementType) => (
             <View style={styles.card} key={announcement._id}>
               <Image
                 source={{
@@ -53,7 +53,7 @@ const Announcements = ({
               </View>
             </View>
           ))}
-        </View>
+        </ScrollView>
       ) : (
         <Text style={styles.notFoundText}>No announcement found</Text>
       )}
@@ -68,13 +68,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   cardContainer: {
-    flexDirection: 'row',
     gap: 15,
   },
   card: {
     borderRadius: 10,
     flexDirection: 'column',
-    flex: 1,
     shadowColor: '#aeaeae',
     shadowOffset: {
       width: 0,
@@ -83,6 +81,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.21,
     shadowRadius: 7.68,
     elevation: 10,
+    width: 200,
   },
   cardImage: {
     width: '100%',
