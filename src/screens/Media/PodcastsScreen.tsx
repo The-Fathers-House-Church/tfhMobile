@@ -5,8 +5,6 @@ import {
   ScrollView,
   TouchableOpacity,
   Linking,
-  Image,
-  RefreshControl,
 } from 'react-native';
 import React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -14,26 +12,13 @@ import { screenNamesTypes } from '../screenNamesTypes';
 import appColors from '../../theme/colors';
 import { DMBold, DMRegular } from '../../theme/fonts';
 import { fontScale } from '../../functions/font';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import SectionLoader from '../../common/Loader/SectionLoader';
-import { getYoutubeLink } from '../../functions/stringManipulations';
 import Card from '../../common/Card';
-import PlayIcon from '../../assets/icons/svgs/home/play.svg';
-import YoutubePagination from '../../common/YoutubePagination';
-import { sendCatchFeedback } from '../../functions/feedback';
-import axios from 'axios';
 import podcastLinks from '../../components/MediaScreen/podcastLinks';
 
 const PodcastsScreen = ({}: NativeStackScreenProps<
   any,
   screenNamesTypes['PODCASTS']
 >) => {
-  const [refreshing, setRefreshing] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
-  const dispatch = useAppDispatch();
-  const [page, setPage] = React.useState(1);
-  const [links, setLinks] = React.useState({});
-
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>Where do you want to listen from?</Text>
