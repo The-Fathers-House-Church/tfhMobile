@@ -39,7 +39,7 @@ const GiveCard = ({
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
-    marginTop: 14,
+    marginTop: 30,
   },
   card: {
     paddingVertical: 13,

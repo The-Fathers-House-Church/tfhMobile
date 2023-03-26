@@ -27,7 +27,7 @@ const RecentMessages = () => {
         <SectionLoader
           style={{
             alignSelf: 'flex-start',
-            marginTop: 18,
+            marginTop: 30,
             marginHorizontal: 16,
           }}
         />
@@ -80,6 +80,7 @@ const RecentMessages = () => {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
+    marginTop: 30,
   },
 
   contentContainer: {

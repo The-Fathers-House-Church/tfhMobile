@@ -25,7 +25,8 @@ const GiveScreen = ({}: NativeStackScreenProps<
       }}>
       <BgImage />
       <GiveHeader />
-      <View style={{ gap: 24 }}>
+      {/* Online Channels */}
+      {/* <View style={{ gap: 24 }}>
         {onlineChannels.map(channel => (
           <OnlineChannel
             backgroundColor={channel.backgroundColor}
@@ -35,7 +36,7 @@ const GiveScreen = ({}: NativeStackScreenProps<
             key={channel.text}
           />
         ))}
-      </View>
+      </View> */}
       <OfflineHeader />
       <View style={{ gap: 24 }}>
         {offlineChannels.map(channel => (
