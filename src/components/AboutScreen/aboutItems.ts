@@ -18,8 +18,12 @@ const aboutItems: ItemType[] = [
     screenName: screenNames.STATEMENT_OF_FAITH,
   },
   {
-    title: 'Service Schedule',
+    title: 'Service Schedules',
     screenName: screenNames.SERVICE_SCHEDULE,
+  },
+  {
+    title: 'TFCC Centers',
+    screenName: screenNames.TFCC_CENTERS,
   },
 ];
 

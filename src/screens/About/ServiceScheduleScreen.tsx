@@ -16,7 +16,7 @@ const ServiceScheduleScreen = ({}: NativeStackScreenProps<
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <AboutBrandImage />
-      <Text style={styles.title}>Service Schedule</Text>
+      <Text style={styles.title}>Service Schedules</Text>
       <View style={styles.listContainer}>
         {serviceSchedules.map(item => (
           <ServiceCard key={item.heading} item={item} />
@@ -36,12 +36,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: fontScale(16),
     color: appColors.primaryColor,
-    marginBottom: 19,
+    marginBottom: 30,
     fontFamily: DMBold,
     textAlign: 'center',
   },
   listContainer: {
-    gap: 15,
+    gap: 25,
   },
 });
 

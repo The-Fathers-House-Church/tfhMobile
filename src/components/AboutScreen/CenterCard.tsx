@@ -4,26 +4,22 @@ import { StyleSheet } from 'react-native';
 import { DMBold, DMRegular } from '../../theme/fonts';
 import appColors from '../../theme/colors';
 import { fontScale } from '../../functions/font';
+import { TFCCType } from '../../types/types';
+import Card from '../../common/Card';
 
-interface ItemType {
-  heading: string;
-  content: string[];
-}
-
-const ServiceCard = ({ item }: { item: ItemType }) => {
+const CenterCard = ({ item }: { item: TFCCType }) => {
   const separateText = (text: string) => {
     // separating by colon (:)
     return text.split(/:(.*)/s);
   };
   return (
-    <View>
-      <Text style={styles.title}>{item.heading}</Text>
-      {item.content.map((schedule, index) => (
-        <Text style={styles.content} key={index}>
-          {schedule}
-        </Text>
-      ))}
-    </View>
+    <Card containerStyle={{ padding: 10 }}>
+      <Text style={styles.content}>{item.address}</Text>
+      <Text style={styles.cellLeader}>
+        {item.cellLeader}, {item.phoneNumber}
+      </Text>
+      <Text style={styles.zone}>Zone: {item.zone}</Text>
+    </Card>
   );
 };
 
@@ -34,11 +30,21 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontSize: fontScale(12),
   },
+
   content: {
-    color: appColors.black,
-    fontFamily: DMRegular,
-    marginBottom: 10,
+    color: appColors.primaryColor,
     fontSize: fontScale(10),
+    fontFamily: DMRegular,
+  },
+  cellLeader: {
+    color: appColors.black,
+    fontSize: fontScale(8),
+    fontFamily: DMRegular,
+  },
+  zone: {
+    color: appColors.grey,
+    fontSize: fontScale(6),
+    fontFamily: DMRegular,
   },
   listContainer: {
     gap: 10,
@@ -52,4 +58,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ServiceCard;
+export default CenterCard;

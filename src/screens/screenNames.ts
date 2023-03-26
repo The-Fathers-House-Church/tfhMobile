@@ -29,6 +29,7 @@ export const screenNames: screenNamesTypes = {
   SINGLE_PASTOR: 'SinglePastorScreen',
   STATEMENT_OF_FAITH: 'StatementOfFaithScreen',
   SERVICE_SCHEDULE: 'ServiceScheduleScreen',
+  TFCC_CENTERS: 'TFCCCentersScreen',
 
   // Devotional
   DEVOTIONALS: 'DevotionalsScreen',

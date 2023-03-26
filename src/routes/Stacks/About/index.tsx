@@ -8,6 +8,7 @@ import PastorsScreen from '../../../screens/About/PastorsScreen';
 import SinglePastorScreen from '../../../screens/About/SinglePastorScreen';
 import StatementOfFaithScreen from '../../../screens/About/StatementOfFaithScreen';
 import ServiceScheduleScreen from '../../../screens/About/ServiceScheduleScreen';
+import TFCCCentersScreen from '../../../screens/About/TFCCCentersScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -63,6 +64,14 @@ const AboutStack = () => {
         options={{
           ...stackHeaderStyles,
           title: 'Service Schedule',
+        }}
+      />
+      <Stack.Screen
+        name={screenNames.TFCC_CENTERS}
+        component={TFCCCentersScreen}
+        options={{
+          ...stackHeaderStyles,
+          title: 'TFCC CENTERS',
         }}
       />
     </Stack.Group>

@@ -199,3 +199,20 @@ export interface YoutubeVideoType {
     videoOwnerChannelId: string;
   };
 }
+
+export interface TFCCType {
+  address: string;
+  cellLeader: string;
+  phoneNumber: string;
+  zone: string;
+  createdBy: string;
+  _id: string;
+  updatedBy: string;
+}
+
+export interface TFCCZoneType {
+  name: string;
+  createdBy: string;
+  _id: string;
+  updatedBy: string;
+}
