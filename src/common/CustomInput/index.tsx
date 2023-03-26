@@ -11,6 +11,8 @@ import appColors from '../../theme/colors';
 import { FormikProps } from 'formik/dist/types';
 import { DMRegular } from '../../theme/fonts';
 import { fontScale } from '../../functions/font';
+import ShowPasswordIcon from '../../assets/icons/svgs/auth/show-password.svg';
+import HidePasswordIcon from '../../assets/icons/svgs/auth/hide-password.svg';
 
 interface Props {
   value?: string | number;
@@ -34,12 +36,19 @@ const CustomInput = ({
   name,
   containerStyle,
   inputStyle,
+  secureTextEntry,
   ...rest
 }: Props & TextInputProps) => {
+  const [passwordState, setPasswordState] = React.useState(false);
+
+  const togglePasswordState = () => {
+    return setPasswordState(!passwordState);
+  };
+
   return (
     <View style={[{ width: '100%' }, containerStyle]}>
       {useFormik && formik ? (
-        <>
+        <View style={styles.inputContainer}>
           <TextInput
             style={[styles.input, inputStyle]}
             onChangeText={formik.handleChange(name)}
@@ -47,6 +56,7 @@ const CustomInput = ({
             value={formik.values[name]}
             placeholderTextColor={appColors.grey}
             id={name}
+            secureTextEntry={secureTextEntry && passwordState === false}
             {...rest}
           />
           {formik.touched[name] && formik.errors[name] && (
@@ -54,18 +64,45 @@ const CustomInput = ({
               {formik.errors[name] as string}
             </Text>
           )}
-        </>
+          {/* Show password toggle when secureTextEntry is true */}
+          {secureTextEntry &&
+            (passwordState === true ? (
+              <HidePasswordIcon
+                style={styles.passwordIcon}
+                onPress={() => togglePasswordState()}
+              />
+            ) : (
+              <ShowPasswordIcon
+                style={styles.passwordIcon}
+                onPress={() => togglePasswordState()}
+              />
+            ))}
+        </View>
       ) : (
-        <>
+        <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
             onChangeText={onChangeText}
             value={value}
             id={name}
+            secureTextEntry={secureTextEntry}
             {...rest}
           />
           {showError && <Text style={styles.errorText}>{error}</Text>}
-        </>
+          {/* Show password toggle when secureTextEntry is true */}
+          {secureTextEntry &&
+            (passwordState ? (
+              <HidePasswordIcon
+                style={styles.passwordIcon}
+                onPress={togglePasswordState}
+              />
+            ) : (
+              <ShowPasswordIcon
+                style={styles.passwordIcon}
+                onPress={togglePasswordState}
+              />
+            ))}
+        </View>
       )}
     </View>
   );
@@ -89,6 +126,15 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     marginTop: 3,
     fontFamily: DMRegular,
+  },
+  inputContainer: {
+    position: 'relative',
+    flex: 1,
+  },
+  passwordIcon: {
+    position: 'absolute',
+    top: (45 - 11.24 * 2) / 2, // (height - padding) / 2
+    right: (45 - 11.24 * 2) / 2,
   },
 });
 
