@@ -45,6 +45,7 @@ export const screenNames: screenNamesTypes = {
   // Testimonies
   TESTIMONIES: 'TestimoniesScreen',
   SEND_TESTIMONY: 'SendTestimoniesScreen',
+  SINGLE_TESTIMONY: 'SingleTestimonyScreen',
 
   // Podcasts
   PODCASTS: 'PodcastsScreen',

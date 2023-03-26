@@ -22,6 +22,7 @@ import SendTestimonyButton from '../../components/TestimonyScreen/SendTestimonyB
 import Pagination from '../../common/Pagination';
 import { appAxios } from '../../api/axios';
 import { sendCatchFeedback } from '../../functions/feedback';
+import { TestimonyType } from '../../types/types';
 
 const TestimoniesScreen = ({
   navigation,
@@ -59,37 +60,43 @@ const TestimoniesScreen = ({
     setRefreshing(false);
   }, [page]);
 
-  const navigateToScreen = (screenName: string) => {
-    navigation.navigate(screenName);
+  const navigateToScreen = (screenName: string, testimony?: TestimonyType) => {
+    navigation.navigate(screenName, { testimony });
   };
   return (
-    <ScrollView
-      contentContainerStyle={styles.container}
-      refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-      }>
-      {loading ? (
-        <SectionLoader
-          style={{
-            alignSelf: 'center',
-          }}
-        />
-      ) : testimonies && testimonies.length ? (
-        <>
-          {testimonies.map(testimony => (
-            <TestimonyCard testimony={testimony} key={testimony._id} />
-          ))}
-          <Pagination
-            page={page}
-            totalResults={totalResults}
-            setPage={setPage}
+    <View style={{ flex: 1 }}>
+      <ScrollView
+        contentContainerStyle={styles.container}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }>
+        {loading ? (
+          <SectionLoader
+            style={{
+              alignSelf: 'center',
+            }}
           />
-        </>
-      ) : (
-        <Text style={styles.notFoundText}>No testimony found</Text>
-      )}
+        ) : testimonies && testimonies.length ? (
+          <>
+            {testimonies.map(testimony => (
+              <TestimonyCard
+                testimony={testimony}
+                key={testimony._id}
+                navigateToScreen={navigateToScreen}
+              />
+            ))}
+            <Pagination
+              page={page}
+              totalResults={totalResults}
+              setPage={setPage}
+            />
+          </>
+        ) : (
+          <Text style={styles.notFoundText}>No testimony found</Text>
+        )}
+      </ScrollView>
       <SendTestimonyButton navigateToScreen={navigateToScreen} />
-    </ScrollView>
+    </View>
   );
 };
 const styles = StyleSheet.create({

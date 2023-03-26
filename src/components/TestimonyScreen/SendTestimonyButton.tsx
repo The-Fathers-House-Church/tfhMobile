@@ -27,7 +27,7 @@ const SendTestimonyButton = ({
         <View style={styles.addButton}>
           <AddIcon />
         </View>
-        <Text style={styles.text}>Share your Testimony</Text>
+        <Text style={styles.text}>Share yours</Text>
       </View>
     </TouchableHighlight>
   );
@@ -35,7 +35,7 @@ const SendTestimonyButton = ({
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    bottom: 20,
+    bottom: 60,
     right: 16,
     shadowColor: '#000000',
     shadowOffset: {
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     paddingVertical: 9,
     backgroundColor: appColors.secondaryColor,
     borderRadius: 29.5,
-    minWidth: 210,
+    minWidth: 140,
     paddingRight: 10,
   },
   addButton: {
