@@ -17,6 +17,10 @@ const aboutItems: ItemType[] = [
     title: 'Statement of Faith',
     screenName: screenNames.STATEMENT_OF_FAITH,
   },
+  {
+    title: 'Service Schedule',
+    screenName: screenNames.SERVICE_SCHEDULE,
+  },
 ];
 
 export default aboutItems;

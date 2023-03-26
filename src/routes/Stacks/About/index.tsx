@@ -7,6 +7,7 @@ import HistoryScreen from '../../../screens/About/HistoryScreen';
 import PastorsScreen from '../../../screens/About/PastorsScreen';
 import SinglePastorScreen from '../../../screens/About/SinglePastorScreen';
 import StatementOfFaithScreen from '../../../screens/About/StatementOfFaithScreen';
+import ServiceScheduleScreen from '../../../screens/About/ServiceScheduleScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -54,6 +55,14 @@ const AboutStack = () => {
         options={{
           ...stackHeaderStyles,
           title: 'Statement of Faith',
+        }}
+      />
+      <Stack.Screen
+        name={screenNames.SERVICE_SCHEDULE}
+        component={ServiceScheduleScreen}
+        options={{
+          ...stackHeaderStyles,
+          title: 'Service Schedule',
         }}
       />
     </Stack.Group>

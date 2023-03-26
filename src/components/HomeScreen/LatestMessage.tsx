@@ -134,7 +134,6 @@ const styles = StyleSheet.create({
     fontFamily: DMRegular,
     fontSize: fontScale(11),
     color: appColors.black,
-    marginBottom: 20,
   },
 });
 
