@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TextInputProps,
   ViewStyle,
+  TouchableOpacity,
 } from 'react-native';
 import React, { Dispatch, SetStateAction } from 'react';
 import appColors from '../../theme/colors';
@@ -92,15 +93,19 @@ const CustomInput = ({
           {/* Show password toggle when secureTextEntry is true */}
           {secureTextEntry &&
             (passwordState ? (
-              <HidePasswordIcon
-                style={styles.passwordIcon}
-                onPress={togglePasswordState}
-              />
+              <TouchableOpacity>
+                <HidePasswordIcon
+                  style={styles.passwordIcon}
+                  onPress={togglePasswordState}
+                />
+              </TouchableOpacity>
             ) : (
-              <ShowPasswordIcon
-                style={styles.passwordIcon}
-                onPress={togglePasswordState}
-              />
+              <TouchableOpacity>
+                <ShowPasswordIcon
+                  style={styles.passwordIcon}
+                  onPress={togglePasswordState}
+                />
+              </TouchableOpacity>
             ))}
         </View>
       )}
