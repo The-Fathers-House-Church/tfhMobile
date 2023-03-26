@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native';
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { DMBold } from '../../theme/fonts';
+import { DMBold, DMRegular } from '../../theme/fonts';
 import appColors from '../../theme/colors';
 import { fontScale } from '../../functions/font';
 
@@ -51,10 +51,12 @@ const styles = StyleSheet.create({
   content1: {
     color: appColors.black,
     fontSize: fontScale(10),
+    fontFamily: DMRegular,
   },
   content2: {
     color: appColors.black,
     fontSize: fontScale(10),
+    fontFamily: DMRegular,
     marginTop: 10,
   },
   listContainer: {

@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     shadowRadius: 20.0,
     elevation: 24,
     borderRadius: 10,
+    flex: 1,
   },
 });
 

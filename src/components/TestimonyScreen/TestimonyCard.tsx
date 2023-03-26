@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { TestimonyType } from '../../types/types';
 import { StyleSheet } from 'react-native';
@@ -6,18 +6,30 @@ import { DMBold, DMRegular } from '../../theme/fonts';
 import appColors from '../../theme/colors';
 import { fontScale } from '../../functions/font';
 import Card from '../../common/Card';
+import { screenNames } from '../../screens/screenNames';
 
-const TestimonyCard = ({ testimony }: { testimony: TestimonyType }) => {
+const TestimonyCard = ({
+  testimony,
+  navigateToScreen,
+}: {
+  testimony: TestimonyType;
+  navigateToScreen: (screenName: string, testimony: TestimonyType) => void;
+}) => {
   return (
-    <Card containerStyle={styles.container}>
-      <Text style={styles.title}>{testimony.summary}</Text>
-      <Text style={styles.description}>{testimony.content}</Text>
-      <View style={styles.separator} />
-      <Text style={styles.name}>{testimony.fullName}</Text>
-      <Text style={styles.date}>
-        {new Date(testimony.createdAt).toDateString()}
-      </Text>
-    </Card>
+    <TouchableOpacity
+      onPress={() => navigateToScreen(screenNames.SINGLE_TESTIMONY, testimony)}>
+      <Card containerStyle={styles.container}>
+        <Text style={styles.title}>{testimony.summary}</Text>
+        <Text style={styles.description} numberOfLines={10}>
+          {testimony.content}
+        </Text>
+        <View style={styles.separator} />
+        <Text style={styles.name}>{testimony.fullName}</Text>
+        <Text style={styles.date}>
+          {new Date(testimony.createdAt).toDateString()}
+        </Text>
+      </Card>
+    </TouchableOpacity>
   );
 };
 

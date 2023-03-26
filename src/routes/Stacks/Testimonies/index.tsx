@@ -6,6 +6,7 @@ import TestimoniesScreen from '../../../screens/Testimonies';
 import { stackHeaderStyles } from '../../../functions/globalStyle';
 import SendTestimonyScreen from '../../../screens/Testimonies/SendTestimonyScreen';
 import AddIcon from '../../../assets/icons/svgs/testimony/add-black.svg';
+import SingleTestimonyScreen from '../../../screens/Testimonies/SingleTestimonyScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,20 @@ const TestimonyStack = () => {
       <Stack.Screen
         name={screenNames.TESTIMONIES}
         component={TestimoniesScreen}
+        options={({ navigation }) => ({
+          ...stackHeaderStyles,
+          title: 'Testimonies',
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={() => navigation.navigate(screenNames.SEND_TESTIMONY)}>
+              <AddIcon />
+            </TouchableOpacity>
+          ),
+        })}
+      />
+      <Stack.Screen
+        name={screenNames.SINGLE_TESTIMONY}
+        component={SingleTestimonyScreen}
         options={({ navigation }) => ({
           ...stackHeaderStyles,
           title: 'Testimonies',

@@ -51,7 +51,7 @@ const ChurchLocation = ({
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
-    marginTop: 18,
+    marginTop: 30,
   },
   contentContainer: {
     paddingVertical: 12,

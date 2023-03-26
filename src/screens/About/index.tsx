@@ -22,6 +22,7 @@ const AboutScreen = ({
         flexGrow: 1,
         backgroundColor: '#fff',
         paddingHorizontal: 31,
+        paddingBottom: 31,
       }}>
       <AboutBrandImage />
       <Text style={styles.visionText}>

@@ -27,7 +27,9 @@ const Announcements = ({
       {loading ? (
         <SectionLoader />
       ) : announcements ? (
-        <ScrollView style={styles.cardContainer} horizontal={true}>
+        <ScrollView
+          contentContainerStyle={styles.cardContainer}
+          horizontal={true}>
           {announcements.slice(0, 10).map((announcement: AnnouncementType) => (
             <View style={styles.card} key={announcement._id}>
               <Image
@@ -63,7 +65,7 @@ const Announcements = ({
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 18,
+    marginTop: 30,
     marginBottom: 30,
     paddingHorizontal: 16,
   },
@@ -113,7 +115,6 @@ const styles = StyleSheet.create({
     fontFamily: DMRegular,
     fontSize: fontScale(11),
     color: appColors.black,
-    marginBottom: 20,
   },
 });
 

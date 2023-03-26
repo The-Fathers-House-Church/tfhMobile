@@ -26,7 +26,7 @@ const LatestMessage = () => {
         <SectionLoader
           style={{
             alignSelf: 'flex-start',
-            marginTop: 18,
+            marginTop: 30,
             marginHorizontal: 16,
           }}
         />
@@ -73,7 +73,7 @@ const LatestMessage = () => {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
-    marginTop: 18,
+    marginTop: 30,
   },
 
   contentContainer: {
@@ -134,7 +134,6 @@ const styles = StyleSheet.create({
     fontFamily: DMRegular,
     fontSize: fontScale(11),
     color: appColors.black,
-    marginBottom: 20,
   },
 });
 

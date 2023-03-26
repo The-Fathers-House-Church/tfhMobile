@@ -65,7 +65,7 @@ const DayDevotional = ({
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
-    marginTop: 18,
+    marginTop: 30,
   },
   contentContainer: {
     paddingVertical: 12,
@@ -108,7 +108,6 @@ const styles = StyleSheet.create({
     fontFamily: DMRegular,
     fontSize: fontScale(11),
     color: appColors.black,
-    marginBottom: 20,
   },
 });
 

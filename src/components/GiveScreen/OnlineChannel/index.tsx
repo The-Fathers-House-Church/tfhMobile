@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingVertical: 10,
     gap: 30,
+    flex: 1,
   },
   text: {
     color: appColors.primaryColor,

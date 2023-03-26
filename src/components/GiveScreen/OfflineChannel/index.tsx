@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingVertical: 10,
     gap: 14,
+    flex: 1,
   },
   accountNumber: {
     fontFamily: DMBold,

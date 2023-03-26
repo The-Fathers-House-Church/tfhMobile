@@ -28,6 +28,8 @@ export const screenNames: screenNamesTypes = {
   PASTORS: 'PastorsScreen',
   SINGLE_PASTOR: 'SinglePastorScreen',
   STATEMENT_OF_FAITH: 'StatementOfFaithScreen',
+  SERVICE_SCHEDULE: 'ServiceScheduleScreen',
+  TFCC_CENTERS: 'TFCCCentersScreen',
 
   // Devotional
   DEVOTIONALS: 'DevotionalsScreen',
@@ -43,6 +45,7 @@ export const screenNames: screenNamesTypes = {
   // Testimonies
   TESTIMONIES: 'TestimoniesScreen',
   SEND_TESTIMONY: 'SendTestimoniesScreen',
+  SINGLE_TESTIMONY: 'SingleTestimonyScreen',
 
   // Podcasts
   PODCASTS: 'PodcastsScreen',
