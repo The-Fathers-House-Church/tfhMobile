@@ -8,6 +8,7 @@ import ChevronDown from '../../../assets/icons/svgs/more/chevron-down.svg';
 import { useAppSelector } from '../../../store/hooks';
 import { screenNames } from '../../../screens/screenNames';
 import { fontScale } from '../../../functions/font';
+import { getVersion } from 'react-native-device-info';
 
 const MoreHeader = ({
   navigateToScreen,
@@ -49,6 +50,7 @@ const MoreHeader = ({
           </TouchableOpacity>
         )}
       </View>
+      <Text style={styles.appVersion}>Version: {getVersion()}</Text>
     </View>
   );
 };
@@ -81,6 +83,14 @@ const styles = StyleSheet.create({
     color: appColors.white,
     fontFamily: DMRegular,
     fontSize: fontScale(10),
+  },
+  appVersion: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    color: appColors.grey,
+    fontFamily: DMRegular,
+    fontSize: fontScale(5),
   },
 });
 export default MoreHeader;

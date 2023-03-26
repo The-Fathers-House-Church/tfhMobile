@@ -101,8 +101,9 @@ android {
         applicationId "com.tfhmobile"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        // Get version code and name from gradle.properties
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
     }
 
     splits {
