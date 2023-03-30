@@ -5,6 +5,7 @@ import appColors from '../../theme/colors';
 import { DMBold, DMRegular } from '../../theme/fonts';
 import { fontScale } from '../../functions/font';
 import { screenNames } from '../../screens/screenNames';
+import HTMLRenderer from '../../common/HTMLRenderer';
 
 const AnnouncementCard = ({
   navigateToScreen,
@@ -30,9 +31,15 @@ const AnnouncementCard = ({
       />
       <View style={styles.contentContainer}>
         <Text style={styles.title}>{announcement.title}</Text>
-        <Text style={styles.description} numberOfLines={2}>
-          {announcement.details}
-        </Text>
+        <HTMLRenderer
+          html={announcement.details}
+          style={{
+            color: '#888888',
+            fontSize: fontScale(10),
+            fontFamily: DMRegular,
+            maxHeight: 200,
+          }}
+        />
       </View>
     </TouchableOpacity>
   );
@@ -56,7 +63,7 @@ const styles = StyleSheet.create({
   title: {
     color: appColors.black,
     fontFamily: DMBold,
-    marginBottom: 5,
+    // marginBottom: 5,
     fontSize: fontScale(13),
   },
   description: {

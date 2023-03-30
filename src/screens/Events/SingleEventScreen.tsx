@@ -21,6 +21,7 @@ import { fontScale } from '../../functions/font';
 import ShareIcon from '../../assets/icons/svgs/event/share.svg';
 import EventRegistrationForm from '../../components/EventScreen/EventRegistrationForm';
 import EventGallery from '../../components/EventScreen/EventGallery';
+import HTMLRenderer from '../../common/HTMLRenderer';
 
 const SingleEventScreen = ({
   navigation,
@@ -149,6 +150,16 @@ const SingleEventScreen = ({
                   Total Registrations: {event.registrationEntries.length}
                 </Text>
               </>
+            )}
+            {event.description && (
+              <HTMLRenderer
+                html={event.description}
+                style={{
+                  color: '#888888',
+                  fontSize: fontScale(10),
+                  fontFamily: DMRegular,
+                }}
+              />
             )}
             {event.allowRegistration &&
               shouldAllowRegistration() &&

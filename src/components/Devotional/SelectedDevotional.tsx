@@ -11,6 +11,7 @@ import ArrowRightIcon from '../../assets/icons/svgs/pastors/chevron-right.svg';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DEVOTIONAL_STORAGE } from '../../functions/environmentVariables';
 import { screenNames } from '../../screens/screenNames';
+import HTMLRenderer from '../../common/HTMLRenderer';
 
 const SelectedDevotional = ({
   devotional,
@@ -62,6 +63,9 @@ const SelectedDevotional = ({
           <Text style={styles.title}>{devotional.title}</Text>
           <Text style={styles.mainText}>{devotional.mainText}</Text>
           <Text style={styles.text}>{devotional.text}</Text>
+          {/* <Text style={styles.text}>{devotional.content}</Text> */}
+          {/* <View>{HTMLRenderer({ html: devotional.content })}</View> */}
+
           <TouchableOpacity
             style={styles.readTextContainer}
             onPress={() =>

@@ -13,6 +13,7 @@ import BG2 from '../../assets/icons/svgs/devotional/bg-image-2.svg';
 import Button from '../../common/Button';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DEVOTIONAL_STORAGE } from '../../functions/environmentVariables';
+import HTMLRenderer from '../../common/HTMLRenderer';
 
 const SingleDevotionalScreen = ({
   navigation,
@@ -104,7 +105,16 @@ const SingleDevotionalScreen = ({
         <Text style={styles.text}>{devotional.text}</Text>
       </View>
       <View style={styles.contentContainer}>
-        <Text style={styles.content}>{devotional.content}</Text>
+        <HTMLRenderer
+          html={devotional.content}
+          style={{
+            fontFamily: DMRegular,
+            color: appColors.black,
+            marginBottom: 22,
+            fontSize: fontScale(11),
+          }}
+        />
+
         <Text style={styles.sectionTitle}>Prayer:</Text>
         <Text style={styles.content}>{devotional.confession}</Text>
         <Text style={styles.sectionTitle}>Further Reading:</Text>
