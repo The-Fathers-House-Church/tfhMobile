@@ -10,6 +10,7 @@ import appColors from '../../theme/colors';
 import { fontScale } from '../../functions/font';
 import ReactNativeModal from 'react-native-modal';
 import Button from '../../common/Button';
+import HTMLRenderer from '../../common/HTMLRenderer';
 
 const SingleAnnouncementScreen = ({
   navigation,
@@ -46,7 +47,14 @@ const SingleAnnouncementScreen = ({
         <View style={styles.contentContainer}>
           <Text style={styles.title}>{announcement.title}</Text>
           <View style={styles.separator} />
-          <Text style={styles.description}>{announcement.details}</Text>
+          <HTMLRenderer
+            html={announcement.details}
+            style={{
+              fontFamily: DMRegular,
+              fontSize: fontScale(10),
+              color: '#888888',
+            }}
+          />
         </View>
       </ScrollView>
       <ReactNativeModal
