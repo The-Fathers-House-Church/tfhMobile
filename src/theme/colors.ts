@@ -1,6 +1,6 @@
 const appColors = {
-  primaryColor: '#002F72',
-  secondaryColor: '#FF6634',
+  primaryColor: '#0B003C',
+  secondaryColor: '#FE6534',
   successColor: '#08A05C',
   errorColor: '#F13637',
   black: '#000000',
