@@ -81,7 +81,7 @@ const AnnouncementsScreen = ({
               navigateToScreen={navigateToScreen}
             />
           )}
-          keyExtractor={item => item._id}
+          keyExtractor={item => item.id?.toString()}
           ItemSeparatorComponent={() => <View style={styles.separator} />}
           style={styles.container}
           ListFooterComponent={

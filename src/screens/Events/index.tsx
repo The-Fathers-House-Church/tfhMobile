@@ -73,7 +73,7 @@ const EventsScreen = ({
           {events.map(event => (
             <EventCard
               event={event}
-              key={event._id}
+              key={event.id}
               navigateToScreen={navigateToScreen}
             />
           ))}

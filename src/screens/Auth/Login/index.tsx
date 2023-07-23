@@ -52,7 +52,7 @@ const LoginScreen = ({
 
     try {
       const response = await appAxios.post('/user/login', {
-        email: formik.values.email,
+        email: formik.values.email?.trim(),
         password: formik.values.password,
       });
 

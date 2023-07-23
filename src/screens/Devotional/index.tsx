@@ -38,8 +38,8 @@ const DevotionalsScreen = ({
     dispatch(setDevotionalLoading(true));
     try {
       const response = await appAxios.get(`/devotional/user`);
-      dispatch(setDevotionals(response.data.data));
-      setSelectedDevotional(response.data.data[0]);
+      dispatch(setDevotionals(response.data.data?.data));
+      setSelectedDevotional(response.data.data?.data[0]);
     } catch (error: any) {
       sendCatchFeedback(error);
     } finally {

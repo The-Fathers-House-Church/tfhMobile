@@ -16,12 +16,15 @@ export const sendFeedback = (
 };
 
 export const sendCatchFeedback = (error: any) => {
+  const errorText = error.response?.data?.errors
+    ? error.response.data.errors[0].msg
+    : error.response?.data?.message
+    ? error.response?.data?.message
+    : 'Request unsuccessful';
+
+  console.log('API ERROR: ', error);
   Toast.show({
     type: 'error',
-    text1: error.response?.data?.errors
-      ? error.response.data.errors[0].msg
-      : error.response?.data?.message
-      ? error.response?.data?.message
-      : 'Request unsuccessful',
+    text1: errorText,
   });
 };

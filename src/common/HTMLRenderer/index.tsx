@@ -1,21 +1,19 @@
 import { useWindowDimensions } from 'react-native';
-import RenderHtml, { MixedStyleDeclaration } from 'react-native-render-html';
+import RenderHtml, {
+  MixedStyleDeclaration,
+  RenderHTMLProps,
+} from 'react-native-render-html';
 import React from 'react';
 
-const HTMLRenderer = ({
-  html,
-  style,
-}: {
-  html: string;
-  style: MixedStyleDeclaration;
-}) => {
+const HTMLRenderer = ({ source, baseStyle, ...rest }: RenderHTMLProps) => {
   const { width } = useWindowDimensions();
 
   return (
     <RenderHtml
+      {...rest}
       contentWidth={width}
-      source={{ html }}
-      baseStyle={style}
+      source={source}
+      baseStyle={baseStyle}
       enableExperimentalGhostLinesPrevention={true}
       enableExperimentalBRCollapsing={true}
       enableExperimentalMarginCollapsing={true}

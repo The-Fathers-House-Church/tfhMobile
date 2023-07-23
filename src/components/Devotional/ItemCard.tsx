@@ -47,7 +47,7 @@ const ItemCard = ({
           completedDevotionals != null ? JSON.parse(completedDevotionals) : [];
 
         const readDevotional = completedDevotionals.find(
-          (item: any) => item === devotional?._id,
+          (item: any) => item === devotional?.dish_id,
         );
 
         if (readDevotional) {
@@ -84,7 +84,7 @@ const ItemCard = ({
             color: selected ? appColors.white : appColors.primaryColor,
           },
         ]}>
-        {new Date(devotional.date).getDate()}
+        {new Date(devotional.ditto).getDate()}
       </Text>
       <Text
         style={[
@@ -93,7 +93,7 @@ const ItemCard = ({
             color: selected ? appColors.white : appColors.primaryColor,
           },
         ]}>
-        {month[new Date(devotional.date).getMonth()]}
+        {month[new Date(devotional.ditto).getMonth()]}
       </Text>
     </TouchableOpacity>
   );

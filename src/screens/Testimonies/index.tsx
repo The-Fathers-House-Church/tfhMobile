@@ -30,6 +30,7 @@ const TestimoniesScreen = ({
   const { loading, testimonies, totalResults } = useAppSelector(
     state => state.testimonies,
   );
+
   const dispatch = useAppDispatch();
   const [refreshing, setRefreshing] = React.useState(false);
   const [page, setPage] = React.useState(1);
@@ -81,7 +82,7 @@ const TestimoniesScreen = ({
             {testimonies.map(testimony => (
               <TestimonyCard
                 testimony={testimony}
-                key={testimony._id}
+                key={testimony.test_id}
                 navigateToScreen={navigateToScreen}
               />
             ))}

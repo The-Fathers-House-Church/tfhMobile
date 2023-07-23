@@ -26,34 +26,48 @@ import DropdownButton from '../../../common/DropdownButton';
 import ChurchBranchComponent from '../../../components/Auth/ChurchBranchComponent';
 import ChurchMemberLayout from '../../../components/Auth/ChurchMemberLayout';
 import { fontScale } from '../../../functions/font';
+import TitleOptionsComponent from '../../../components/Auth/TitleOptionsComponent';
+import GenderOptionsComponent from '../../../components/Auth/GenderOptionsComponent';
+import MaritalOptionsComponent from '../../../components/Auth/MaritalOptionsComponent';
 
 const RegisterScreen = ({
   navigation,
 }: NativeStackScreenProps<any, screenNamesTypes['REGISTER']>) => {
   interface FormValues {
+    titles: string;
     email: string;
     password: string;
     confirmPassword: string;
     firstName: string;
     lastName: string;
+    address: string;
     phoneNumber: string;
     churchCenter: string;
     dateOfBirth: Date | undefined;
     member: boolean | undefined;
     registrationSource: string;
     loading: boolean;
+    gender: '' | 'Male' | 'Female';
+    marital: 'Married' | 'Single' | 'Widowed' | 'Divorced' | 'Engaged' | '';
   }
 
   const [centreModalState, setCentreModalState] = React.useState(false);
+  const [titleModalState, setTitleModalState] = React.useState(false);
+  const [genderModalState, setGenderModalState] = React.useState(false);
+  const [maritalModalState, setMaritalModalState] = React.useState(false);
 
   const formik = useFormik<FormValues>({
     initialValues: {
+      titles: '',
       email: '',
       password: '',
+      address: '',
       confirmPassword: '',
       churchCenter: '',
       dateOfBirth: undefined,
+      gender: '',
       firstName: '',
+      marital: '',
       lastName: '',
       member: undefined,
       phoneNumber: '',
@@ -64,6 +78,7 @@ const RegisterScreen = ({
       submitValues();
     },
     validationSchema: yup.object({
+      titles: yup.string().required('Title is required'),
       email: yup
         .string()
         .email('Enter a valid email')
@@ -76,6 +91,9 @@ const RegisterScreen = ({
       dateOfBirth: yup.string().required('Required'),
       firstName: yup.string().required('Required'),
       lastName: yup.string().required('Required'),
+      address: yup.string().required('Required'),
+      gender: yup.string().required('Required'),
+      marital: yup.string().required('Required'),
       member: yup.boolean().required('Required'),
       churchCenter: yup.string().when('member', {
         is: true,
@@ -91,15 +109,19 @@ const RegisterScreen = ({
 
     try {
       const response = await appAxios.post('/user/register', {
-        email: formik.values.email,
+        titles: formik.values.titles?.trim(),
+        email: formik.values.email?.trim(),
         password: formik.values.password,
-        phoneNumber: formik.values.phoneNumber,
+        phone: formik.values.phoneNumber?.trim(),
         member: formik.values.member,
-        lastName: formik.values.lastName,
-        firstName: formik.values.firstName,
-        dateOfBirth: formik.values.dateOfBirth,
+        lname: formik.values.lastName?.trim(),
+        fname: formik.values.firstName?.trim(),
+        dob: formik.values.dateOfBirth,
         churchCenter: formik.values.churchCenter,
         registrationSource: formik.values.registrationSource,
+        address: formik.values.address?.trim(),
+        gender: formik.values.gender,
+        marital: formik.values.marital,
       });
 
       sendFeedback(response.data?.message, 'success');
@@ -115,9 +137,11 @@ const RegisterScreen = ({
 
   const selectChurchBranch = (branch: string) => {
     formik.setFieldValue('churchCenter', branch);
-    setTimeout(() => {
-      setCentreModalState(false);
-    }, 700);
+    setCentreModalState(false);
+  };
+  const selectTitle = (title: string) => {
+    formik.setFieldValue('titles', title);
+    setTitleModalState(false);
   };
   const selectMemberStatus = (status: boolean) => {
     formik.setFieldValue('member', status);
@@ -136,10 +160,28 @@ const RegisterScreen = ({
           impact to your immediate community.
         </Text>
         <SafeAreaView>
+          <DropdownButton
+            value={formik.values.titles}
+            placeholder="Title"
+            error={formik.errors.titles}
+            showError={
+              formik.touched.titles && formik.errors.titles ? true : false
+            }
+            containerStyle={{
+              marginTop: 10,
+            }}
+            onPress={() => {
+              setTitleModalState(true);
+              formik.setFieldTouched('titles', true);
+            }}
+          />
           <CustomInput
             formik={formik}
             name="firstName"
             placeholder="First Name"
+            containerStyle={{
+              marginTop: 10,
+            }}
           />
           <CustomInput
             formik={formik}
@@ -147,6 +189,29 @@ const RegisterScreen = ({
             placeholder="Last Name"
             containerStyle={{
               marginTop: 10,
+            }}
+          />
+          <CustomInput
+            formik={formik}
+            name="address"
+            placeholder="Address"
+            containerStyle={{
+              marginTop: 10,
+            }}
+          />
+          <DropdownButton
+            value={formik.values.gender}
+            placeholder="Gender"
+            error={formik.errors.gender}
+            showError={
+              formik.touched.gender && formik.errors.gender ? true : false
+            }
+            containerStyle={{
+              marginTop: 10,
+            }}
+            onPress={() => {
+              setGenderModalState(true);
+              formik.setFieldTouched('gender', true);
             }}
           />
           <CustomInput
@@ -173,6 +238,21 @@ const RegisterScreen = ({
             placeholder="Date of Birth"
             containerStyle={{
               marginTop: 10,
+            }}
+          />
+          <DropdownButton
+            value={formik.values.marital}
+            placeholder="Marital Status"
+            error={formik.errors.marital}
+            showError={
+              formik.touched.marital && formik.errors.marital ? true : false
+            }
+            containerStyle={{
+              marginTop: 10,
+            }}
+            onPress={() => {
+              setMaritalModalState(true);
+              formik.setFieldTouched('marital', true);
             }}
           />
           <ChurchMemberLayout
@@ -260,6 +340,51 @@ const RegisterScreen = ({
           <ChurchBranchComponent
             selectItem={selectChurchBranch}
             selectedItem={formik.values.churchCenter}
+          />
+        </Modal>
+        <Modal
+          isVisible={titleModalState}
+          style={{
+            justifyContent: 'flex-end',
+            margin: 0,
+          }}
+          onBackdropPress={() => setTitleModalState(false)}
+          onBackButtonPress={() => setTitleModalState(false)}>
+          <TitleOptionsComponent
+            selectItem={selectTitle}
+            selectedItem={formik.values.titles}
+          />
+        </Modal>
+        <Modal
+          isVisible={genderModalState}
+          style={{
+            justifyContent: 'flex-end',
+            margin: 0,
+          }}
+          onBackdropPress={() => setGenderModalState(false)}
+          onBackButtonPress={() => setGenderModalState(false)}>
+          <GenderOptionsComponent
+            selectItem={value => {
+              formik.setFieldValue('gender', value);
+              setGenderModalState(false);
+            }}
+            selectedItem={formik.values.gender}
+          />
+        </Modal>
+        <Modal
+          isVisible={maritalModalState}
+          style={{
+            justifyContent: 'flex-end',
+            margin: 0,
+          }}
+          onBackdropPress={() => setMaritalModalState(false)}
+          onBackButtonPress={() => setMaritalModalState(false)}>
+          <MaritalOptionsComponent
+            selectItem={value => {
+              formik.setFieldValue('marital', value);
+              setMaritalModalState(false);
+            }}
+            selectedItem={formik.values.marital}
           />
         </Modal>
       </ScrollView>

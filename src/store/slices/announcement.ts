@@ -20,8 +20,8 @@ export const announcementSlice = createSlice({
   initialState,
   reducers: {
     setAnnouncements(state, action: PayloadAction<ResponseType>) {
-      state.announcements = action.payload.results;
-      state.totalResults = action.payload.pagination.totalResults;
+      state.announcements = action.payload.data;
+      state.totalResults = action.payload.totalResults;
     },
     setAnnouncementLoading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload;

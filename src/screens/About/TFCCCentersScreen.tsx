@@ -7,7 +7,7 @@ import { fontScale } from '../../functions/font';
 import appColors from '../../theme/colors';
 import { DMBold, DMRegular } from '../../theme/fonts';
 import CenterCard from '../../components/AboutScreen/CenterCard';
-import { TFCCType } from '../../types/types';
+import { TFCCCellType } from '../../types/types';
 import { sendCatchFeedback } from '../../functions/feedback';
 import { appAxios } from '../../api/axios';
 import SectionLoader from '../../common/Loader/SectionLoader';
@@ -19,7 +19,7 @@ const TFCCCentersScreen = ({}: NativeStackScreenProps<
 >) => {
   const [centerLoading, setCenterLoading] = React.useState(false);
 
-  const [centers, setCenters] = React.useState<TFCCType[] | undefined>([]);
+  const [centers, setCenters] = React.useState<TFCCCellType[] | undefined>([]);
   const [centerTotalResults, setCenterTotalResults] = React.useState(0);
   const [centerPage, setCenterPage] = React.useState<number>(1);
 
@@ -28,10 +28,10 @@ const TFCCCentersScreen = ({}: NativeStackScreenProps<
       try {
         setCenterLoading(true);
 
-        const response = await appAxios.get(`/tfcc/centers?page=${centerPage}`);
+        const response = await appAxios.get(`/tfcc/cells?page=${centerPage}`);
 
-        setCenters(response.data.data?.results);
-        setCenterTotalResults(response.data.data?.pagination?.totalResults);
+        setCenters(response.data.data?.data);
+        setCenterTotalResults(response.data.data?.totalResults);
 
         setCenterLoading(false);
       } catch (error) {
@@ -54,7 +54,7 @@ const TFCCCentersScreen = ({}: NativeStackScreenProps<
         <>
           <View style={styles.listContainer}>
             {centers.map(item => (
-              <CenterCard key={item._id} item={item} />
+              <CenterCard key={item.cell_id} item={item} />
             ))}
           </View>
           <Pagination

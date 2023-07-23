@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     fontSize: fontScale(10),
   },
   errorText: {
-    fontSize: fontScale(10),
+    fontSize: fontScale(5),
     color: appColors.errorColor,
     alignSelf: 'flex-start',
     marginTop: 3,

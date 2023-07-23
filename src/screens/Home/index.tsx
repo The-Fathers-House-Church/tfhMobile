@@ -38,7 +38,7 @@ const HomeScreen = ({
     dispatch(setAnnouncementLoading(true));
 
     try {
-      const announcementResponse = await appAxios.get(`/announcement`);
+      const announcementResponse = await appAxios.get(`/announcement?page=1`);
       dispatch(setAnnouncements(announcementResponse.data.data));
     } catch (error) {
       sendCatchFeedback(error);

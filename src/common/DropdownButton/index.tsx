@@ -10,6 +10,7 @@ import React from 'react';
 import ChevronDownIcon from '../../assets/icons/svgs/auth/chevron-down.svg';
 import appColors from '../../theme/colors';
 import { DMRegular } from '../../theme/fonts';
+import { fontScale } from '../../functions/font';
 
 type Props = {
   value: string;
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
     color: appColors.primaryColor,
   },
   errorText: {
-    fontSize: 10,
+    fontSize: fontScale(5),
     color: appColors.errorColor,
     alignSelf: 'flex-start',
     marginTop: 3,

@@ -31,7 +31,7 @@ const Announcements = ({
           contentContainerStyle={styles.cardContainer}
           horizontal={true}>
           {announcements.slice(0, 10).map((announcement: AnnouncementType) => (
-            <View style={styles.card} key={announcement._id}>
+            <View style={styles.card} key={announcement.id}>
               <Image
                 source={{
                   uri: announcement.image,

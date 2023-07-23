@@ -48,8 +48,10 @@ const SingleAnnouncementScreen = ({
           <Text style={styles.title}>{announcement.title}</Text>
           <View style={styles.separator} />
           <HTMLRenderer
-            html={announcement.details}
-            style={{
+            source={{
+              html: announcement.details,
+            }}
+            baseStyle={{
               fontFamily: DMRegular,
               fontSize: fontScale(10),
               color: '#888888',

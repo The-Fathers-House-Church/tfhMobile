@@ -4,21 +4,21 @@ import { StyleSheet } from 'react-native';
 import { DMBold, DMRegular } from '../../theme/fonts';
 import appColors from '../../theme/colors';
 import { fontScale } from '../../functions/font';
-import { TFCCType } from '../../types/types';
+import { TFCCCellType } from '../../types/types';
 import Card from '../../common/Card';
 
-const CenterCard = ({ item }: { item: TFCCType }) => {
+const CenterCard = ({ item }: { item: TFCCCellType }) => {
   const separateText = (text: string) => {
     // separating by colon (:)
     return text.split(/:(.*)/s);
   };
   return (
     <Card containerStyle={{ padding: 10 }}>
-      <Text style={styles.content}>{item.address}</Text>
+      <Text style={styles.content}>{item.host_address}</Text>
       <Text style={styles.cellLeader}>
-        {item.cellLeader}, {item.phoneNumber}
+        {item.cell_leader}, {item.phone}
       </Text>
-      <Text style={styles.zone}>Zone: {item.zone}</Text>
+      <Text style={styles.zone}>Zone: {item.tfccZone.zonal}</Text>
     </Card>
   );
 };
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   cellLeader: {
     color: appColors.black,
     fontSize: fontScale(8),
-    fontFamily: DMRegular,
+    fontFamily: DMBold,
   },
   zone: {
     color: appColors.grey,
