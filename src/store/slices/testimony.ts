@@ -1,6 +1,4 @@
-import { sendCatchFeedback } from '../../functions/feedback';
-import { appAxios } from '../../api/axios';
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ResponseType, TestimonyType } from '../../types/types';
 
 // Define the initial state using that type
@@ -23,8 +21,8 @@ export const testimonySlice = createSlice({
       state.loading = action.payload;
     },
     setTestimonies(state, action: PayloadAction<ResponseType>) {
-      state.testimonies = action.payload.results;
-      state.totalResults = action.payload.pagination.totalResults;
+      state.testimonies = action.payload.data;
+      state.totalResults = action.payload.totalResults;
     },
   },
 });

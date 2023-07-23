@@ -34,7 +34,7 @@ const SelectedDevotional = ({
           completedDevotionals != null ? JSON.parse(completedDevotionals) : [];
 
         const readDevotional = completedDevotionals.find(
-          (item: any) => item === devotional?._id,
+          (item: any) => item === devotional?.dish_id,
         );
 
         if (readDevotional) {
@@ -52,7 +52,7 @@ const SelectedDevotional = ({
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.date}>
-        {new Date(devotional.date).toDateString()}
+        {new Date(devotional.ditto).toDateString()}
       </Text>
       <View style={styles.contentContainer}>
         {isRead ? <ReadIcon /> : <NotReadIcon />}
@@ -60,9 +60,11 @@ const SelectedDevotional = ({
           style={{
             flex: 1,
           }}>
-          <Text style={styles.title}>{devotional.title}</Text>
-          <Text style={styles.mainText}>{devotional.mainText}</Text>
-          <Text style={styles.text}>{devotional.text}</Text>
+          <Text style={styles.title}>{devotional.titles}</Text>
+          <Text style={styles.mainText}>{devotional.main_text}</Text>
+          <Text style={styles.text}>
+            {devotional.scripture1} - {devotional.scripture2}
+          </Text>
           {/* <Text style={styles.text}>{devotional.content}</Text> */}
           {/* <View>{HTMLRenderer({ html: devotional.content })}</View> */}
 

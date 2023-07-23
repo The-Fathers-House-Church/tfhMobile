@@ -7,6 +7,7 @@ import appColors from '../../theme/colors';
 import { fontScale } from '../../functions/font';
 import Card from '../../common/Card';
 import { screenNames } from '../../screens/screenNames';
+import HTMLRenderer from '../../common/HTMLRenderer';
 
 const TestimonyCard = ({
   testimony,
@@ -19,14 +20,22 @@ const TestimonyCard = ({
     <TouchableOpacity
       onPress={() => navigateToScreen(screenNames.SINGLE_TESTIMONY, testimony)}>
       <Card containerStyle={styles.container}>
-        <Text style={styles.title}>{testimony.summary}</Text>
-        <Text style={styles.description} numberOfLines={10}>
-          {testimony.content}
-        </Text>
+        <Text style={styles.title}>{testimony.titles}</Text>
+
+        <HTMLRenderer
+          source={{
+            html: testimony.main_gist,
+          }}
+          baseStyle={styles.description}
+          defaultTextProps={{
+            numberOfLines: 10,
+          }}
+        />
+
         <View style={styles.separator} />
-        <Text style={styles.name}>{testimony.fullName}</Text>
+        <Text style={styles.name}>{testimony.names}</Text>
         <Text style={styles.date}>
-          {new Date(testimony.createdAt).toDateString()}
+          {new Date(testimony.ditto).toDateString()}
         </Text>
       </Card>
     </TouchableOpacity>

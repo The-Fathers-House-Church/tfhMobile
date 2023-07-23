@@ -26,12 +26,14 @@ const DevotionalList = ({
         <ItemCard
           devotional={item}
           selected={
-            selectedDevotional ? item._id === selectedDevotional._id : false
+            selectedDevotional
+              ? item.dish_id === selectedDevotional.dish_id
+              : false
           }
           changeSelectedDevotional={changeSelectedDevotional}
         />
       )}
-      keyExtractor={item => item._id}
+      keyExtractor={item => item.dish_id.toString()}
     />
   );
 };

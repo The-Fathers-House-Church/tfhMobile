@@ -45,7 +45,7 @@ const SingleDevotionalScreen = ({
           completedDevotionals != null ? JSON.parse(completedDevotionals) : [];
 
         const readDevotional = completedDevotionals.find(
-          (item: any) => item === devotional?._id,
+          (item: any) => item === devotional?.dish_id,
         );
 
         if (readDevotional) {
@@ -76,7 +76,7 @@ const SingleDevotionalScreen = ({
 
       await AsyncStorage.setItem(
         DEVOTIONAL_STORAGE,
-        JSON.stringify([...completedDevotionals, devotional._id]),
+        JSON.stringify([...completedDevotionals, devotional.dish_id]),
       );
 
       navigateToScreen(screenNames.DEVOTIONALS);
@@ -92,51 +92,32 @@ const SingleDevotionalScreen = ({
         style={styles.image}
       />
       <View style={styles.contentContainer}>
-        <Text style={styles.title}>{devotional.title}</Text>
+        <Text style={styles.title}>{devotional.titles}</Text>
         <Text style={styles.mainText}>
-          Date: {new Date(devotional.date).toDateString()}
+          Date: {new Date(devotional.ditto).toDateString()}
         </Text>
-        <Text style={styles.mainText}>Main Text: {devotional.mainText}</Text>
+        <Text style={styles.mainText}>Main Text: {devotional.main_text}</Text>
         <Text style={styles.apostle}>Apostle Dr. Richard Udoh</Text>
       </View>
       <View style={styles.textContainer}>
         <BG1 style={styles.bgImage1} />
         <BG2 style={styles.bgImage2} />
-        <Text style={styles.text}>{devotional.text}</Text>
+        <Text style={styles.text}>
+          {devotional.scripture1} - {devotional.scripture2}
+        </Text>
       </View>
       <View style={styles.contentContainer}>
         <HTMLRenderer
-          html={devotional.content}
-          style={{
+          source={{
+            html: devotional.contents,
+          }}
+          baseStyle={{
             fontFamily: DMRegular,
             color: appColors.black,
             marginBottom: 22,
             fontSize: fontScale(11),
           }}
         />
-
-        <Text style={styles.sectionTitle}>Prayer:</Text>
-        <Text style={styles.content}>{devotional.confession}</Text>
-        <Text style={styles.sectionTitle}>Further Reading:</Text>
-        {devotional.furtherReading.map((item, index) => (
-          <Text style={styles.content} key={index}>
-            {item}
-          </Text>
-        ))}
-        <Text style={styles.sectionTitle}>
-          Read through the bible in 1 year:
-        </Text>
-        <Text style={styles.content}>
-          {devotional.oneYearBibleReading.join(' , ')}
-        </Text>
-
-        <Text style={styles.sectionTitle}>
-          Read through the bible in 2 years:
-        </Text>
-
-        <Text style={styles.content}>
-          {devotional.twoYearsBibleReading.join(' , ')}
-        </Text>
 
         {!isRead && (
           <Button

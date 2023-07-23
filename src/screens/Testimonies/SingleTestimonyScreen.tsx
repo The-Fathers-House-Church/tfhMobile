@@ -1,29 +1,13 @@
-import {
-  View,
-  Text,
-  ScrollView,
-  StyleSheet,
-  RefreshControl,
-} from 'react-native';
+import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { screenNamesTypes } from '../screenNamesTypes';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import {
-  setTestimonies,
-  setTestimonyLoading,
-} from '../../store/slices/testimony';
-import SectionLoader from '../../common/Loader/SectionLoader';
 import { DMBold, DMRegular } from '../../theme/fonts';
 import { fontScale } from '../../functions/font';
 import appColors from '../../theme/colors';
-import TestimonyCard from '../../components/TestimonyScreen/TestimonyCard';
-import SendTestimonyButton from '../../components/TestimonyScreen/SendTestimonyButton';
-import Pagination from '../../common/Pagination';
-import { appAxios } from '../../api/axios';
-import { sendCatchFeedback } from '../../functions/feedback';
 import { screenNames } from '../screenNames';
 import { TestimonyType } from '../../types/types';
+import HTMLRenderer from '../../common/HTMLRenderer';
 
 const SingleTestimonyScreen = ({
   navigation,
@@ -46,10 +30,18 @@ const SingleTestimonyScreen = ({
   return (
     <View style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.title}>{testimony.summary}</Text>
-        <Text style={styles.description}>{testimony.content}</Text>
+        <Text style={styles.title}>{testimony.titles}</Text>
+        <HTMLRenderer
+          source={{
+            html: testimony.main_gist,
+          }}
+          baseStyle={styles.description}
+          defaultTextProps={{
+            numberOfLines: 10,
+          }}
+        />
         <View style={styles.separator} />
-        <Text style={styles.name}>{testimony.fullName}</Text>
+        <Text style={styles.name}>{testimony.names}</Text>
         <Text style={styles.date}>
           {new Date(testimony.createdAt).toDateString()}
         </Text>
