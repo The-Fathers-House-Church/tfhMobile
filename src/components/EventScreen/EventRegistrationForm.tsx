@@ -72,7 +72,7 @@ const EventRegistrationForm = ({
     formik.setFieldValue('loading', true);
 
     try {
-      const response = await appAxios.post(`/event/${event._id}/register`, {
+      const response = await appAxios.post(`/event/${event.id}/register`, {
         ...event.requiredRegistrationDetails.reduce(
           (initial, field: inputType) => ({
             ...initial,

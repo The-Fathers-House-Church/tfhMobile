@@ -80,6 +80,14 @@ export type DevotionalType = {
   updatedBy: string;
 };
 
+export type EventGalleryType = {
+  id: number;
+  imageURL: string;
+  event_id: number;
+  createdAt: Date;
+  updatedAt: Date;
+}[];
+
 export type EventType = {
   id: number;
   name: string;
@@ -108,13 +116,7 @@ export type EventType = {
     type: string;
     options?: string;
   }[];
-  gallery: {
-    id: number;
-    imageURL: string;
-    event_id: number;
-    createdAt: Date;
-    updatedAt: Date;
-  }[];
+  gallery: EventGalleryType;
 };
 
 export type AdminType = {

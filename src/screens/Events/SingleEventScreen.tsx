@@ -153,8 +153,10 @@ const SingleEventScreen = ({
             )}
             {event.description && (
               <HTMLRenderer
-                html={event.description}
-                style={{
+                source={{
+                  html: event.description,
+                }}
+                baseStyle={{
                   color: '#888888',
                   fontSize: fontScale(10),
                   fontFamily: DMRegular,

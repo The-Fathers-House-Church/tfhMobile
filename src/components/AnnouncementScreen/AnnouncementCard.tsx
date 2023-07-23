@@ -32,12 +32,16 @@ const AnnouncementCard = ({
       <View style={styles.contentContainer}>
         <Text style={styles.title}>{announcement.title}</Text>
         <HTMLRenderer
-          html={announcement.details}
-          style={{
+          source={{
+            html: announcement.details,
+          }}
+          baseStyle={{
             color: '#888888',
             fontSize: fontScale(10),
             fontFamily: DMRegular,
-            maxHeight: 200,
+          }}
+          defaultTextProps={{
+            numberOfLines: 3,
           }}
         />
       </View>

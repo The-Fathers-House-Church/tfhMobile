@@ -5,8 +5,9 @@ import { fontScale } from '../../functions/font';
 import appColors from '../../theme/colors';
 import ReactNativeModal from 'react-native-modal';
 import Button from '../../common/Button';
+import { EventGalleryType } from '../../types/types';
 
-const EventGallery = ({ gallery }: { gallery: string[] }) => {
+const EventGallery = ({ gallery }: { gallery: EventGalleryType }) => {
   const [modalOpen, setModalOpen] = React.useState(false);
 
   const [selectedImage, setSelectedImage] = React.useState('');
@@ -16,19 +17,19 @@ const EventGallery = ({ gallery }: { gallery: string[] }) => {
         <Text style={styles.title}>Event in pictures</Text>
         <View style={styles.imageContainer}>
           {gallery.length ? (
-            gallery.map(imageURL => (
+            gallery.map(image => (
               <TouchableOpacity
                 style={{
                   width: '48%',
                 }}
-                key={imageURL}
+                key={image.id}
                 onPress={() => {
-                  setSelectedImage(imageURL);
+                  setSelectedImage(image.imageURL);
                   setModalOpen(true);
                 }}>
                 <Image
                   source={{
-                    uri: imageURL,
+                    uri: image.imageURL,
                   }}
                   style={styles.image}
                 />

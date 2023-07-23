@@ -20,8 +20,8 @@ export const eventSlice = createSlice({
   initialState,
   reducers: {
     setEvents(state, action: PayloadAction<ResponseType>) {
-      state.events = action.payload.results;
-      state.totalResults = action.payload.pagination.totalResults;
+      state.events = action.payload.data;
+      state.totalResults = action.payload.totalResults;
     },
     setEventLoading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload;
