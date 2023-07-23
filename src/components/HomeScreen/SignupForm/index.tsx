@@ -18,10 +18,9 @@ const SignupForm = ({
     <View style={styles.container}>
       {user ? (
         <View>
-          <Text
-            style={
-              styles.introText
-            }>{`${user.firstName}, God bless you!`}</Text>
+          <Text style={styles.introText}>{`${
+            user.fname || ''
+          }, God bless you!`}</Text>
           <Text style={styles.introTextSub}>
             Welcome to The Father's House Church.
           </Text>

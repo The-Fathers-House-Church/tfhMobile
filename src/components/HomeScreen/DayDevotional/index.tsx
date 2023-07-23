@@ -36,9 +36,9 @@ const DayDevotional = ({
             />
             <View style={styles.detailsContainer}>
               <Text style={styles.textHeader}>The Father’s Menu</Text>
-              <Text style={styles.title}>{todayDevotional.title}</Text>
+              <Text style={styles.title}>{todayDevotional.titles}</Text>
               <Text style={styles.date}>
-                {new Date(todayDevotional.date).toDateString()}
+                {new Date(todayDevotional.ditto).toDateString()}
               </Text>
               <Button
                 title="Read Devotional"

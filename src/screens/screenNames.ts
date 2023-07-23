@@ -18,6 +18,7 @@ export const screenNames: screenNamesTypes = {
   LIVESTREAM: 'LivestreamScreen',
   STREAMING_PLATFORMS: 'StreamingPlatformsScreen',
   RECENT_MESSAGES: 'RecentMessagesScreen',
+  ARCHIVE: 'ArchiveScreen',
 
   // More
   MORE: 'MoreScreen',

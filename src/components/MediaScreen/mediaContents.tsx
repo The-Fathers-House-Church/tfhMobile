@@ -1,8 +1,9 @@
 import React from 'react';
-import LivestreamIcon from '../../assets/icons/svgs/media/livestream.svg';
+// import LivestreamIcon from '../../assets/icons/svgs/media/livestream.svg';
 import VideoIcon from '../../assets/icons/svgs/media/video.svg';
 import PodcastIcon from '../../assets/icons/svgs/media/podcast.svg';
 import MessageIcon from '../../assets/icons/svgs/media/messages.svg';
+import ArchiveIcon from '../../assets/icons/svgs/media/archive.svg';
 import { screenNames } from '../../screens/screenNames';
 
 const mediaContents: {
@@ -41,6 +42,13 @@ const mediaContents: {
     subText:
       'Watch our past Sunday services message to hold you through the year.',
     destination: screenNames.RECENT_MESSAGES,
+  },
+  {
+    icon: <ArchiveIcon width={40} height={40} />,
+    mainText: 'Archive',
+    subText:
+      'View, download and listen to our old messages that have been kept and preserved for you',
+    destination: screenNames.ARCHIVE,
   },
 ];
 

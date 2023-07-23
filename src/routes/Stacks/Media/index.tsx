@@ -7,6 +7,7 @@ import { screenNames } from '../../../screens/screenNames';
 import StreamingPlatformsScreen from '../../../screens/Media/StreamingPlatformsScreen';
 import RecentMessagesScreen from '../../../screens/Media/RecentMessagesScreen';
 import PodcastsScreen from '../../../screens/Media/PodcastsScreen';
+import ArchiveScreen from '../../../screens/Media/ArchiveScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,6 +44,14 @@ const MediaStack = () => {
         options={{
           ...stackHeaderStyles,
           title: 'Podcast',
+        }}
+      />
+      <Stack.Screen
+        name={screenNames.ARCHIVE}
+        component={ArchiveScreen}
+        options={{
+          ...stackHeaderStyles,
+          title: '',
         }}
       />
     </Stack.Navigator>

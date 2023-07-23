@@ -28,7 +28,7 @@ const MoreHeader = ({
             onPress={() => navigateToScreen(screenNames.DEVOTIONALS)}>
             <View style={styles.textContainer}>
               <Text style={[styles.mainText, { textTransform: 'capitalize' }]}>
-                {`${user.firstName} ${user.lastName}`}
+                {`${user.fname || ''} ${user.lname || ''}`}
               </Text>
               <Text style={styles.subText}>
                 Have you read your bible today?
