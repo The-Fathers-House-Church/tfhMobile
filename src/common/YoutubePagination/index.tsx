@@ -11,9 +11,15 @@ import { DMBold } from '../../theme/fonts';
 export default function YoutubePagination({
   setPage,
   page,
+  nextPageToken: propNextPageToken,
+  prevPageToken: propPrevPageToken,
+  propsSetPageToken,
 }: {
   setPage: React.Dispatch<React.SetStateAction<number>>;
   page: number;
+  nextPageToken?: string;
+  prevPageToken?: string;
+  propsSetPageToken?: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const { nextPageToken, prevPageToken } = useAppSelector(
     state => state.youtubeVideos,
@@ -25,7 +31,11 @@ export default function YoutubePagination({
       <TouchableOpacity
         onPress={() => {
           setPage(page - 1);
-          dispatch(setPageToken(prevPageToken ? prevPageToken : ''));
+          if (propsSetPageToken) {
+            propsSetPageToken(propPrevPageToken || '');
+          } else {
+            dispatch(setPageToken(prevPageToken ? prevPageToken : ''));
+          }
         }}
         disabled={page <= 1}>
         <BackwardIcon strokeOpacity={page <= 1 ? 0.2 : 1} />
@@ -36,7 +46,11 @@ export default function YoutubePagination({
       <TouchableOpacity
         onPress={() => {
           setPage(page + 1);
-          dispatch(setPageToken(nextPageToken ? nextPageToken : ''));
+          if (propsSetPageToken) {
+            propsSetPageToken(propNextPageToken || '');
+          } else {
+            dispatch(setPageToken(nextPageToken ? nextPageToken : ''));
+          }
         }}
         disabled={!nextPageToken}>
         <ForwardIcon strokeOpacity={!nextPageToken ? 0.2 : 1} />

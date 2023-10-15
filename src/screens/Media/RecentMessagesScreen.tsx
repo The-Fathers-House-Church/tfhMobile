@@ -8,18 +8,18 @@ import {
   Image,
   RefreshControl,
 } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { screenNamesTypes } from '../screenNamesTypes';
 import appColors from '../../theme/colors';
 import { DMBold, DMRegular } from '../../theme/fonts';
 import { fontScale } from '../../functions/font';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useAppDispatch } from '../../store/hooks';
 import SectionLoader from '../../common/Loader/SectionLoader';
 import { getYoutubeLink } from '../../functions/stringManipulations';
 import Card from '../../common/Card';
 import PlayIcon from '../../assets/icons/svgs/home/play.svg';
-import { setVideoLoading, setVideos } from '../../store/slices/youtubeVideos';
+import { setVideoLoading } from '../../store/slices/youtubeVideos';
 import axios from 'axios';
 import { sendCatchFeedback } from '../../functions/feedback';
 import {
@@ -27,13 +27,18 @@ import {
   YOUTUBE_UPLOAD_KEY,
 } from '../../functions/environmentVariables';
 import YoutubePagination from '../../common/YoutubePagination';
+import { YoutubeVideoType } from '../../types/types';
 
 const RecentMessagesScreen = ({}: NativeStackScreenProps<
   any,
   screenNamesTypes['RECENT_MESSAGES']
 >) => {
-  const { videos, loading, pageToken } = useAppSelector(
-    state => state.youtubeVideos,
+  const [loading, setLoading] = useState(true);
+  const [pageToken, setPageToken] = useState('');
+  const [prevPageToken, setPrevPageToken] = useState('');
+  const [nextPageToken, setNextPageToken] = useState('');
+  const [videos, setVideos] = useState<YoutubeVideoType[] | undefined>(
+    undefined,
   );
   const [refreshing, setRefreshing] = React.useState(false);
   const dispatch = useAppDispatch();
@@ -52,13 +57,9 @@ const RecentMessagesScreen = ({}: NativeStackScreenProps<
           `https://www.googleapis.com/youtube/v3/playlistItems?key=${YOUTUBE_API_KEY}&part=snippet&playlistId=${YOUTUBE_UPLOAD_KEY}&maxResults=10`,
         );
       }
-      dispatch(
-        setVideos({
-          videos: response.data.items,
-          nextPageToken: response.data.nextPageToken,
-          prevPageToken: response.data.prevPageToken,
-        }),
-      );
+      setVideos(response.data.items);
+      setNextPageToken(response.data.nextPageToken);
+      setPrevPageToken(response.data.prevPageToken);
     } catch (error) {
       console.log(error);
       sendCatchFeedback(error);
@@ -128,7 +129,13 @@ const RecentMessagesScreen = ({}: NativeStackScreenProps<
               </Card>
             </TouchableOpacity>
           ))}
-          <YoutubePagination page={page} setPage={setPage} />
+          <YoutubePagination
+            page={page}
+            setPage={setPage}
+            nextPageToken={nextPageToken}
+            propsSetPageToken={setPageToken}
+            prevPageToken={prevPageToken}
+          />
         </>
       ) : (
         <Text style={styles.notFoundText}>No video found</Text>
