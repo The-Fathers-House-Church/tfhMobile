@@ -14,7 +14,11 @@ const CenterCard = ({ item }: { item: TFCCCellType }) => {
     return text.split(/:(.*)/s);
   };
   return (
-    <Card containerStyle={{ padding: scaledWidth(10) }}>
+    <Card
+      containerStyle={{
+        paddingHorizontal: scaledWidth(10),
+        paddingVertical: scaledHeight(10),
+      }}>
       <Text style={styles.content}>{item.host_address}</Text>
       <Text style={styles.cellLeader}>
         {item.cell_leader}, {item.phone}

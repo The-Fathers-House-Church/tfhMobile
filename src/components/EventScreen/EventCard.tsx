@@ -65,7 +65,8 @@ const EventCard = ({
 
 const styles = StyleSheet.create({
   container: {
-    padding: scaledHeight(13),
+    paddingHorizontal: scaledWidth(13),
+    paddingVertical: scaledHeight(13),
     flexDirection: 'row',
     alignItems: 'center',
     gap: scaledWidth(20),
