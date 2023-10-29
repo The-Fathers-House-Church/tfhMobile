@@ -44,13 +44,11 @@ const heightPercentageToDP = (heightPercent: number) => {
   return PixelRatio.roundToNearestPixel((screenHeight * heightPercent) / 100);
 };
 
-const buildVersion = 1.3;
-
 export const deviceConstants = {
   systemName: DeviceInfo.getSystemName(),
   systemVersion: DeviceInfo.getSystemVersion(),
   brand: DeviceInfo.getBrand(),
   uniqueId: DeviceInfo.getUniqueId(),
   mobileVersion: packageJson.version,
-  buildVersion: buildVersion,
+  buildVersion: packageJson.version,
 };
