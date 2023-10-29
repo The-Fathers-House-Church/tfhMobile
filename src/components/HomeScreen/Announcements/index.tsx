@@ -5,11 +5,12 @@ import SectionTitle from '../../../common/SectionTitle';
 import { DMBold, DMRegular } from '../../../theme/fonts';
 import appColors from '../../../theme/colors';
 import Button from '../../../common/Button';
-import { fontScale } from '../../../functions/font';
+import { fontScale, lineHeightSmall } from '../../../functions/font';
 import { useAppSelector } from '../../../store/hooks';
 import SectionLoader from '../../../common/Loader/SectionLoader';
 import { AnnouncementType } from '../../../types/types';
 import { screenNames } from '../../../screens/screenNames';
+import { scaledHeight, scaledWidth } from '../../../functions/utils';
 
 const Announcements = ({
   navigateToScreen,
@@ -65,12 +66,12 @@ const Announcements = ({
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 30,
-    marginBottom: 30,
-    paddingHorizontal: 16,
+    marginTop: scaledHeight(30),
+    marginBottom: scaledHeight(30),
+    paddingHorizontal: scaledWidth(16),
   },
   cardContainer: {
-    gap: 15,
+    gap: scaledHeight(15),
   },
   card: {
     borderRadius: 10,
@@ -83,18 +84,18 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.21,
     shadowRadius: 7.68,
     elevation: 10,
-    width: 200,
+    width: scaledWidth(200),
   },
   cardImage: {
     width: '100%',
-    height: 88,
+    height: scaledHeight(88),
     resizeMode: 'cover',
     borderTopLeftRadius: 6,
     borderTopRightRadius: 6,
   },
   cardContentContainer: {
-    paddingVertical: 10,
-    paddingHorizontal: 8,
+    paddingVertical: scaledHeight(10),
+    paddingHorizontal: scaledWidth(8),
     borderBottomLeftRadius: 6,
     borderBottomRightRadius: 6,
     backgroundColor: '#F6FAFF',
@@ -104,11 +105,12 @@ const styles = StyleSheet.create({
     fontFamily: DMBold,
     fontSize: fontScale(10),
     color: appColors.primaryColor,
-    marginBottom: 5,
+    lineHeight: lineHeightSmall,
+    marginBottom: scaledHeight(5),
   },
   buttonStyle: {
-    maxWidth: 111.64,
-    height: 25,
+    maxWidth: scaledWidth(111.64),
+    height: scaledHeight(25),
     borderRadius: 3,
   },
   notFoundText: {

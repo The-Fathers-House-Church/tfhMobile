@@ -9,6 +9,7 @@ import { DMRegular } from '../../theme/fonts';
 import AboutCard from '../../components/AboutScreen/AboutCard';
 import aboutItems from '../../components/AboutScreen/aboutItems';
 import { fontScale } from '../../functions/font';
+import { scaledHeight } from '../../functions/utils';
 
 const AboutScreen = ({
   navigation,
@@ -50,12 +51,12 @@ const styles = StyleSheet.create({
   visionText: {
     color: '#888888',
     fontFamily: DMRegular,
-    fontSize: fontScale(10),
+    fontSize: fontScale(12),
     textAlign: 'center',
-    marginBottom: 14,
+    marginBottom: scaledHeight(14),
   },
   itemContainer: {
-    gap: 13,
+    gap: scaledHeight(13),
   },
 });
 

@@ -5,6 +5,7 @@ import appColors from '../../theme/colors';
 import { fontScale } from '../../functions/font';
 import churchLocations from '../../components/HomeScreen/ChurchLocation/churchLocations';
 import LocationCard from '../../components/ChurchLocationScreen/LocationCard';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const ChurchLocationScreen = () => {
   return (
@@ -26,20 +27,20 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 26,
-    paddingVertical: 35,
+    paddingHorizontal: scaledWidth(26),
+    paddingVertical: scaledHeight(35),
   },
   title: {
     fontFamily: DMBold,
     color: appColors.primaryColor,
-    marginBottom: 34,
+    marginBottom: scaledHeight(34),
     fontSize: fontScale(24),
   },
   subtitle: {
     fontFamily: DMRegular,
     color: appColors.primaryColor,
     fontSize: fontScale(11),
-    marginBottom: 34,
+    marginBottom: scaledHeight(34),
   },
 });
 export default ChurchLocationScreen;

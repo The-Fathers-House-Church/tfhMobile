@@ -5,6 +5,7 @@ import ProfileImage from '../../../assets/icons/profile.svg';
 import { screenNames } from '../../../screens/screenNames';
 import { useAppSelector } from '../../../store/hooks';
 import InfoIcon from '../../../assets/icons/svgs/more/info.svg';
+import { scaledHeight, scaledWidth } from '../../../functions/utils';
 
 const LogoHeader = ({
   navigateToScreen,
@@ -40,9 +41,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: appColors.white,
-    paddingLeft: 20,
-    paddingRight: 30,
-    paddingVertical: 3,
+    paddingLeft: scaledWidth(20),
+    paddingRight: scaledWidth(30),
+    paddingVertical: scaledHeight(3),
   },
   logoImage: {
     width: 80,

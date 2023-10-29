@@ -23,6 +23,7 @@ import Pagination from '../../common/Pagination';
 import { appAxios } from '../../api/axios';
 import { sendCatchFeedback } from '../../functions/feedback';
 import { TestimonyType } from '../../types/types';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const TestimoniesScreen = ({
   navigation,
@@ -104,9 +105,9 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 16,
-    paddingVertical: 19,
-    gap: 22,
+    paddingHorizontal: scaledWidth(16),
+    paddingVertical: scaledHeight(19),
+    gap: scaledHeight(22),
     position: 'relative',
   },
   notFoundText: {

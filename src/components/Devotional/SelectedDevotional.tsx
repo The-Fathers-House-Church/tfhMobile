@@ -3,7 +3,7 @@ import React from 'react';
 import { DevotionalType } from '../../types/types';
 import { StyleSheet } from 'react-native';
 import { DMBold, DMRegular } from '../../theme/fonts';
-import { fontScale } from '../../functions/font';
+import { fontScale, lineHeightSmall } from '../../functions/font';
 import appColors from '../../theme/colors';
 import ReadIcon from '../../assets/icons/svgs/devotional/read.svg';
 import NotReadIcon from '../../assets/icons/svgs/devotional/not-read.svg';
@@ -12,6 +12,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DEVOTIONAL_STORAGE } from '../../functions/environmentVariables';
 import { screenNames } from '../../screens/screenNames';
 import HTMLRenderer from '../../common/HTMLRenderer';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const SelectedDevotional = ({
   devotional,
@@ -84,47 +85,50 @@ const SelectedDevotional = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 19,
-    paddingHorizontal: 28,
+    paddingVertical: scaledHeight(19),
+    paddingHorizontal: scaledWidth(28),
   },
   date: {
     fontFamily: DMRegular,
     fontSize: fontScale(11),
     color: appColors.black,
-    marginBottom: 20,
+    marginBottom: scaledHeight(20),
     textAlign: 'center',
   },
   contentContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 11,
+    gap: scaledWidth(11),
   },
   title: {
     fontFamily: DMBold,
     color: appColors.primaryColor,
     fontSize: fontScale(17.2),
     textTransform: 'capitalize',
+    lineHeight: lineHeightSmall,
   },
   mainText: {
     fontFamily: DMRegular,
-    fontSize: fontScale(8),
+    fontSize: fontScale(10),
     color: appColors.black,
+    lineHeight: lineHeightSmall,
   },
   text: {
     fontFamily: DMBold,
-    fontSize: fontScale(8),
+    fontSize: fontScale(10),
     color: appColors.black,
+    lineHeight: lineHeightSmall,
   },
   readTextContainer: {
     flexDirection: 'row',
-    gap: 3,
+    gap: scaledWidth(3),
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: scaledHeight(10),
   },
   readText: {
     fontFamily: DMBold,
     color: appColors.secondaryColor,
-    fontSize: fontScale(11),
+    fontSize: fontScale(12),
   },
 });
 

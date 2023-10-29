@@ -5,6 +5,7 @@ import ForwardIcon from '../../assets/icons/svgs/layout/forward.svg';
 import { fontScale } from '../../functions/font';
 import appColors from '../../theme/colors';
 import { DMBold } from '../../theme/fonts';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 export default function Pagination({
   totalResults,
@@ -40,9 +41,9 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 20,
+    gap: scaledWidth(20),
     justifyContent: 'center',
-    marginTop: 40,
+    marginTop: scaledHeight(40),
   },
   text: {
     fontFamily: DMBold,

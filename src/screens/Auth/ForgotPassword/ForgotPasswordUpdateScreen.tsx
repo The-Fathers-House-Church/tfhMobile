@@ -14,6 +14,7 @@ import { sendCatchFeedback, sendFeedback } from '../../../functions/feedback';
 import { screenNames } from '../../screenNames';
 import EmailIcon from '../../../assets/icons/svgs/auth/email.svg';
 import { fontScale } from '../../../functions/font';
+import { scaledHeight, scaledWidth } from '../../../functions/utils';
 
 const ForgotPasswordUpdateScreen = ({
   navigation,
@@ -166,9 +167,9 @@ const ForgotPasswordUpdateScreen = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 30,
+    paddingHorizontal: scaledWidth(30),
     flexGrow: 1,
-    paddingVertical: 22,
+    paddingVertical: scaledHeight(22),
     backgroundColor: appColors.white,
     alignItems: 'center',
   },
@@ -177,14 +178,14 @@ const styles = StyleSheet.create({
     fontFamily: DMBold,
     fontSize: fontScale(24),
     color: appColors.primaryColor,
-    marginTop: 12,
-    marginBottom: 10,
+    marginTop: scaledHeight(12),
+    marginBottom: scaledHeight(10),
   },
   subText: {
     fontFamily: DMRegular,
     fontSize: fontScale(12),
     color: appColors.primaryColor,
-    marginBottom: 40,
+    marginBottom: scaledHeight(40),
     textAlign: 'center',
   },
 

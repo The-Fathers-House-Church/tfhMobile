@@ -6,6 +6,7 @@ import appColors from '../../theme/colors';
 import ReactNativeModal from 'react-native-modal';
 import Button from '../../common/Button';
 import { EventGalleryType } from '../../types/types';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const EventGallery = ({ gallery }: { gallery: EventGalleryType }) => {
   const [modalOpen, setModalOpen] = React.useState(false);
@@ -65,23 +66,23 @@ const EventGallery = ({ gallery }: { gallery: EventGalleryType }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 12,
+    marginTop: scaledHeight(12),
   },
   title: {
     fontFamily: DMBold,
     fontSize: fontScale(16),
     color: appColors.black,
-    marginBottom: 12,
+    marginBottom: scaledHeight(12),
   },
   imageContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     flex: 1,
     flexWrap: 'wrap',
-    gap: 10,
+    gap: scaledWidth(10),
   },
   image: {
-    height: 276,
+    height: scaledHeight(276),
     width: '100%',
     resizeMode: 'cover',
   },
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
     fontFamily: DMRegular,
     fontSize: fontScale(11),
     color: appColors.black,
-    marginBottom: 20,
+    marginBottom: scaledHeight(20),
   },
 });
 

@@ -6,6 +6,7 @@ import Button from '../../../common/Button';
 import { screenNames } from '../../../screens/screenNames';
 import { useAppSelector } from '../../../store/hooks';
 import { fontScale } from '../../../functions/font';
+import { scaledHeight, scaledWidth } from '../../../functions/utils';
 
 const SignupForm = ({
   navigateToScreen,
@@ -49,15 +50,15 @@ const SignupForm = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 15,
-    marginTop: 16,
+    paddingHorizontal: scaledWidth(15),
+    marginTop: scaledHeight(16),
   },
   mainImage: {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: 204,
+    height: scaledHeight(204),
     shadowColor: '#d8d0ff',
     shadowOffset: {
       width: 0,
@@ -72,17 +73,17 @@ const styles = StyleSheet.create({
     fontSize: fontScale(20),
     fontFamily: DMBold,
     color: appColors.white,
-    maxWidth: 250,
+    maxWidth: scaledWidth(250),
     textAlign: 'center',
-    marginBottom: 16,
+    marginBottom: scaledHeight(16),
   },
   mainButton: {
-    maxWidth: 141,
+    maxWidth: scaledWidth(141),
     borderRadius: 15,
     backgroundColor: 'transparent',
     borderWidth: 1,
     borderColor: appColors.white,
-    height: 37,
+    height: scaledHeight(37),
   },
   introText: {
     fontFamily: DMBold,

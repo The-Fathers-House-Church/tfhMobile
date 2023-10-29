@@ -18,7 +18,8 @@ import FacebookIcon from '../../assets/icons/svgs/pastors/facebook.svg';
 import TwitterIcon from '../../assets/icons/svgs/pastors/twitter.svg';
 import LinkedinIcon from '../../assets/icons/svgs/pastors/linkedin.svg';
 import InstagramIcon from '../../assets/icons/svgs/pastors/instagram.svg';
-import { fontScale } from '../../functions/font';
+import { fontScale, lineHeight } from '../../functions/font';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const SinglePastorScreen = ({
   route,
@@ -116,16 +117,16 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 35,
-    paddingVertical: 18,
+    paddingHorizontal: scaledWidth(35),
+    paddingVertical: scaledHeight(18),
   },
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 16,
+    gap: scaledWidth(16),
   },
   image: {
-    width: 124,
+    width: scaledWidth(124),
     height: '100%',
     borderRadius: 6,
     resizeMode: 'cover',
@@ -134,21 +135,21 @@ const styles = StyleSheet.create({
     fontFamily: DMBold,
     color: appColors.primaryColor,
     fontSize: fontScale(20),
-    marginBottom: 5,
+    marginBottom: scaledHeight(5),
   },
   position: {
     color: appColors.secondaryColor,
     fontSize: fontScale(10),
-    marginBottom: 10,
+    marginBottom: scaledHeight(10),
     fontFamily: DMMediumItalic,
   },
 
   socialContainer: {
-    gap: 5,
+    gap: scaledHeight(5),
   },
   socialIcon: {
     flexDirection: 'row',
-    gap: 5,
+    gap: scaledHeight(5),
     alignItems: 'center',
   },
   socialText: {
@@ -157,12 +158,13 @@ const styles = StyleSheet.create({
     color: appColors.black,
   },
   descriptionContainer: {
-    marginTop: 25,
+    marginTop: scaledHeight(25),
   },
   description: {
     color: appColors.black,
     fontSize: fontScale(12),
     fontFamily: DMRegular,
+    lineHeight: lineHeight,
   },
 });
 

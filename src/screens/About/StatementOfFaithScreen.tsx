@@ -8,6 +8,7 @@ import FaithCard from '../../components/AboutScreen/FaithCard';
 import { fontScale } from '../../functions/font';
 import appColors from '../../theme/colors';
 import { DMBold } from '../../theme/fonts';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const StatementOfFaithScreen = ({}: NativeStackScreenProps<
   any,
@@ -30,18 +31,18 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 31,
-    paddingBottom: 20,
+    paddingHorizontal: scaledWidth(31),
+    paddingBottom: scaledHeight(20),
   },
   title: {
     fontSize: fontScale(16),
     color: appColors.primaryColor,
-    marginBottom: 19,
+    marginBottom: scaledHeight(19),
     fontFamily: DMBold,
     textAlign: 'center',
   },
   listContainer: {
-    gap: 15,
+    gap: scaledHeight(15),
   },
 });
 

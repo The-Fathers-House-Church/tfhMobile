@@ -13,6 +13,7 @@ import appColors from '../../theme/colors';
 import { DMBold } from '../../theme/fonts';
 import Loader from '../Loader';
 import { fontScale } from '../../functions/font';
+import { scaledHeight } from '../../functions/utils';
 
 interface Props {
   title: string;
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     width: '100%',
     backgroundColor: appColors.secondaryColor,
-    height: 45,
+    height: scaledHeight(45),
     borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',

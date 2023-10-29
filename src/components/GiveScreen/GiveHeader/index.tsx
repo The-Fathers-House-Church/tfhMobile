@@ -4,6 +4,7 @@ import appColors from '../../../theme/colors';
 import { DMBold } from '../../../theme/fonts';
 import GiftIcon from '../../../assets/icons/svgs/give/gift.svg';
 import { fontScale } from '../../../functions/font';
+import { scaledHeight } from '../../../functions/utils';
 
 const GiveHeader = () => {
   return (
@@ -16,10 +17,10 @@ const GiveHeader = () => {
 
 const styles = StyleSheet.create({
   container: {
-    gap: 9,
+    gap: scaledHeight(9),
     alignItems: 'center',
-    marginTop: 79,
-    marginBottom: 39,
+    marginTop: scaledHeight(79),
+    marginBottom: scaledHeight(39),
   },
   mainText: {
     color: appColors.primaryColor,

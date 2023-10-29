@@ -6,6 +6,7 @@ import MediaCard from '../../components/MediaScreen/MediaCard';
 import mediaContents from '../../components/MediaScreen/mediaContents';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { screenNamesTypes } from '../screenNamesTypes';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const MediaScreen = ({
   navigation,
@@ -18,10 +19,11 @@ const MediaScreen = ({
       contentContainerStyle={{
         flexGrow: 1,
         backgroundColor: appColors.white,
-        paddingBottom: 30,
+        paddingBottom: scaledHeight(30),
       }}>
       <IntroHeader />
-      <View style={{ paddingHorizontal: 20, gap: 17 }}>
+      <View
+        style={{ paddingHorizontal: scaledWidth(20), gap: scaledHeight(17) }}>
         {mediaContents.map(item => (
           <MediaCard
             key={item.mainText}

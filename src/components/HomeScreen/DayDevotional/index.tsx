@@ -9,6 +9,7 @@ import { useAppSelector } from '../../../store/hooks';
 import SectionLoader from '../../../common/Loader/SectionLoader';
 import { fontScale } from '../../../functions/font';
 import { screenNames } from '../../../screens/screenNames';
+import { scaledHeight, scaledWidth } from '../../../functions/utils';
 
 const DayDevotional = ({
   navigateToScreen,
@@ -64,14 +65,14 @@ const DayDevotional = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 16,
-    marginTop: 30,
+    paddingHorizontal: scaledWidth(16),
+    marginTop: scaledHeight(30),
   },
   contentContainer: {
-    paddingVertical: 12,
-    paddingHorizontal: 7,
+    paddingVertical: scaledHeight(12),
+    paddingHorizontal: scaledHeight(7),
     flexDirection: 'row',
-    gap: 13,
+    gap: scaledWidth(13),
     alignItems: 'center',
   },
   detailsContainer: {
@@ -83,25 +84,25 @@ const styles = StyleSheet.create({
     fontSize: fontScale(8),
     color: appColors.secondaryColor,
     textTransform: 'uppercase',
-    maxWidth: 235,
-    marginBottom: 5,
+    maxWidth: scaledWidth(235),
+    marginBottom: scaledHeight(5),
   },
   title: {
     fontFamily: DMBold,
     fontSize: fontScale(15),
     color: appColors.primaryColor,
-    marginBottom: 2,
+    marginBottom: scaledHeight(2),
     textTransform: 'capitalize',
   },
   date: {
     fontFamily: DMRegular,
     fontSize: fontScale(9),
     color: appColors.black,
-    marginBottom: 20,
+    marginBottom: scaledHeight(20),
   },
   buttonStyle: {
-    maxWidth: 159,
-    height: 32,
+    maxWidth: scaledWidth(159),
+    height: scaledHeight(32),
     borderRadius: 3.88,
   },
   notFoundText: {

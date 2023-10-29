@@ -3,7 +3,8 @@ import React from 'react';
 import appColors from '../../../theme/colors';
 import { DMBold, DMRegular } from '../../../theme/fonts';
 import LiveIcon from '../../../assets/icons/svgs/media/live.svg';
-import { fontScale } from '../../../functions/font';
+import { fontScale, lineHeightSmall } from '../../../functions/font';
+import { scaledHeight, scaledWidth } from '../../../functions/utils';
 
 const MediaCard = ({
   icon,
@@ -63,35 +64,37 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 20.0,
     elevation: 24,
-    paddingVertical: 23,
-    paddingRight: 15,
-    paddingLeft: 38,
+    paddingVertical: scaledHeight(23),
+    paddingRight: scaledWidth(15),
+    paddingLeft: scaledWidth(38),
   },
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 40,
+    gap: scaledWidth(40),
   },
   mainText: {
     fontFamily: DMBold,
     fontSize: fontScale(16),
     color: appColors.primaryColor,
-    marginBottom: 6,
+    marginBottom: scaledHeight(6),
   },
   subText: {
     color: appColors.black,
     fontSize: fontScale(10),
     fontFamily: DMRegular,
+    lineHeight: lineHeightSmall,
   },
   infoTextContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 3,
-    marginTop: 4,
+    gap: scaledWidth(3),
+    marginTop: scaledHeight(4),
   },
   infoText: {
     color: appColors.red,
     fontSize: fontScale(10),
+    lineHeight: lineHeightSmall,
     fontFamily: DMBold,
   },
 });

@@ -1,14 +1,15 @@
-import { View, Text, Image } from 'react-native';
+import { Image } from 'react-native';
 import React from 'react';
+import { scaledHeight } from '../../functions/utils';
 
 const AboutBrandImage = () => {
   return (
     <Image
       source={require('../../assets/brand/logo.png')}
       style={{
-        height: 142,
+        height: scaledHeight(122),
         resizeMode: 'contain',
-        marginVertical: 19,
+        marginVertical: scaledHeight(19),
         alignSelf: 'center',
       }}
     />

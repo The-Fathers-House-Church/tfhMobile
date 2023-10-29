@@ -6,6 +6,7 @@ import appColors from '../../theme/colors';
 import { fontScale } from '../../functions/font';
 import { TFCCCellType } from '../../types/types';
 import Card from '../../common/Card';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const CenterCard = ({ item }: { item: TFCCCellType }) => {
   const separateText = (text: string) => {
@@ -13,7 +14,7 @@ const CenterCard = ({ item }: { item: TFCCCellType }) => {
     return text.split(/:(.*)/s);
   };
   return (
-    <Card containerStyle={{ padding: 10 }}>
+    <Card containerStyle={{ padding: scaledWidth(10) }}>
       <Text style={styles.content}>{item.host_address}</Text>
       <Text style={styles.cellLeader}>
         {item.cell_leader}, {item.phone}
@@ -24,37 +25,22 @@ const CenterCard = ({ item }: { item: TFCCCellType }) => {
 };
 
 const styles = StyleSheet.create({
-  title: {
-    fontFamily: DMBold,
-    color: appColors.primaryColor,
-    marginBottom: 5,
-    fontSize: fontScale(12),
-  },
-
   content: {
     color: appColors.primaryColor,
-    fontSize: fontScale(10),
+    fontSize: fontScale(12),
     fontFamily: DMRegular,
+    marginBottom: scaledHeight(5),
   },
   cellLeader: {
     color: appColors.black,
-    fontSize: fontScale(8),
+    fontSize: fontScale(12),
     fontFamily: DMBold,
+    marginBottom: scaledHeight(5),
   },
   zone: {
     color: appColors.grey,
-    fontSize: fontScale(6),
-    fontFamily: DMRegular,
-  },
-  listContainer: {
-    gap: 10,
-    marginTop: 10,
-  },
-  listTitle: {
-    fontFamily: DMBold,
-    color: appColors.black,
     fontSize: fontScale(10),
-    marginTop: 10,
+    fontFamily: DMRegular,
   },
 });
 

@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { setPageToken } from '../../store/slices/youtubeVideos';
 import appColors from '../../theme/colors';
 import { DMBold } from '../../theme/fonts';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 export default function YoutubePagination({
   setPage,
@@ -63,9 +64,9 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 20,
+    gap: scaledWidth(20),
     justifyContent: 'center',
-    marginTop: 40,
+    marginTop: scaledHeight(40),
   },
   text: {
     fontFamily: DMBold,

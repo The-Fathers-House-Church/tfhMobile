@@ -8,6 +8,7 @@ import appColors from '../../theme/colors';
 import { DMBold } from '../../theme/fonts';
 import ServiceCard from '../../components/AboutScreen/ServiceCard';
 import serviceSchedules from '../../components/AboutScreen/serviceSchedules';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const ServiceScheduleScreen = ({}: NativeStackScreenProps<
   any,
@@ -30,18 +31,18 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 31,
-    paddingBottom: 20,
+    paddingHorizontal: scaledWidth(31),
+    paddingBottom: scaledHeight(20),
   },
   title: {
     fontSize: fontScale(16),
     color: appColors.primaryColor,
-    marginBottom: 30,
+    marginBottom: scaledHeight(30),
     fontFamily: DMBold,
     textAlign: 'center',
   },
   listContainer: {
-    gap: 25,
+    gap: scaledHeight(25),
   },
 });
 

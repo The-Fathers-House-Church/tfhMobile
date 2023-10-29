@@ -7,10 +7,11 @@ import { AnnouncementType } from '../../types/types';
 import { ScrollView } from 'react-native';
 import { DMBold, DMRegular } from '../../theme/fonts';
 import appColors from '../../theme/colors';
-import { fontScale } from '../../functions/font';
+import { fontScale, lineHeight } from '../../functions/font';
 import ReactNativeModal from 'react-native-modal';
 import Button from '../../common/Button';
 import HTMLRenderer from '../../common/HTMLRenderer';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const SingleAnnouncementScreen = ({
   navigation,
@@ -53,7 +54,7 @@ const SingleAnnouncementScreen = ({
             }}
             baseStyle={{
               fontFamily: DMRegular,
-              fontSize: fontScale(10),
+              fontSize: fontScale(12),
               color: '#888888',
             }}
           />
@@ -81,31 +82,36 @@ const SingleAnnouncementScreen = ({
 };
 
 const styles = StyleSheet.create({
-  container: { flexGrow: 1, backgroundColor: '#fff', paddingBottom: 20 },
+  container: {
+    flexGrow: 1,
+    backgroundColor: '#fff',
+    paddingBottom: scaledHeight(20),
+  },
   contentContainer: {
-    paddingHorizontal: 25,
+    paddingHorizontal: scaledWidth(25),
   },
   image: {
     width: '100%',
-    height: 241,
+    height: scaledHeight(241),
     resizeMode: 'cover',
   },
   title: {
     fontFamily: DMBold,
     color: appColors.primaryColor,
     fontSize: fontScale(24),
-    marginTop: 17,
+    marginTop: scaledHeight(17),
   },
   separator: {
     width: '100%',
     borderBottomWidth: 0.5,
     borderBottomColor: '#D8D8D8',
-    marginVertical: 17,
+    marginVertical: scaledHeight(17),
   },
   description: {
     fontFamily: DMRegular,
-    fontSize: fontScale(10),
+    fontSize: fontScale(12),
     color: '#888888',
+    lineHeight: lineHeight,
   },
 });
 

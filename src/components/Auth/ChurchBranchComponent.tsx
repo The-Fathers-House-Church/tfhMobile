@@ -8,6 +8,8 @@ import { ChurchType } from '../../types/types';
 import { sendCatchFeedback } from '../../functions/feedback';
 import { appAxios } from '../../api/axios';
 import Loader from '../../common/Loader';
+import { scaledHeight } from '../../functions/utils';
+import { fontScale } from '../../functions/font';
 
 const ChurchBranchComponent = ({
   selectItem,
@@ -67,14 +69,14 @@ const styles = StyleSheet.create({
     backgroundColor: appColors.white,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
-    paddingHorizontal: 15,
-    paddingVertical: 37,
+    paddingHorizontal: scaledHeight(15),
+    paddingVertical: scaledHeight(37),
   },
   title: {
     fontFamily: DMBold,
-    fontSize: 14,
+    fontSize: fontScale(14),
     color: appColors.primaryColor,
-    marginBottom: 17,
+    marginBottom: scaledHeight(17),
     alignSelf: 'center',
   },
 });

@@ -14,16 +14,6 @@ export interface PastorType {
 
 const pastorsData: PastorType[] = [
   {
-    name: 'Pastor (Mrs) Rita Udoh',
-    position: 'Co-founding Pastor',
-    description:
-      'Pastor (Mrs) Rita Udoh was a 1988 graduate of Dramatic Arts from Obafemi Awolowo University, Ile – Ife. She had a wealth of experience as an administrator in some of Nigeria’s leading reputable organizations.',
-    additionalDescription: [
-      'Mama Ree as she was fondly called was the Co-founding Pastor of The Father’s House. She headed the Maturity Ministry and was deeply passionate about Christian growth, maturity and was an expert in mentoring. She and Apostle Richard Udoh were blessed with 3 God-fearing children. She went on to be with the Lord on August 10, 2018.',
-    ],
-    imageLink: require('../../assets/images/pastors/mamaree.jpeg'),
-  },
-  {
     name: 'Apostle (Dr.) Richard Udoh',
     position: 'Senior Pastor',
     description:
@@ -36,6 +26,17 @@ const pastorsData: PastorType[] = [
     instagramLink: 'https://www.instagram.com/drrichardudoh/',
     facebookLink: 'https://www.facebook.com/richard.udoh.9/',
   },
+  {
+    name: 'Pastor (Mrs) Rita Udoh',
+    position: 'Co-founding Pastor',
+    description:
+      'Pastor (Mrs) Rita Udoh was a 1988 graduate of Dramatic Arts from Obafemi Awolowo University, Ile – Ife. She had a wealth of experience as an administrator in some of Nigeria’s leading reputable organizations.',
+    additionalDescription: [
+      'Mama Ree as she was fondly called was the Co-founding Pastor of The Father’s House. She headed the Maturity Ministry and was deeply passionate about Christian growth, maturity and was an expert in mentoring. She and Apostle Richard Udoh were blessed with 3 God-fearing children. She went on to be with the Lord on August 10, 2018.',
+    ],
+    imageLink: require('../../assets/images/pastors/mamaree.jpeg'),
+  },
+
   {
     name: 'Reverend Edith Udoh',
     position: 'Pastor',

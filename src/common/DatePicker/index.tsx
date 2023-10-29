@@ -14,6 +14,7 @@ import CalendarIcon from '../../assets/icons/svgs/auth/calendar.svg';
 import DatePicker from 'react-native-date-picker';
 import { DMRegular } from '../../theme/fonts';
 import { fontScale } from '../../functions/font';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 interface Props {
   value?: Date;
@@ -119,11 +120,12 @@ const CustomDatePicker = ({
 
 const styles = StyleSheet.create({
   input: {
-    height: 45,
+    height: scaledHeight(45),
     borderWidth: 0.5,
     borderColor: '#D1D1D1',
     borderRadius: 5,
-    padding: 11.24,
+    paddingHorizontal: scaledWidth(11.24),
+    paddingVertical: scaledHeight(11.24),
     width: '100%',
     color: appColors.primaryColor,
   },
@@ -131,7 +133,7 @@ const styles = StyleSheet.create({
     fontSize: fontScale(10),
     color: appColors.errorColor,
     alignSelf: 'flex-start',
-    marginTop: 3,
+    marginTop: scaledHeight(3),
   },
   iconContainer: {
     position: 'absolute',

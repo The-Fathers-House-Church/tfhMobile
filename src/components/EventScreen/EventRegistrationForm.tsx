@@ -17,6 +17,8 @@ import ReactNativeModal from 'react-native-modal';
 import DropdownItem from '../../common/DropdownItem';
 import { DMBold } from '../../theme/fonts';
 import { ScrollView } from 'react-native';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
+import { fontScale } from '../../functions/font';
 
 const EventRegistrationForm = ({
   event,
@@ -199,23 +201,23 @@ const EventRegistrationForm = ({
 };
 const styles = StyleSheet.create({
   container: {
-    marginTop: 10,
+    marginTop: scaledHeight(10),
   },
   dropdownContainer: {
     flex: 0.5,
     backgroundColor: appColors.white,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
-    paddingHorizontal: 15,
-    paddingVertical: 37,
-    gap: 15,
+    paddingHorizontal: scaledWidth(15),
+    paddingVertical: scaledHeight(37),
+    gap: scaledHeight(15),
     marginTop: 'auto',
   },
   dropdownTitle: {
     fontFamily: DMBold,
-    fontSize: 14,
+    fontSize: fontScale(14),
     color: appColors.primaryColor,
-    marginBottom: 17,
+    marginBottom: scaledHeight(17),
     alignSelf: 'center',
   },
 });

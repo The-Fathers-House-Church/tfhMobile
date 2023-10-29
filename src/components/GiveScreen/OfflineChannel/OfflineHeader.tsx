@@ -3,6 +3,7 @@ import React from 'react';
 import { DMBold } from '../../../theme/fonts';
 import appColors from '../../../theme/colors';
 import { fontScale } from '../../../functions/font';
+import { scaledHeight, scaledWidth } from '../../../functions/utils';
 
 const OfflineHeader = () => {
   return (
@@ -18,11 +19,11 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
+    gap: scaledWidth(10),
     justifyContent: 'center',
     // marginTop: 54,
-    paddingHorizontal: 24,
-    marginBottom: 24,
+    paddingHorizontal: scaledWidth(24),
+    marginBottom: scaledHeight(24),
   },
   text: {
     fontFamily: DMBold,

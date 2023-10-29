@@ -3,7 +3,8 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { DMBold, DMRegular } from '../../../theme/fonts';
 import appColors from '../../../theme/colors';
-import { fontScale } from '../../../functions/font';
+import { fontScale, lineHeightSmall } from '../../../functions/font';
+import { scaledHeight, scaledWidth } from '../../../functions/utils';
 
 const IntroHeader = () => {
   return (
@@ -18,10 +19,10 @@ const IntroHeader = () => {
 
 const styles = StyleSheet.create({
   container: {
-    gap: 4,
-    paddingHorizontal: 15,
-    marginTop: 5,
-    marginBottom: 31,
+    gap: scaledHeight(4),
+    paddingHorizontal: scaledWidth(15),
+    marginTop: scaledHeight(5),
+    marginBottom: scaledHeight(31),
   },
   mainText: {
     fontSize: fontScale(24),
@@ -32,6 +33,7 @@ const styles = StyleSheet.create({
     fontFamily: DMRegular,
     color: appColors.primaryColor,
     fontSize: fontScale(11),
+    lineHeight: lineHeightSmall,
   },
 });
 

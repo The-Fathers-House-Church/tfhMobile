@@ -4,6 +4,8 @@ import appColors from '../../theme/colors';
 import { DMBold } from '../../theme/fonts';
 import GenderItem from './GenderItem';
 import genders from './genders';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
+import { fontScale } from '../../functions/font';
 
 const GenderOptionsComponent = ({
   selectItem,
@@ -17,7 +19,7 @@ const GenderOptionsComponent = ({
       <Text style={styles.title}>Select your gender</Text>
       <ScrollView
         contentContainerStyle={{
-          gap: 9,
+          gap: scaledHeight(9),
         }}>
         {genders.map(gender => (
           <GenderItem
@@ -38,14 +40,14 @@ const styles = StyleSheet.create({
     backgroundColor: appColors.white,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
-    paddingHorizontal: 15,
-    paddingVertical: 37,
+    paddingHorizontal: scaledWidth(15),
+    paddingVertical: scaledHeight(37),
   },
   title: {
     fontFamily: DMBold,
-    fontSize: 14,
+    fontSize: fontScale(14),
     color: appColors.primaryColor,
-    marginBottom: 17,
+    marginBottom: scaledHeight(17),
     alignSelf: 'center',
   },
 });

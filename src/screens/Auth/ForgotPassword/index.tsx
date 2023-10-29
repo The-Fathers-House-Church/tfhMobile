@@ -13,6 +13,7 @@ import { appAxios } from '../../../api/axios';
 import { sendCatchFeedback, sendFeedback } from '../../../functions/feedback';
 import { screenNames } from '../../screenNames';
 import { fontScale } from '../../../functions/font';
+import { scaledHeight, scaledWidth } from '../../../functions/utils';
 
 const ForgotPasswordScreen = ({
   navigation,
@@ -87,9 +88,9 @@ const ForgotPasswordScreen = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 30,
+    paddingHorizontal: scaledWidth(30),
     flexGrow: 1,
-    paddingVertical: 75,
+    paddingVertical: scaledHeight(75),
     backgroundColor: appColors.white,
   },
 
@@ -97,13 +98,13 @@ const styles = StyleSheet.create({
     fontFamily: DMBold,
     fontSize: fontScale(24),
     color: appColors.primaryColor,
-    marginBottom: 10,
+    marginBottom: scaledHeight(10),
   },
   subText: {
     fontFamily: DMRegular,
     fontSize: fontScale(11),
     color: appColors.primaryColor,
-    marginBottom: 15,
+    marginBottom: scaledHeight(15),
   },
 });
 

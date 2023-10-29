@@ -9,6 +9,7 @@ import { signOut } from '../../../store/slices/user';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { screenNames } from '../../../screens/screenNames';
 import { fontScale } from '../../../functions/font';
+import { scaledHeight, scaledWidth } from '../../../functions/utils';
 
 const AuthenticationItem = ({
   navigateToScreen,
@@ -48,9 +49,9 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 20,
-    paddingHorizontal: 40,
-    paddingVertical: 20,
+    gap: scaledWidth(20),
+    paddingHorizontal: scaledWidth(40),
+    paddingVertical: scaledHeight(20),
     backgroundColor: '#D82F3C',
   },
   titleText: {

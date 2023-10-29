@@ -8,6 +8,7 @@ import { fontScale } from '../../../functions/font';
 import GiftIcon from '../../../assets/icons/svgs/home/gift.svg';
 import SectionTitle from '../../../common/SectionTitle';
 import tabNames from '../../../routes/AppTabs/tabNames';
+import { scaledHeight, scaledWidth } from '../../../functions/utils';
 
 const GiveCard = ({
   navigateToScreen,
@@ -38,17 +39,17 @@ const GiveCard = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 16,
-    marginTop: 30,
+    paddingHorizontal: scaledWidth(16),
+    marginTop: scaledHeight(30),
   },
   card: {
-    paddingVertical: 13,
-    paddingHorizontal: 25,
+    paddingVertical: scaledHeight(13),
+    paddingHorizontal: scaledWidth(25),
     backgroundColor: '#FFF5F2',
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 23,
+    gap: scaledWidth(23),
   },
   title: {
     fontFamily: DMBold,
@@ -56,8 +57,8 @@ const styles = StyleSheet.create({
     color: appColors.secondaryColor,
   },
   buttonStyle: {
-    maxWidth: 159,
-    height: 32,
+    maxWidth: scaledWidth(159),
+    height: scaledHeight(32),
     borderRadius: 3.88,
     backgroundColor: appColors.primaryColor,
   },

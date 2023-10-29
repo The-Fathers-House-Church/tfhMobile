@@ -5,7 +5,8 @@ import { screenNamesTypes } from '../screenNamesTypes';
 import AboutBrandImage from '../../components/AboutScreen/AboutBrandImage';
 import { DMRegular } from '../../theme/fonts';
 import appColors from '../../theme/colors';
-import { fontScale } from '../../functions/font';
+import { fontScale, lineHeight } from '../../functions/font';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const HistoryScreen = ({}: NativeStackScreenProps<
   any,
@@ -16,8 +17,8 @@ const HistoryScreen = ({}: NativeStackScreenProps<
       contentContainerStyle={{
         flexGrow: 1,
         backgroundColor: '#fff',
-        paddingHorizontal: 31,
-        paddingBottom: 20,
+        paddingHorizontal: scaledWidth(31),
+        paddingBottom: scaledHeight(20),
       }}>
       <AboutBrandImage />
 
@@ -81,7 +82,8 @@ const styles = StyleSheet.create({
   text: {
     fontSize: fontScale(10),
     fontFamily: DMRegular,
-    marginBottom: 10,
+    marginBottom: scaledHeight(12),
+    lineHeight: lineHeight,
     color: appColors.black,
   },
 });

@@ -5,7 +5,8 @@ import Card from '../../common/Card';
 import { StyleSheet } from 'react-native';
 import appColors from '../../theme/colors';
 import { DMBold, DMRegular } from '../../theme/fonts';
-import { fontScale } from '../../functions/font';
+import { fontScale, lineHeightSmall } from '../../functions/font';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const LocationCard = ({ location }: { location: LocationType }) => {
   return (
@@ -21,15 +22,15 @@ const LocationCard = ({ location }: { location: LocationType }) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 13,
-    paddingHorizontal: 16,
+    paddingVertical: scaledHeight(13),
+    paddingHorizontal: scaledWidth(16),
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
+    gap: scaledWidth(10),
   },
   image: {
-    width: 110,
-    height: 123,
+    width: scaledWidth(110),
+    height: scaledHeight(123),
     resizeMode: 'cover',
     borderRadius: 6,
   },
@@ -37,13 +38,14 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     color: appColors.primaryColor,
     fontFamily: DMBold,
-    marginBottom: 6,
+    marginBottom: scaledHeight(6),
     fontSize: fontScale(16),
   },
   address: {
     color: appColors.black,
     fontFamily: DMRegular,
     fontSize: fontScale(10),
+    lineHeight: lineHeightSmall,
   },
 });
 

@@ -14,6 +14,7 @@ import { DMBold, DMRegular } from '../../theme/fonts';
 import { fontScale } from '../../functions/font';
 import Card from '../../common/Card';
 import podcastLinks from '../../components/MediaScreen/podcastLinks';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const PodcastsScreen = ({}: NativeStackScreenProps<
   any,
@@ -40,15 +41,15 @@ const PodcastsScreen = ({}: NativeStackScreenProps<
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 31,
-    paddingVertical: 18,
+    paddingHorizontal: scaledWidth(31),
+    paddingVertical: scaledHeight(18),
     flexGrow: 1,
     backgroundColor: appColors.white,
   },
   title: {
     fontFamily: DMBold,
     fontSize: fontScale(24),
-    marginBottom: 2,
+    marginBottom: scaledHeight(2),
     color: appColors.primaryColor,
   },
   subtitle: {
@@ -57,11 +58,12 @@ const styles = StyleSheet.create({
     fontSize: fontScale(11),
   },
   contentContainer: {
-    gap: 21,
-    marginTop: 47,
+    gap: scaledHeight(21),
+    marginTop: scaledHeight(47),
   },
   card: {
-    padding: 21,
+    paddingHorizontal: scaledWidth(21),
+    paddingVertical: scaledHeight(21),
     justifyContent: 'center',
     alignItems: 'center',
   },

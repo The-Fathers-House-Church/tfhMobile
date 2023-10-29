@@ -11,6 +11,7 @@ import appColors from '../../theme/colors';
 import SelectedIcon from '../../assets/icons/svgs/auth/selected.svg';
 import NotSelectedIcon from '../../assets/icons/svgs/auth/not-selected.svg';
 import { fontScale } from '../../functions/font';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const ChurchMemberItem = ({
   title,
@@ -42,20 +43,22 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FCFCFC',
     borderRadius: 5,
-    paddingHorizontal: 24,
-    paddingVertical: 16,
+    paddingHorizontal: scaledWidth(24),
+    paddingVertical: scaledHeight(16),
     borderWidth: 0.75,
     borderColor: '#DBDBDB',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     flex: 1,
+    gap: scaledWidth(5),
+    flexWrap: 'wrap',
   },
   title: {
     fontFamily: DMBold,
     fontSize: fontScale(8),
     color: appColors.primaryColor,
-    marginBottom: 2,
+    marginBottom: scaledHeight(2),
   },
 });
 

@@ -16,6 +16,7 @@ import appColors from '../../theme/colors';
 import { fontScale } from '../../functions/font';
 import PlayIcon from '../../assets/icons/svgs/home/play.svg';
 import { getYoutubeLink } from '../../functions/stringManipulations';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const LatestMessage = () => {
   const { videos, loading } = useAppSelector(state => state.youtubeVideos);
@@ -72,8 +73,8 @@ const LatestMessage = () => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 16,
-    marginTop: 30,
+    paddingHorizontal: scaledWidth(16),
+    marginTop: scaledHeight(30),
   },
 
   contentContainer: {
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   image: {
-    height: 163,
+    height: scaledHeight(163),
     width: '100%',
     resizeMode: 'cover',
     borderTopRightRadius: 10,
@@ -112,8 +113,8 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     backgroundColor: appColors.white,
-    paddingVertical: 9,
-    paddingHorizontal: 9,
+    paddingVertical: scaledHeight(9),
+    paddingHorizontal: scaledWidth(9),
     flex: 1,
     borderBottomRightRadius: 10,
     borderBottomLeftRadius: 10,
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
     fontFamily: DMBold,
     color: appColors.primaryColor,
     fontSize: fontScale(15),
-    marginBottom: 3,
+    marginBottom: scaledHeight(3),
     textTransform: 'capitalize',
   },
   subtitle: {
