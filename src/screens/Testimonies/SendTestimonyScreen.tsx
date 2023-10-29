@@ -19,7 +19,7 @@ const SendTestimonyScreen = ({
       <Text style={styles.title}>Got a Testimony?</Text>
       <Text style={styles.subtitle}>
         Feel free to share what God has done for you which you want to testify
-        about.
+        about. Your testimony would be reviewed and publicized soon!
       </Text>
       <NewTestimonyForm navigateToScreen={navigateToScreen} />
     </ScrollView>
