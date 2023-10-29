@@ -15,6 +15,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DEVOTIONAL_STORAGE } from '../../functions/environmentVariables';
 import HTMLRenderer from '../../common/HTMLRenderer';
 import { scaledHeight, scaledWidth } from '../../functions/utils';
+import { appAxios } from '../../api/axios';
+import { sendFeedback } from '../../functions/feedback';
 
 const SingleDevotionalScreen = ({
   navigation,
@@ -32,6 +34,19 @@ const SingleDevotionalScreen = ({
     if (!routeParams?.devotional) {
       navigation.navigate(screenNames.DEVOTIONALS);
     }
+  }, []);
+
+  // Mark Devotional View
+  const registerView = async () => {
+    try {
+      await appAxios.get('/devotional/view/' + devotional?.dish_id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  React.useEffect(() => {
+    registerView();
   }, []);
 
   // Check if devotional is read

@@ -3,7 +3,7 @@ import React from 'react';
 import { DevotionalType } from '../../types/types';
 import { StyleSheet } from 'react-native';
 import { DMBold, DMRegular } from '../../theme/fonts';
-import { fontScale, lineHeightSmall } from '../../functions/font';
+import { fontScale, lineHeight, lineHeightSmall } from '../../functions/font';
 import appColors from '../../theme/colors';
 import ReadIcon from '../../assets/icons/svgs/devotional/read.svg';
 import NotReadIcon from '../../assets/icons/svgs/devotional/not-read.svg';
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     color: appColors.primaryColor,
     fontSize: fontScale(17.2),
     textTransform: 'capitalize',
-    lineHeight: lineHeightSmall,
+    lineHeight: lineHeight,
   },
   mainText: {
     fontFamily: DMRegular,
