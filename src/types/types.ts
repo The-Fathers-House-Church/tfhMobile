@@ -254,27 +254,27 @@ export interface YoutubeVideoType {
     title: string;
     description: string;
     thumbnails: {
-      default: {
+      default?: {
         url: string;
         width: number;
         height: number;
       };
-      medium: {
+      medium?: {
         url: string;
         width: number;
         height: number;
       };
-      high: {
+      high?: {
         url: string;
         width: number;
         height: number;
       };
-      standard: {
+      standard?: {
         url: string;
         width: number;
         height: number;
       };
-      maxres: {
+      maxres?: {
         url: string;
         width: number;
         height: number;

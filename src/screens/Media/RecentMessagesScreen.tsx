@@ -14,12 +14,10 @@ import { screenNamesTypes } from '../screenNamesTypes';
 import appColors from '../../theme/colors';
 import { DMBold, DMRegular } from '../../theme/fonts';
 import { fontScale } from '../../functions/font';
-import { useAppDispatch } from '../../store/hooks';
 import SectionLoader from '../../common/Loader/SectionLoader';
 import { getYoutubeLink } from '../../functions/stringManipulations';
 import Card from '../../common/Card';
 import PlayIcon from '../../assets/icons/svgs/home/play.svg';
-import { setVideoLoading } from '../../store/slices/youtubeVideos';
 import axios from 'axios';
 import { sendCatchFeedback } from '../../functions/feedback';
 import {
@@ -42,11 +40,10 @@ const RecentMessagesScreen = ({}: NativeStackScreenProps<
     undefined,
   );
   const [refreshing, setRefreshing] = React.useState(false);
-  const dispatch = useAppDispatch();
   const [page, setPage] = React.useState(1);
 
   const getYoutubeChannelVideos = async () => {
-    dispatch(setVideoLoading(true));
+    setLoading(true);
     try {
       let response;
       if (pageToken) {
@@ -65,7 +62,7 @@ const RecentMessagesScreen = ({}: NativeStackScreenProps<
       console.log(error);
       sendCatchFeedback(error);
     } finally {
-      dispatch(setVideoLoading(false));
+      setLoading(false);
     }
   };
 
@@ -107,7 +104,9 @@ const RecentMessagesScreen = ({}: NativeStackScreenProps<
                 <View style={styles.imageContainer}>
                   <Image
                     source={{
-                      uri: video.snippet.thumbnails.standard.url,
+                      uri:
+                        video.snippet.thumbnails.standard?.url ||
+                        video.snippet.thumbnails.default?.url,
                     }}
                     style={styles.image}
                   />
