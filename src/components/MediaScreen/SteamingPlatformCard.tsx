@@ -2,6 +2,7 @@ import { StyleSheet, TouchableOpacity, Linking } from 'react-native';
 import React from 'react';
 import { PlatformType } from './streamingPlatforms';
 import Card from '../../common/Card';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const SteamingPlatformCard = ({ platform }: { platform: PlatformType }) => {
   return (
@@ -14,8 +15,9 @@ const SteamingPlatformCard = ({ platform }: { platform: PlatformType }) => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    padding: 17,
-    height: 79,
+    paddingHorizontal: scaledWidth(17),
+    paddingVertical: scaledHeight(17),
+    height: scaledHeight(79),
     justifyContent: 'center',
   },
 });

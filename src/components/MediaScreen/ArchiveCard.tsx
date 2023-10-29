@@ -5,6 +5,7 @@ import { ArchiveType } from './archiveChannels';
 import { DMRegular } from '../../theme/fonts';
 import appColors from '../../theme/colors';
 import { fontScale } from '../../functions/font';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const ArchiveCard = ({ channel }: { channel: ArchiveType }) => {
   return (
@@ -21,9 +22,10 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     flexDirection: 'row',
-    padding: 17,
-    height: 79,
-    gap: 20,
+    paddingVertical: scaledHeight(17),
+    paddingHorizontal: scaledWidth(17),
+    height: scaledHeight(79),
+    gap: scaledWidth(20),
   },
   label: {
     fontFamily: DMRegular,

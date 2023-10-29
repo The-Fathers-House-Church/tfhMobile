@@ -23,6 +23,7 @@ import { AnnouncementType } from '../../types/types';
 import Pagination from '../../common/Pagination';
 import { appAxios } from '../../api/axios';
 import { sendCatchFeedback } from '../../functions/feedback';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const AnnouncementsScreen = ({
   navigation,
@@ -101,25 +102,25 @@ const AnnouncementsScreen = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 47,
+    paddingVertical: scaledHeight(47),
   },
   contentContainer: {
     flexGrow: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 25,
+    paddingHorizontal: scaledWidth(25),
   },
   separator: {
     width: '100%',
     borderBottomWidth: 0.5,
     borderBottomColor: '#D8D8D8',
-    marginTop: 9,
-    marginBottom: 14,
+    marginTop: scaledHeight(9),
+    marginBottom: scaledHeight(14),
   },
   notFoundText: {
     fontFamily: DMRegular,
     fontSize: fontScale(11),
     color: appColors.black,
-    marginBottom: 20,
+    marginBottom: scaledHeight(20),
   },
 });
 

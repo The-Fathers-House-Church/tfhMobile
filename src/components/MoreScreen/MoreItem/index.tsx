@@ -5,6 +5,7 @@ import { DMRegular } from '../../../theme/fonts';
 import appColors from '../../../theme/colors';
 import AuthenticationItem from './AuthenticationItem';
 import { fontScale } from '../../../functions/font';
+import { scaledHeight, scaledWidth } from '../../../functions/utils';
 
 interface Props {
   title: string;
@@ -48,9 +49,9 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 20,
-    paddingHorizontal: 40,
-    paddingVertical: 20,
+    gap: scaledWidth(20),
+    paddingHorizontal: scaledWidth(40),
+    paddingVertical: scaledHeight(20),
   },
   titleText: {
     fontFamily: DMRegular,

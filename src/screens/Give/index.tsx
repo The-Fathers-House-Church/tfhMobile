@@ -9,6 +9,7 @@ import offlineChannels from '../../components/GiveScreen/OfflineChannel/offlineC
 import OfflineChannel from '../../components/GiveScreen/OfflineChannel';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { screenNamesTypes } from '../screenNamesTypes';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const GiveScreen = ({}: NativeStackScreenProps<
   any,
@@ -20,8 +21,8 @@ const GiveScreen = ({}: NativeStackScreenProps<
         flexGrow: 1,
         backgroundColor: '#F3FDFB',
         position: 'relative',
-        paddingHorizontal: 30,
-        paddingBottom: 30,
+        paddingHorizontal: scaledWidth(30),
+        paddingBottom: scaledHeight(30),
       }}>
       <BgImage />
       <GiveHeader />

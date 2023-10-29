@@ -7,6 +7,7 @@ import appColors from '../../theme/colors';
 import { DMBold, DMRegular } from '../../theme/fonts';
 import Card from '../../common/Card';
 import { screenNames } from '../../screens/screenNames';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const EventCard = ({
   event,
@@ -64,13 +65,14 @@ const EventCard = ({
 
 const styles = StyleSheet.create({
   container: {
-    padding: 13,
+    paddingHorizontal: scaledWidth(13),
+    paddingVertical: scaledHeight(13),
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 20,
+    gap: scaledWidth(20),
   },
   image: {
-    width: 105.52,
+    width: scaledWidth(105.52),
     height: '100%',
     borderRadius: 5,
     resizeMode: 'cover',
@@ -82,18 +84,18 @@ const styles = StyleSheet.create({
     fontSize: fontScale(16),
     color: appColors.primaryColor,
     fontFamily: DMBold,
-    marginBottom: 3,
+    marginBottom: scaledHeight(3),
     textTransform: 'capitalize',
   },
   date: {
     color: appColors.black,
     fontSize: fontScale(10),
     fontFamily: DMRegular,
-    marginBottom: 5,
+    marginBottom: scaledHeight(5),
   },
   upcomingIndicatorContainer: {
-    paddingHorizontal: 14,
-    paddingVertical: 5,
+    paddingHorizontal: scaledWidth(14),
+    paddingVertical: scaledHeight(5),
     borderRadius: 4,
     justifyContent: 'center',
     alignItems: 'center',

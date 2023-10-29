@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 import { DMBold, DMRegular } from '../../theme/fonts';
 import appColors from '../../theme/colors';
 import { fontScale } from '../../functions/font';
+import { scaledHeight } from '../../functions/utils';
 
 interface ItemType {
   heading: string;
@@ -31,24 +32,24 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: DMBold,
     color: appColors.primaryColor,
-    marginBottom: 5,
+    marginBottom: scaledHeight(5),
     fontSize: fontScale(12),
   },
   content: {
     color: appColors.black,
     fontFamily: DMRegular,
-    marginBottom: 10,
+    marginBottom: scaledHeight(10),
     fontSize: fontScale(10),
   },
   listContainer: {
-    gap: 10,
-    marginTop: 10,
+    gap: scaledHeight(10),
+    marginTop: scaledHeight(10),
   },
   listTitle: {
     fontFamily: DMBold,
     color: appColors.black,
     fontSize: fontScale(10),
-    marginTop: 10,
+    marginTop: scaledHeight(10),
   },
 });
 

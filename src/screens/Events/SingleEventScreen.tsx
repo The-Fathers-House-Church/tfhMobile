@@ -17,11 +17,13 @@ import ReactNativeModal from 'react-native-modal';
 import Button from '../../common/Button';
 import { DMBold, DMRegular } from '../../theme/fonts';
 import appColors from '../../theme/colors';
-import { fontScale } from '../../functions/font';
+import { fontScale, lineHeight } from '../../functions/font';
 import ShareIcon from '../../assets/icons/svgs/event/share.svg';
 import EventRegistrationForm from '../../components/EventScreen/EventRegistrationForm';
 import EventGallery from '../../components/EventScreen/EventGallery';
 import HTMLRenderer from '../../common/HTMLRenderer';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
+import { WEBSITE_URL } from '../../functions/environmentVariables';
 
 const SingleEventScreen = ({
   navigation,
@@ -119,8 +121,9 @@ const SingleEventScreen = ({
             onPress={() =>
               Share.share({
                 title: 'TFHC Event',
-                message: `Check out this event at The Father's House Church: ${event.name}`,
-                // url: ""
+                // message: `Check out this event at The Father's House Church: ${event.name}`,
+                message: `${WEBSITE_URL}/events/details?id=${event.id}`,
+                // url: `${WEBSITE_URL}/events/details?id=${event.id}`,
               })
             }>
             <ShareIcon />
@@ -158,8 +161,9 @@ const SingleEventScreen = ({
                 }}
                 baseStyle={{
                   color: '#888888',
-                  fontSize: fontScale(10),
+                  fontSize: fontScale(12),
                   fontFamily: DMRegular,
+                  lineHeight: lineHeight,
                 }}
               />
             )}
@@ -219,7 +223,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   image: {
-    height: 241,
+    height: scaledHeight(241),
     width: '100%',
     resizeMode: 'cover',
   },
@@ -228,8 +232,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     bottom: 0,
-    paddingVertical: 8,
-    paddingHorizontal: 17,
+    paddingVertical: scaledHeight(8),
+    paddingHorizontal: scaledWidth(17),
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -239,29 +243,29 @@ const styles = StyleSheet.create({
     fontSize: fontScale(11),
   },
   contentContainer: {
-    paddingHorizontal: 23,
-    paddingVertical: 13,
+    paddingHorizontal: scaledWidth(23),
+    paddingVertical: scaledHeight(13),
   },
   name: {
     fontFamily: DMBold,
     color: appColors.primaryColor,
     fontSize: fontScale(22),
-    marginBottom: 5,
+    marginBottom: scaledHeight(5),
   },
 
   date: {
     fontFamily: DMBold,
     color: appColors.black,
     fontSize: fontScale(11),
-    marginBottom: 10,
+    marginBottom: scaledHeight(10),
   },
 
   shareContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 5,
-    marginTop: 17,
+    gap: scaledWidth(5),
+    marginTop: scaledHeight(17),
   },
   shareText: {
     fontFamily: DMBold,
@@ -272,7 +276,7 @@ const styles = StyleSheet.create({
     width: '100%',
     borderBottomWidth: 0.5,
     borderBottomColor: '#D8D8D8',
-    marginVertical: 14,
+    marginVertical: scaledHeight(14),
   },
   text: {
     fontFamily: DMRegular,

@@ -14,6 +14,7 @@ import { DMRegular } from '../../theme/fonts';
 import { fontScale } from '../../functions/font';
 import ShowPasswordIcon from '../../assets/icons/svgs/auth/show-password.svg';
 import HidePasswordIcon from '../../assets/icons/svgs/auth/hide-password.svg';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 interface Props {
   value?: string | number;
@@ -115,11 +116,12 @@ const CustomInput = ({
 
 const styles = StyleSheet.create({
   input: {
-    height: 45,
+    height: scaledHeight(45),
     borderWidth: 0.5,
     borderColor: '#D1D1D1',
     borderRadius: 5,
-    padding: 11.24,
+    paddingHorizontal: scaledWidth(11.24),
+    paddingVertical: scaledHeight(11.24),
     width: '100%',
     color: appColors.primaryColor,
     fontFamily: DMRegular,
@@ -129,7 +131,7 @@ const styles = StyleSheet.create({
     fontSize: fontScale(5),
     color: appColors.errorColor,
     alignSelf: 'flex-start',
-    marginTop: 3,
+    marginTop: scaledHeight(3),
     fontFamily: DMRegular,
   },
   inputContainer: {

@@ -10,6 +10,8 @@ import appColors from '../../theme/colors';
 import { DMBold } from '../../theme/fonts';
 import SelectedIcon from '../../assets/icons/svgs/auth/selected.svg';
 import NotSelectedIcon from '../../assets/icons/svgs/auth/not-selected.svg';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
+import { fontScale } from '../../functions/font';
 
 const DropdownItem = ({
   name,
@@ -41,8 +43,8 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FCFCFC',
     borderRadius: 5,
-    paddingHorizontal: 24,
-    paddingVertical: 16,
+    paddingHorizontal: scaledWidth(24),
+    paddingVertical: scaledHeight(16),
     borderWidth: 0.75,
     borderColor: '#DBDBDB',
     flexDirection: 'row',
@@ -51,9 +53,9 @@ const styles = StyleSheet.create({
   },
   name: {
     fontFamily: DMBold,
-    fontSize: 11,
+    fontSize: fontScale(11),
     color: appColors.primaryColor,
-    marginBottom: 2,
+    marginBottom: scaledHeight(2),
     textTransform: 'capitalize',
   },
 });

@@ -3,11 +3,12 @@ import React from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { screenNamesTypes } from '../screenNamesTypes';
 import { DMBold, DMRegular } from '../../theme/fonts';
-import { fontScale } from '../../functions/font';
+import { fontScale, lineHeight } from '../../functions/font';
 import appColors from '../../theme/colors';
 import { screenNames } from '../screenNames';
 import { TestimonyType } from '../../types/types';
 import HTMLRenderer from '../../common/HTMLRenderer';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const SingleTestimonyScreen = ({
   navigation,
@@ -53,26 +54,27 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 16,
-    paddingVertical: 19,
+    paddingHorizontal: scaledWidth(16),
+    paddingVertical: scaledHeight(19),
   },
   title: {
     fontFamily: DMBold,
     color: appColors.primaryColor,
-    fontSize: fontScale(16),
-    marginBottom: 4,
+    fontSize: fontScale(18),
+    marginBottom: scaledHeight(4),
   },
   description: {
     color: appColors.black,
-    fontSize: fontScale(11),
+    fontSize: fontScale(13),
     fontFamily: DMRegular,
+    lineHeight: lineHeight,
   },
   separator: {
     width: '100%',
     borderBottomWidth: 0.5,
     borderBottomColor: '#002F7280',
-    marginTop: 30,
-    marginBottom: 9,
+    marginTop: scaledHeight(30),
+    marginBottom: scaledHeight(9),
   },
   name: {
     color: appColors.black,

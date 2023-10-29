@@ -7,6 +7,7 @@ import appColors from '../../theme/colors';
 import { fontScale } from '../../functions/font';
 import archiveChannels from '../../components/MediaScreen/archiveChannels';
 import ArchiveCard from '../../components/MediaScreen/ArchiveCard';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const ArchiveScreen = ({}: NativeStackScreenProps<
   any,
@@ -35,20 +36,20 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 26,
-    paddingVertical: 35,
+    paddingHorizontal: scaledWidth(26),
+    paddingVertical: scaledHeight(35),
   },
   title: {
     fontFamily: DMBold,
     color: appColors.primaryColor,
-    marginBottom: 10,
+    marginBottom: scaledHeight(10),
     fontSize: fontScale(24),
   },
   subtitle: {
     fontFamily: DMRegular,
     color: appColors.black,
     fontSize: fontScale(11),
-    marginBottom: 25,
+    marginBottom: scaledHeight(25),
   },
 });
 

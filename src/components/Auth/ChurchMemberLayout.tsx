@@ -5,6 +5,7 @@ import { DMBold } from '../../theme/fonts';
 import ChurchMemberItem from './ChurchMemberItem';
 import appColors from '../../theme/colors';
 import { fontScale } from '../../functions/font';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 type Props = {
   value: boolean | undefined;
@@ -43,22 +44,22 @@ const ChurchMemberLayout = ({
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 10,
+    marginTop: scaledHeight(10),
   },
   label: {
     fontFamily: DMBold,
     fontSize: fontScale(10),
-    marginBottom: 10,
+    marginBottom: scaledHeight(10),
   },
   errorText: {
     fontSize: fontScale(10),
     color: appColors.errorColor,
     alignSelf: 'flex-start',
-    marginTop: 3,
+    marginTop: scaledHeight(3),
   },
   controlContainer: {
     flexDirection: 'row',
-    gap: 17,
+    gap: scaledWidth(17),
   },
 });
 

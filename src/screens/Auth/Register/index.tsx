@@ -29,6 +29,7 @@ import { fontScale } from '../../../functions/font';
 import TitleOptionsComponent from '../../../components/Auth/TitleOptionsComponent';
 import GenderOptionsComponent from '../../../components/Auth/GenderOptionsComponent';
 import MaritalOptionsComponent from '../../../components/Auth/MaritalOptionsComponent';
+import { scaledHeight, scaledWidth } from '../../../functions/utils';
 
 const RegisterScreen = ({
   navigation,
@@ -394,14 +395,14 @@ const RegisterScreen = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 30,
+    paddingHorizontal: scaledWidth(30),
     flexGrow: 1,
-    paddingTop: 3,
-    paddingBottom: 33,
+    paddingTop: scaledHeight(3),
+    paddingBottom: scaledHeight(33),
     backgroundColor: appColors.white,
   },
   image: {
-    height: 75,
+    height: scaledHeight(75),
     resizeMode: 'contain',
     alignSelf: 'center',
   },
@@ -409,20 +410,20 @@ const styles = StyleSheet.create({
     fontFamily: DMBold,
     fontSize: fontScale(24),
     color: appColors.primaryColor,
-    marginTop: 4,
-    marginBottom: 11,
+    marginTop: scaledHeight(4),
+    marginBottom: scaledHeight(11),
   },
   subText: {
     fontFamily: DMRegular,
     fontSize: fontScale(11),
     color: appColors.primaryColor,
-    marginBottom: 33,
+    marginBottom: scaledHeight(33),
   },
   forgotText: {
     fontFamily: DMBold,
     fontSize: fontScale(11),
     color: appColors.secondaryColor,
-    marginBottom: 50,
+    marginBottom: scaledHeight(50),
   },
   signInText: {
     fontFamily: DMRegular,

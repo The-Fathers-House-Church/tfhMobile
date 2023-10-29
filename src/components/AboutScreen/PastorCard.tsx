@@ -5,7 +5,8 @@ import { DMBold, DMMediumItalic, DMRegular } from '../../theme/fonts';
 import appColors from '../../theme/colors';
 import ChevronRightIcon from '../../assets/icons/svgs/pastors/chevron-right.svg';
 import { screenNames } from '../../screens/screenNames';
-import { fontScale } from '../../functions/font';
+import { fontScale, lineHeight, lineHeightSmall } from '../../functions/font';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const PastorCard = ({
   navigateToScreen,
@@ -37,11 +38,11 @@ const PastorCard = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    gap: 11,
+    gap: scaledHeight(11),
     alignItems: 'center',
   },
   image: {
-    width: 87,
+    width: scaledWidth(87),
     height: '100%',
     borderRadius: 6,
     resizeMode: 'cover',
@@ -50,20 +51,21 @@ const styles = StyleSheet.create({
     fontFamily: DMBold,
     color: appColors.primaryColor,
     fontSize: fontScale(13),
-    marginBottom: 5,
+    marginBottom: scaledHeight(5),
   },
   position: {
     color: appColors.secondaryColor,
     fontSize: fontScale(7),
-    marginBottom: 5,
+    marginBottom: scaledHeight(5),
     fontFamily: DMMediumItalic,
     fontStyle: 'italic',
   },
   description: {
-    marginBottom: 10,
+    marginBottom: scaledHeight(10),
     color: appColors.black,
     fontSize: fontScale(8),
     fontFamily: DMRegular,
+    lineHeight: lineHeightSmall,
   },
   readMoreContainer: {
     flexDirection: 'row',

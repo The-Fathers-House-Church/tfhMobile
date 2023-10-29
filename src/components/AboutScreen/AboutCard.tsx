@@ -5,6 +5,8 @@ import { StyleSheet } from 'react-native';
 import ArrowRightIcon from '../../assets/icons/svgs/about/arrow-right.svg';
 import { DMBold } from '../../theme/fonts';
 import appColors from '../../theme/colors';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
+import { fontScale } from '../../functions/font';
 
 interface Props {
   title: string;
@@ -25,9 +27,9 @@ const AboutCard = (props: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 20,
-    paddingLeft: 46,
-    paddingRight: 50,
+    paddingVertical: scaledHeight(20),
+    paddingLeft: scaledWidth(46),
+    paddingRight: scaledWidth(50),
     borderRadius: 6,
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -36,7 +38,7 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: DMBold,
     color: appColors.primaryColor,
-    fontSize: 16,
+    fontSize: fontScale(16),
     textAlign: 'center',
   },
 });

@@ -11,6 +11,7 @@ import ChevronDownIcon from '../../assets/icons/svgs/auth/chevron-down.svg';
 import appColors from '../../theme/colors';
 import { DMRegular } from '../../theme/fonts';
 import { fontScale } from '../../functions/font';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 type Props = {
   value: string;
@@ -57,11 +58,12 @@ const DropdownButton = ({
 
 const styles = StyleSheet.create({
   input: {
-    height: 45,
+    height: scaledHeight(45),
     borderWidth: 0.5,
     borderColor: '#D1D1D1',
     borderRadius: 5,
-    padding: 11.24,
+    paddingHorizontal: scaledWidth(11.24),
+    paddingVertical: scaledHeight(11.24),
     width: '100%',
     color: appColors.primaryColor,
   },
@@ -69,7 +71,7 @@ const styles = StyleSheet.create({
     fontSize: fontScale(5),
     color: appColors.errorColor,
     alignSelf: 'flex-start',
-    marginTop: 3,
+    marginTop: scaledHeight(3),
   },
   iconContainer: {
     position: 'absolute',

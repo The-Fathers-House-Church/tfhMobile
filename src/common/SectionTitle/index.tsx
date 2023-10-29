@@ -3,6 +3,7 @@ import React from 'react';
 import appColors from '../../theme/colors';
 import { DMRegular } from '../../theme/fonts';
 import { fontScale } from '../../functions/font';
+import { scaledHeight } from '../../functions/utils';
 
 interface Props {
   mainText: string;
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 5,
+    marginBottom: scaledHeight(5),
   },
   mainText: {
     textAlign: 'left',

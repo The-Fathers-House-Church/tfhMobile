@@ -7,6 +7,7 @@ import { DMBold, DMRegular } from '../../../theme/fonts';
 import appColors from '../../../theme/colors';
 import { fontScale } from '../../../functions/font';
 import { screenNames } from '../../../screens/screenNames';
+import { scaledHeight, scaledWidth } from '../../../functions/utils';
 
 const ChurchLocation = ({
   navigateToScreen,
@@ -50,14 +51,14 @@ const ChurchLocation = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 16,
-    marginTop: 30,
+    paddingHorizontal: scaledWidth(16),
+    marginTop: scaledHeight(30),
   },
   contentContainer: {
-    paddingVertical: 12,
-    paddingHorizontal: 7,
+    paddingVertical: scaledHeight(12),
+    paddingHorizontal: scaledWidth(7),
     flexDirection: 'row',
-    gap: 13,
+    gap: scaledWidth(13),
     alignItems: 'center',
   },
   detailsContainer: {
@@ -68,20 +69,20 @@ const styles = StyleSheet.create({
     fontFamily: DMBold,
     fontSize: fontScale(15),
     color: appColors.primaryColor,
-    maxWidth: 235,
-    marginBottom: 5,
+    maxWidth: scaledWidth(235),
+    marginBottom: scaledHeight(5),
   },
   title: {
     fontFamily: DMRegular,
     fontSize: fontScale(8),
     color: appColors.black,
-    marginBottom: 20,
-    maxWidth: 225,
+    marginBottom: scaledHeight(20),
+    maxWidth: scaledWidth(225),
   },
 
   buttonStyle: {
-    maxWidth: 159,
-    height: 32,
+    maxWidth: scaledWidth(159),
+    height: scaledHeight(32),
     borderRadius: 3.88,
   },
 });

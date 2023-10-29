@@ -4,10 +4,11 @@ import { TestimonyType } from '../../types/types';
 import { StyleSheet } from 'react-native';
 import { DMBold, DMRegular } from '../../theme/fonts';
 import appColors from '../../theme/colors';
-import { fontScale } from '../../functions/font';
+import { fontScale, lineHeight } from '../../functions/font';
 import Card from '../../common/Card';
 import { screenNames } from '../../screens/screenNames';
 import HTMLRenderer from '../../common/HTMLRenderer';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const TestimonyCard = ({
   testimony,
@@ -45,9 +46,9 @@ const TestimonyCard = ({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#F5FFFD',
-    paddingHorizontal: 20,
-    paddingTop: 14,
-    paddingBottom: 17,
+    paddingHorizontal: scaledWidth(20),
+    paddingTop: scaledHeight(14),
+    paddingBottom: scaledHeight(17),
     borderRadius: 6.62,
   },
   title: {
@@ -60,13 +61,14 @@ const styles = StyleSheet.create({
     color: appColors.black,
     fontSize: fontScale(11),
     fontFamily: DMRegular,
+    lineHeight: lineHeight,
   },
   separator: {
     width: '100%',
     borderBottomWidth: 0.5,
     borderBottomColor: '#002F7280',
-    marginTop: 30,
-    marginBottom: 9,
+    marginTop: scaledHeight(30),
+    marginBottom: scaledHeight(9),
   },
   name: {
     color: appColors.black,

@@ -7,8 +7,9 @@ import { DMBold, DMRegular } from '../../../theme/fonts';
 import ChevronDown from '../../../assets/icons/svgs/more/chevron-down.svg';
 import { useAppSelector } from '../../../store/hooks';
 import { screenNames } from '../../../screens/screenNames';
-import { fontScale } from '../../../functions/font';
+import { fontScale, lineHeightSmall } from '../../../functions/font';
 import { getVersion } from 'react-native-device-info';
+import { scaledHeight } from '../../../functions/utils';
 
 const MoreHeader = ({
   navigateToScreen,
@@ -69,10 +70,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: 33,
+    marginTop: scaledHeight(33),
   },
   textContainer: {
-    gap: 2,
+    gap: scaledHeight(2),
   },
   mainText: {
     color: appColors.white,
@@ -83,6 +84,7 @@ const styles = StyleSheet.create({
     color: appColors.white,
     fontFamily: DMRegular,
     fontSize: fontScale(10),
+    lineHeight: lineHeightSmall,
   },
   appVersion: {
     position: 'absolute',

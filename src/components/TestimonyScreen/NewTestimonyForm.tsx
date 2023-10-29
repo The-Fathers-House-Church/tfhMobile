@@ -8,6 +8,7 @@ import { appAxios } from '../../api/axios';
 import CustomInput from '../../common/CustomInput';
 import Button from '../../common/Button';
 import appColors from '../../theme/colors';
+import { scaledHeight } from '../../functions/utils';
 
 const NewTestimonyForm = ({
   navigateToScreen,
@@ -110,7 +111,7 @@ const NewTestimonyForm = ({
       <Button
         title="Submit Testimony"
         buttonStyle={{
-          marginTop: 36,
+          marginTop: scaledHeight(36),
           backgroundColor: !formik.isValid
             ? appColors.grey
             : appColors.secondaryColor,

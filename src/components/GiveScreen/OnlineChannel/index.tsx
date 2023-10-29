@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 import appColors from '../../../theme/colors';
 import { DMBold } from '../../../theme/fonts';
 import { fontScale } from '../../../functions/font';
+import { scaledHeight, scaledWidth } from '../../../functions/utils';
 
 interface Props {
   borderColor: string;
@@ -34,9 +35,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 0.7,
     borderRadius: 5,
-    paddingHorizontal: 24,
-    paddingVertical: 10,
-    gap: 30,
+    paddingHorizontal: scaledWidth(24),
+    paddingVertical: scaledHeight(10),
+    gap: scaledWidth(30),
     flex: 1,
   },
   text: {

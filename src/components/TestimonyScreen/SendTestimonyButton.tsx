@@ -11,6 +11,7 @@ import appColors from '../../theme/colors';
 import AddIcon from '../../assets/icons/svgs/testimony/add.svg';
 import { DMBold } from '../../theme/fonts';
 import { fontScale } from '../../functions/font';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const SendTestimonyButton = ({
   navigateToScreen,
@@ -45,11 +46,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.19,
     shadowRadius: 5.62,
     elevation: 6,
-    paddingVertical: 9,
+    paddingVertical: scaledHeight(9),
     backgroundColor: appColors.secondaryColor,
     borderRadius: 29.5,
-    minWidth: 140,
-    paddingRight: 10,
+    minWidth: scaledWidth(140),
+    paddingRight: scaledWidth(10),
   },
   addButton: {
     position: 'absolute',

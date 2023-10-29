@@ -14,12 +14,10 @@ import { screenNamesTypes } from '../screenNamesTypes';
 import appColors from '../../theme/colors';
 import { DMBold, DMRegular } from '../../theme/fonts';
 import { fontScale } from '../../functions/font';
-import { useAppDispatch } from '../../store/hooks';
 import SectionLoader from '../../common/Loader/SectionLoader';
 import { getYoutubeLink } from '../../functions/stringManipulations';
 import Card from '../../common/Card';
 import PlayIcon from '../../assets/icons/svgs/home/play.svg';
-import { setVideoLoading } from '../../store/slices/youtubeVideos';
 import axios from 'axios';
 import { sendCatchFeedback } from '../../functions/feedback';
 import {
@@ -28,6 +26,7 @@ import {
 } from '../../functions/environmentVariables';
 import YoutubePagination from '../../common/YoutubePagination';
 import { YoutubeVideoType } from '../../types/types';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const RecentMessagesScreen = ({}: NativeStackScreenProps<
   any,
@@ -41,11 +40,10 @@ const RecentMessagesScreen = ({}: NativeStackScreenProps<
     undefined,
   );
   const [refreshing, setRefreshing] = React.useState(false);
-  const dispatch = useAppDispatch();
   const [page, setPage] = React.useState(1);
 
   const getYoutubeChannelVideos = async () => {
-    dispatch(setVideoLoading(true));
+    setLoading(true);
     try {
       let response;
       if (pageToken) {
@@ -64,7 +62,7 @@ const RecentMessagesScreen = ({}: NativeStackScreenProps<
       console.log(error);
       sendCatchFeedback(error);
     } finally {
-      dispatch(setVideoLoading(false));
+      setLoading(false);
     }
   };
 
@@ -89,7 +87,7 @@ const RecentMessagesScreen = ({}: NativeStackScreenProps<
         <SectionLoader
           style={{
             alignSelf: 'center',
-            marginTop: 18,
+            marginTop: scaledHeight(18),
           }}
         />
       ) : videos && videos.length > 0 ? (
@@ -106,7 +104,9 @@ const RecentMessagesScreen = ({}: NativeStackScreenProps<
                 <View style={styles.imageContainer}>
                   <Image
                     source={{
-                      uri: video.snippet.thumbnails.standard.url,
+                      uri:
+                        video.snippet.thumbnails.standard?.url ||
+                        video.snippet.thumbnails.default?.url,
                     }}
                     style={styles.image}
                   />
@@ -146,9 +146,9 @@ const RecentMessagesScreen = ({}: NativeStackScreenProps<
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 25,
-    paddingVertical: 18,
-    gap: 20,
+    paddingHorizontal: scaledWidth(25),
+    paddingVertical: scaledHeight(18),
+    gap: scaledHeight(20),
     flexGrow: 1,
     backgroundColor: appColors.white,
   },
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   image: {
-    height: 130.99,
+    height: scaledHeight(130.99),
     width: '100%',
     resizeMode: 'cover',
     borderTopRightRadius: 6,
@@ -189,8 +189,8 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     backgroundColor: appColors.white,
-    paddingVertical: 9,
-    paddingHorizontal: 12,
+    paddingVertical: scaledHeight(9),
+    paddingHorizontal: scaledWidth(12),
     flex: 1,
     borderBottomRightRadius: 6,
     borderBottomLeftRadius: 6,
@@ -199,14 +199,14 @@ const styles = StyleSheet.create({
     fontFamily: DMBold,
     color: appColors.primaryColor,
     fontSize: fontScale(15),
-    marginBottom: 3,
+    marginBottom: scaledHeight(3),
     textTransform: 'capitalize',
   },
   description: {
     fontFamily: DMRegular,
     color: appColors.primaryColor,
     fontSize: fontScale(10),
-    marginBottom: 3,
+    marginBottom: scaledHeight(3),
     textTransform: 'capitalize',
   },
   subtitle: {
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
     fontFamily: DMRegular,
     fontSize: fontScale(11),
     color: appColors.black,
-    marginBottom: 20,
+    marginBottom: scaledHeight(20),
   },
 });
 

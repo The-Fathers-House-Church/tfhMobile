@@ -9,6 +9,7 @@ import appColors from '../../theme/colors';
 import { fontScale } from '../../functions/font';
 import CheckedIcon from '../../assets/icons/svgs/devotional/checked.svg';
 import CheckedIconWhite from '../../assets/icons/svgs/devotional/checked-white.svg';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const ItemCard = ({
   devotional,
@@ -101,8 +102,8 @@ const ItemCard = ({
 
 const styles = StyleSheet.create({
   container: {
-    height: 79,
-    width: 75,
+    height: scaledHeight(79),
+    width: scaledWidth(75),
     position: 'relative',
     alignItems: 'center',
     justifyContent: 'center',

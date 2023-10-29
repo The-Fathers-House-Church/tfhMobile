@@ -7,13 +7,16 @@ import { screenNames } from '../screenNames';
 import { StyleSheet } from 'react-native';
 import { DMBold, DMRegular } from '../../theme/fonts';
 import appColors from '../../theme/colors';
-import { fontScale } from '../../functions/font';
+import { fontScale, lineHeight, lineHeightSmall } from '../../functions/font';
 import BG1 from '../../assets/icons/svgs/devotional/bg-image-1.svg';
 import BG2 from '../../assets/icons/svgs/devotional/bg-image-2.svg';
 import Button from '../../common/Button';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DEVOTIONAL_STORAGE } from '../../functions/environmentVariables';
 import HTMLRenderer from '../../common/HTMLRenderer';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
+import { appAxios } from '../../api/axios';
+import { sendFeedback } from '../../functions/feedback';
 
 const SingleDevotionalScreen = ({
   navigation,
@@ -31,6 +34,19 @@ const SingleDevotionalScreen = ({
     if (!routeParams?.devotional) {
       navigation.navigate(screenNames.DEVOTIONALS);
     }
+  }, []);
+
+  // Mark Devotional View
+  const registerView = async () => {
+    try {
+      await appAxios.get('/devotional/view/' + devotional?.dish_id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  React.useEffect(() => {
+    registerView();
   }, []);
 
   // Check if devotional is read
@@ -114,8 +130,9 @@ const SingleDevotionalScreen = ({
           baseStyle={{
             fontFamily: DMRegular,
             color: appColors.black,
-            marginBottom: 22,
-            fontSize: fontScale(11),
+            marginBottom: scaledHeight(22),
+            fontSize: fontScale(13),
+            lineHeight: lineHeight,
           }}
         />
 
@@ -133,21 +150,21 @@ const SingleDevotionalScreen = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 11,
-    paddingBottom: 31,
+    paddingTop: scaledHeight(11),
+    paddingBottom: scaledHeight(31),
     flexGrow: 1,
     backgroundColor: '#fff',
   },
   image: {
     resizeMode: 'cover',
-    height: 212,
+    height: scaledHeight(212),
     width: '100%',
   },
 
   title: {
     fontFamily: DMBold,
     color: appColors.primaryColor,
-    marginTop: 21,
+    marginTop: scaledHeight(21),
     fontSize: fontScale(20),
     textTransform: 'capitalize',
   },
@@ -160,14 +177,14 @@ const styles = StyleSheet.create({
     fontSize: fontScale(9),
     color: appColors.primaryColor,
     fontFamily: DMRegular,
-    marginBottom: 13,
+    marginBottom: scaledHeight(13),
   },
   textContainer: {
     position: 'relative',
     backgroundColor: '#F2FFFC',
-    paddingHorizontal: 25,
-    paddingVertical: 22,
-    marginBottom: 22,
+    paddingHorizontal: scaledWidth(25),
+    paddingVertical: scaledHeight(22),
+    marginBottom: scaledHeight(22),
   },
   bgImage1: {
     position: 'absolute',
@@ -185,19 +202,8 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: DMBold,
     color: appColors.black,
-    fontSize: fontScale(9),
-  },
-  content: {
-    fontFamily: DMRegular,
-    color: appColors.black,
-    marginBottom: 22,
     fontSize: fontScale(11),
-  },
-  sectionTitle: {
-    fontFamily: DMBold,
-    color: appColors.black,
-    marginBottom: 5,
-    fontSize: fontScale(11),
+    lineHeight: lineHeightSmall,
   },
   buttonStyle: {
     marginTop: 22,

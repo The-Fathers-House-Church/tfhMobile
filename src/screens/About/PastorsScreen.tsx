@@ -7,6 +7,7 @@ import pastorsData, {
   PastorType,
 } from '../../components/AboutScreen/pastorsData';
 import PastorCard from '../../components/AboutScreen/PastorCard';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const PastorsScreen = ({
   navigation,
@@ -31,8 +32,8 @@ const PastorsScreen = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 25,
-    marginVertical: 20,
+    paddingHorizontal: scaledWidth(25),
+    marginVertical: scaledHeight(20),
   },
   contentContainer: {
     flexGrow: 1,
@@ -42,8 +43,8 @@ const styles = StyleSheet.create({
     width: '100%',
     borderBottomWidth: 0.5,
     borderBottomColor: '#002F724D',
-    marginTop: 15,
-    marginBottom: 26,
+    marginTop: scaledHeight(15),
+    marginBottom: scaledHeight(26),
   },
 });
 export default PastorsScreen;

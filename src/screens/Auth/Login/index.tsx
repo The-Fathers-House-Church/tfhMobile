@@ -17,6 +17,7 @@ import { updateUser } from '../../../store/slices/user';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { fontScale } from '../../../functions/font';
 import { USER_STORAGE } from '../../../functions/environmentVariables';
+import { scaledHeight, scaledWidth } from '../../../functions/utils';
 
 const LoginScreen = ({
   navigation,
@@ -140,34 +141,34 @@ const LoginScreen = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 30,
+    paddingHorizontal: scaledWidth(30),
     flexGrow: 1,
-    paddingVertical: 25,
+    paddingVertical: scaledHeight(25),
     backgroundColor: appColors.white,
     alignItems: 'center',
   },
   image: {
-    height: 122,
+    height: scaledHeight(122),
     resizeMode: 'contain',
   },
   mainText: {
     fontFamily: DMBold,
     fontSize: fontScale(24),
     color: appColors.primaryColor,
-    marginTop: 27,
-    marginBottom: 19,
+    marginTop: scaledHeight(27),
+    marginBottom: scaledHeight(19),
   },
   subText: {
     fontFamily: DMRegular,
     fontSize: fontScale(11),
     color: appColors.primaryColor,
-    marginBottom: 19,
+    marginBottom: scaledHeight(19),
   },
   forgotText: {
     fontFamily: DMBold,
     fontSize: fontScale(11),
     color: appColors.secondaryColor,
-    marginBottom: 50,
+    marginBottom: scaledHeight(50),
   },
   signupText: {
     fontFamily: DMRegular,

@@ -71,7 +71,7 @@ const DevotionalsScreen = ({
       {loading ? (
         <SectionLoader style={{ alignSelf: 'center', margin: 20 }} />
       ) : devotionals && devotionals.length ? (
-        <View>
+        <View style={{ flex: 1 }}>
           <DevotionalList
             changeSelectedDevotional={changeSelectedDevotional}
             selectedDevotional={selectedDevotional}

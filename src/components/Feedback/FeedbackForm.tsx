@@ -8,6 +8,7 @@ import { appAxios } from '../../api/axios';
 import CustomInput from '../../common/CustomInput';
 import Button from '../../common/Button';
 import appColors from '../../theme/colors';
+import { scaledHeight } from '../../functions/utils';
 
 const FeedbackForm = ({
   navigateToScreen,
@@ -69,7 +70,7 @@ const FeedbackForm = ({
   };
 
   return (
-    <View style={{ gap: 10 }}>
+    <View style={{ gap: scaledHeight(10) }}>
       <CustomInput
         formik={formik}
         name="email"
@@ -98,7 +99,7 @@ const FeedbackForm = ({
       <Button
         title="Submit Feedback"
         buttonStyle={{
-          marginTop: 36,
+          marginTop: scaledHeight(36),
           backgroundColor: !formik.isValid
             ? appColors.grey
             : appColors.secondaryColor,

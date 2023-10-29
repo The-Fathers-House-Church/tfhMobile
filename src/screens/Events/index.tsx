@@ -19,6 +19,7 @@ import { sendCatchFeedback } from '../../functions/feedback';
 import { appAxios } from '../../api/axios';
 import { setEventLoading, setEvents } from '../../store/slices/event';
 import { EventType } from '../../types/types';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const EventsScreen = ({
   navigation,
@@ -94,9 +95,9 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 16,
-    paddingVertical: 19,
-    gap: 22,
+    paddingHorizontal: scaledWidth(16),
+    paddingVertical: scaledHeight(19),
+    gap: scaledHeight(22),
     position: 'relative',
   },
   notFoundText: {

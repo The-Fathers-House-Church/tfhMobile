@@ -3,9 +3,10 @@ import React from 'react';
 import { AnnouncementType } from '../../types/types';
 import appColors from '../../theme/colors';
 import { DMBold, DMRegular } from '../../theme/fonts';
-import { fontScale } from '../../functions/font';
+import { fontScale, lineHeightSmall } from '../../functions/font';
 import { screenNames } from '../../screens/screenNames';
 import HTMLRenderer from '../../common/HTMLRenderer';
+import { scaledHeight, scaledWidth } from '../../functions/utils';
 
 const AnnouncementCard = ({
   navigateToScreen,
@@ -53,10 +54,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 11,
+    gap: scaledHeight(11),
   },
   image: {
-    width: 87,
+    width: scaledWidth(87),
     height: '100%',
     resizeMode: 'cover',
     borderRadius: 6,
@@ -74,6 +75,7 @@ const styles = StyleSheet.create({
     color: '#888888',
     fontSize: fontScale(10),
     fontFamily: DMRegular,
+    lineHeight: lineHeightSmall,
   },
 });
 
