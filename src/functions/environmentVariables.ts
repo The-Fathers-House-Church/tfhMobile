@@ -2,6 +2,7 @@ import Config from 'react-native-config';
 
 export const API_URL = Config.REACT_APP_API_URL;
 export const API_KEY = Config.REACT_APP_API_KEY;
+export const WEBSITE_URL = Config.REACT_APP_WEBSITE_URL;
 
 // Youtube videos
 export const YOUTUBE_API_KEY = Config.REACT_APP_YOUTUBE_API_KEY;

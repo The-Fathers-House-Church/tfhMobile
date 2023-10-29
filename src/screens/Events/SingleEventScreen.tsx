@@ -23,6 +23,7 @@ import EventRegistrationForm from '../../components/EventScreen/EventRegistratio
 import EventGallery from '../../components/EventScreen/EventGallery';
 import HTMLRenderer from '../../common/HTMLRenderer';
 import { scaledHeight, scaledWidth } from '../../functions/utils';
+import { WEBSITE_URL } from '../../functions/environmentVariables';
 
 const SingleEventScreen = ({
   navigation,
@@ -120,8 +121,9 @@ const SingleEventScreen = ({
             onPress={() =>
               Share.share({
                 title: 'TFHC Event',
-                message: `Check out this event at The Father's House Church: ${event.name}`,
-                // url: ""
+                // message: `Check out this event at The Father's House Church: ${event.name}`,
+                message: `${WEBSITE_URL}/events/details?id=${event.id}`,
+                // url: `${WEBSITE_URL}/events/details?id=${event.id}`,
               })
             }>
             <ShareIcon />
