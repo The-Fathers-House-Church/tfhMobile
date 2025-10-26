@@ -557,3 +557,8 @@ npm run test:e2e
 **Built with ❤️ for The Father's House Church**
 
 Download the app: [Google Play Store](https://play.google.com/store/apps/details?id=com.tfhmobile)
+
+### Church Website
+https://tfhconline.org.ng/
+
+Feel free to download and use as a template to create the mobile app for the church you belong to
